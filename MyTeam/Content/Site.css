@@ -27,6 +27,7 @@ textarea {
 /* Custom Author Styles */
 /* Detail Section*/
 .detail-title {
+    margin-top: 100px;
     text-align: center;
 }
 .detail-title-bar {
@@ -34,4 +35,8 @@ textarea {
     border-bottom: 1px solid black;
     height: 10px;
     margin: 0 auto;
+    margin-bottom: 100px;
+}
+.jumbotron {
+    height: 300px;
 }
