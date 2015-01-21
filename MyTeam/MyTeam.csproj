@@ -278,16 +278,16 @@
     <Content Include="Views\Evaluations\Details.cshtml" />
     <Content Include="Views\Evaluations\Edit.cshtml" />
     <Content Include="Views\Evaluations\Index.cshtml" />
-    <Content Include="Views\WorkTasks\Create.cshtml" />
-    <Content Include="Views\WorkTasks\Delete.cshtml" />
-    <Content Include="Views\WorkTasks\Details.cshtml" />
-    <Content Include="Views\WorkTasks\Edit.cshtml" />
-    <Content Include="Views\WorkTasks\Index.cshtml" />
     <Content Include="Views\Projects\Create.cshtml" />
     <Content Include="Views\Projects\Delete.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
     <Content Include="Views\Projects\Edit.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\WorkTasks\Create.cshtml" />
+    <Content Include="Views\WorkTasks\Delete.cshtml" />
+    <Content Include="Views\WorkTasks\Details.cshtml" />
+    <Content Include="Views\WorkTasks\Edit.cshtml" />
+    <Content Include="Views\WorkTasks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
