@@ -22,6 +22,12 @@ namespace MyTeam.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string Status { get; set; }
+        public Nullable<int> PercentageCompleted { get; set; }
+        public Nullable<int> EstimatedDuration { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
+        public Nullable<System.DateTime> EndDate { get; set; }
+        public Nullable<int> Duration { get; set; }
     
         public virtual ICollection<Evaluation> Evaluations { get; set; }
     }
