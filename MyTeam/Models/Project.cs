@@ -18,5 +18,9 @@ namespace MyTeam.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public string Status { get; set; }
+        public Nullable<int> PercentageCompleted { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
+        public Nullable<System.DateTime> EndDate { get; set; }
+        public Nullable<int> Duration { get; set; }
     }
 }
