@@ -21,5 +21,6 @@ namespace MyTeam.Models
         public string Comments { get; set; }
     
         public virtual WorkTask WorkTask { get; set; }
+        public virtual User User { get; set; }
     }
 }

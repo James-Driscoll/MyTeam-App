@@ -30,5 +30,6 @@ namespace MyTeam.Models
         public Nullable<int> Duration { get; set; }
     
         public virtual ICollection<WorkTask> WorkTasks { get; set; }
+        public virtual Team Team { get; set; }
     }
 }

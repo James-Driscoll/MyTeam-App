@@ -33,5 +33,6 @@ namespace MyTeam.Models
     
         public virtual ICollection<Evaluation> Evaluations { get; set; }
         public virtual Project Project { get; set; }
+        public virtual User User { get; set; }
     }
 }

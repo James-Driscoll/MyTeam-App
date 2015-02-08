@@ -14,6 +14,12 @@ namespace MyTeam.Models
     
     public partial class User
     {
+        public User()
+        {
+            this.Evaluations = new HashSet<Evaluation>();
+            this.WorkTasks = new HashSet<WorkTask>();
+        }
+    
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string Lastname { get; set; }
@@ -25,5 +31,8 @@ namespace MyTeam.Models
         public string MobileNumber { get; set; }
         public Nullable<System.DateTime> DOB { get; set; }
         public string SystemRole { get; set; }
+    
+        public virtual ICollection<Evaluation> Evaluations { get; set; }
+        public virtual ICollection<WorkTask> WorkTasks { get; set; }
     }
 }

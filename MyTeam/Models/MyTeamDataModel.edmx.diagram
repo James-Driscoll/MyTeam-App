@@ -12,6 +12,9 @@
         <EntityTypeShape EntityType="MyTeamDataModel.WorkTask" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="MyTeamDataModel.FK_Task" ManuallyRouted="false" />
         <AssociationConnector Association="MyTeamDataModel.FK_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="MyTeamDataModel.FK_Assessor" />
+        <AssociationConnector Association="MyTeamDataModel.FK_Team" />
+        <AssociationConnector Association="MyTeamDataModel.FK_AssignedTo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

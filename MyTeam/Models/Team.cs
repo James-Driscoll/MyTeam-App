@@ -14,6 +14,11 @@ namespace MyTeam.Models
     
     public partial class Team
     {
+        public Team()
+        {
+            this.Projects = new HashSet<Project>();
+        }
+    
         public int Id { get; set; }
         public Nullable<int> FK_Member1 { get; set; }
         public Nullable<int> FK_Member2 { get; set; }
@@ -25,5 +30,7 @@ namespace MyTeam.Models
         public Nullable<int> FK_Member8 { get; set; }
         public Nullable<int> FK_Member9 { get; set; }
         public Nullable<int> FK_Member10 { get; set; }
+    
+        public virtual ICollection<Project> Projects { get; set; }
     }
 }
