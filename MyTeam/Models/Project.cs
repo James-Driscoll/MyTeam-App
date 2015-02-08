@@ -14,7 +14,13 @@ namespace MyTeam.Models
     
     public partial class Project
     {
+        public Project()
+        {
+            this.WorkTasks = new HashSet<WorkTask>();
+        }
+    
         public int Id { get; set; }
+        public int FK_Team { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Status { get; set; }
@@ -22,5 +28,7 @@ namespace MyTeam.Models
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public Nullable<int> Duration { get; set; }
+    
+        public virtual ICollection<WorkTask> WorkTasks { get; set; }
     }
 }

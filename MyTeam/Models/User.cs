@@ -12,14 +12,18 @@ namespace MyTeam.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Evaluation
+    public partial class User
     {
         public int Id { get; set; }
-        public int FK_Assessor { get; set; }
-        public int FK_Task { get; set; }
-        public Nullable<int> Mark { get; set; }
-        public string Comments { get; set; }
-    
-        public virtual WorkTask WorkTask { get; set; }
+        public string FirstName { get; set; }
+        public string Lastname { get; set; }
+        public string Email { get; set; }
+        public string Street { get; set; }
+        public string Town { get; set; }
+        public string County { get; set; }
+        public string Postcode { get; set; }
+        public string MobileNumber { get; set; }
+        public Nullable<System.DateTime> DOB { get; set; }
+        public string SystemRole { get; set; }
     }
 }

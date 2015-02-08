@@ -20,7 +20,9 @@ namespace MyTeam.Models
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
+        public int FK_AssignedTo { get; set; }
+        public int FK_Project { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
         public string Status { get; set; }
         public Nullable<int> PercentageCompleted { get; set; }
@@ -30,5 +32,6 @@ namespace MyTeam.Models
         public Nullable<int> Duration { get; set; }
     
         public virtual ICollection<Evaluation> Evaluations { get; set; }
+        public virtual Project Project { get; set; }
     }
 }
