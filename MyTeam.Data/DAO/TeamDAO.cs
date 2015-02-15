@@ -43,7 +43,7 @@ namespace MyTeam.Data.DAO
             _team = from team
                     in _context.Teams
                     where team.PK_TeamID == id
-                    select Team;
+                    select team;
             return _team.ToList<Team>().First();
         }
 
