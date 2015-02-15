@@ -28,7 +28,7 @@ namespace MyTeam.Services.Service
 
         // READ =====================================================================
         // getUseres
-        public IList<User> getUseres()
+        public IList<User> getUsers()
         {
             return _userDAO.getUsers();
         }
