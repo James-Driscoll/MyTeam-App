@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="DAO\EvaluationDAO.cs" />
     <Compile Include="DAO\ProjectDAO.cs" />
+    <Compile Include="DAO\TeamDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="DAO\WorkTaskDAO.cs" />
     <Compile Include="Evaluation.cs">
@@ -57,6 +58,7 @@
     </Compile>
     <Compile Include="IDAO\IEvaluationDAO.cs" />
     <Compile Include="IDAO\IProjectDAO.cs" />
+    <Compile Include="IDAO\ITeamDAO.cs" />
     <Compile Include="IDAO\IUserDAO.cs" />
     <Compile Include="IDAO\IWorkTaskDAO.cs" />
     <Compile Include="MyTeamData.Context.cs">
