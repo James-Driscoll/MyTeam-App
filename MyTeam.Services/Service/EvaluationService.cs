@@ -13,44 +13,44 @@ namespace MyTeam.Services.Service
     public class EvaluationService : IEvaluationService
     {
 
-        private EvaluationDAO _EvaluationDAO;
+        private EvaluationDAO _evaluationDAO;
         public EvaluationService()
         {
-            _EvaluationDAO = new EvaluationDAO();
+            _evaluationDAO = new EvaluationDAO();
         }
 
         // CREATE ===================================================================
         // addEvaluation
         public void addEvaluation(Evaluation evaluation)
         {
-            _EvaluationDAO.addEvaluation(evaluation);
+            _evaluationDAO.addEvaluation(evaluation);
         }
 
         // READ =====================================================================
         // getEvaluationes
         public IList<Evaluation> getEvaluationes()
         {
-            return _EvaluationDAO.getEvaluations();
+            return _evaluationDAO.getEvaluations();
         }
 
         // getEvaluation
         public Evaluation getEvaluation(int id)
         {
-            return _EvaluationDAO.getEvaluation(id);
+            return _evaluationDAO.getEvaluation(id);
         }
 
         // UPDATE ===================================================================
         // editEvaluation
         public void editEvaluation(Evaluation evaluation)
         {
-            _EvaluationDAO.editEvaluation(evaluation);
+            _evaluationDAO.editEvaluation(evaluation);
         }
 
         // DELETE ===================================================================
         // deleteEvaluation
         public void deleteEvaluation(Evaluation evaluation)
         {
-            _EvaluationDAO.deleteEvaluation(evaluation);
+            _evaluationDAO.deleteEvaluation(evaluation);
         }
 
     }
