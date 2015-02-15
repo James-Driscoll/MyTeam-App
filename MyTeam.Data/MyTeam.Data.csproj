@@ -50,11 +50,13 @@
   <ItemGroup>
     <Compile Include="DAO\EvaluationDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
+    <Compile Include="DAO\WorkTaskDAO.cs" />
     <Compile Include="Evaluation.cs">
       <DependentUpon>MyTeamData.tt</DependentUpon>
     </Compile>
     <Compile Include="IDAO\IEvaluationDAO.cs" />
     <Compile Include="IDAO\IUserDAO.cs" />
+    <Compile Include="IDAO\IWorkTaskDAO.cs" />
     <Compile Include="MyTeamData.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
