@@ -14,6 +14,13 @@ namespace MyTeam.Controllers
     {
         private MyTeamDataEntities2 db = new MyTeamDataEntities2();
 
+        // Tasks
+        public ActionResult Tasks(int task)
+        {
+            return View(WorkTask)
+        }
+        
+        
         // GET: WorkTasks
         public ActionResult Index()
         {
