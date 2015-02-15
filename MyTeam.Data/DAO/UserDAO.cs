@@ -53,7 +53,7 @@ namespace MyTeam.Data.DAO
         public void editUser(User user)
         {
             User record = (from rec
-                                      in _context.Users
+                           in _context.Users
                            where rec.PK_UserID == user.PK_UserID
                            select rec).ToList<User>().First();
             record.FirstName = user.FirstName;

@@ -48,10 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\EvaluationDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="Evaluation.cs">
       <DependentUpon>MyTeamData.tt</DependentUpon>
     </Compile>
+    <Compile Include="IDAO\IEvaluationDAO.cs" />
     <Compile Include="IDAO\IUserDAO.cs" />
     <Compile Include="MyTeamData.Context.cs">
       <AutoGen>True</AutoGen>
