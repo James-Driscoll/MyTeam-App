@@ -52,6 +52,7 @@
     <Compile Include="Evaluation.cs">
       <DependentUpon>MyTeamData.tt</DependentUpon>
     </Compile>
+    <Compile Include="IDAO\IUserDAO.cs" />
     <Compile Include="MyTeamData.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -81,9 +82,7 @@
       <DependentUpon>MyTeamData.tt</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="IDAO\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EntityDeploy Include="MyTeamData.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
