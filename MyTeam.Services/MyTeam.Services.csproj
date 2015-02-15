@@ -45,6 +45,12 @@
     <Folder Include="IService\" />
     <Folder Include="Service\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyTeam.Data\MyTeam.Data.csproj">
+      <Project>{3e89604b-b19c-4de8-b766-5af764c40289}</Project>
+      <Name>MyTeam.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

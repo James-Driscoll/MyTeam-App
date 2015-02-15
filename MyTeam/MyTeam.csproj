@@ -242,6 +242,16 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyTeam.Data\MyTeam.Data.csproj">
+      <Project>{3e89604b-b19c-4de8-b766-5af764c40289}</Project>
+      <Name>MyTeam.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyTeam.Services\MyTeam.Services.csproj">
+      <Project>{ce9e9e62-3382-4fcb-831b-7b0302da6f53}</Project>
+      <Name>MyTeam.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
