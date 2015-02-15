@@ -17,6 +17,7 @@ namespace MyTeam.Data
         public User()
         {
             this.Evaluations = new HashSet<Evaluation>();
+            this.WorkTasks = new HashSet<WorkTask>();
             this.Teams = new HashSet<Team>();
             this.Teams1 = new HashSet<Team>();
             this.Teams2 = new HashSet<Team>();
@@ -27,7 +28,6 @@ namespace MyTeam.Data
             this.Teams7 = new HashSet<Team>();
             this.Teams8 = new HashSet<Team>();
             this.Teams9 = new HashSet<Team>();
-            this.WorkTasks = new HashSet<WorkTask>();
         }
     
         public int PK_UserID { get; set; }
@@ -44,6 +44,7 @@ namespace MyTeam.Data
         public string SystemRole { get; set; }
     
         public virtual ICollection<Evaluation> Evaluations { get; set; }
+        public virtual ICollection<WorkTask> WorkTasks { get; set; }
         public virtual ICollection<Team> Teams { get; set; }
         public virtual ICollection<Team> Teams1 { get; set; }
         public virtual ICollection<Team> Teams2 { get; set; }
@@ -54,6 +55,5 @@ namespace MyTeam.Data
         public virtual ICollection<Team> Teams7 { get; set; }
         public virtual ICollection<Team> Teams8 { get; set; }
         public virtual ICollection<Team> Teams9 { get; set; }
-        public virtual ICollection<WorkTask> WorkTasks { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace MyTeam.Data
             this.Projects = new HashSet<Project>();
         }
     
-        public int Id { get; set; }
+        public int PK_TeamID { get; set; }
         public Nullable<int> FK_Member1 { get; set; }
         public Nullable<int> FK_Member2 { get; set; }
         public Nullable<int> FK_Member3 { get; set; }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MyTeamDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MyTeamDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Evaluation">
           <Key>
             <PropertyRef Name="PK_EvaluationID" />
@@ -31,9 +31,9 @@
         </EntityType>
         <EntityType Name="Team">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="PK_TeamID" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PK_TeamID" Type="int" Nullable="false" />
           <Property Name="FK_Member1" Type="int" />
           <Property Name="FK_Member2" Type="int" />
           <Property Name="FK_Member3" Type="int" />
@@ -251,7 +251,7 @@
           <End Role="Project" Type="Self.Project" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Team">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="PK_TeamID" />
             </Principal>
             <Dependent Role="Project">
               <PropertyRef Name="FK_Team" />
@@ -325,8 +325,7 @@
             <End Role="Project" EntitySet="Project" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MyTeamDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -356,34 +355,7 @@
           <Property Name="EndDate" Type="DateTime" Precision="0" />
           <Property Name="Duration" Type="Int32" />
           <NavigationProperty Name="WorkTasks" Relationship="Self.C_Project" FromRole="Project" ToRole="WorkTask" />
-          <NavigationProperty Name="Team" Relationship="Self.C_Team" FromRole="Project" ToRole="Team" />
-        </EntityType>
-        <EntityType Name="Team">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="FK_Member1" Type="Int32" />
-          <Property Name="FK_Member2" Type="Int32" />
-          <Property Name="FK_Member3" Type="Int32" />
-          <Property Name="FK_Member4" Type="Int32" />
-          <Property Name="FK_Member5" Type="Int32" />
-          <Property Name="FK_Member6" Type="Int32" />
-          <Property Name="FK_Member7" Type="Int32" />
-          <Property Name="FK_Member8" Type="Int32" />
-          <Property Name="FK_Member9" Type="Int32" />
-          <Property Name="FK_Member10" Type="Int32" />
-          <NavigationProperty Name="Projects" Relationship="Self.C_Team" FromRole="Team" ToRole="Project" />
-          <NavigationProperty Name="User" Relationship="Self.C_Member1" FromRole="Team" ToRole="User" />
-          <NavigationProperty Name="User1" Relationship="Self.C_Member2" FromRole="Team" ToRole="User" />
-          <NavigationProperty Name="User2" Relationship="Self.C_Member20" FromRole="Team" ToRole="User" />
-          <NavigationProperty Name="User3" Relationship="Self.C_Member3" FromRole="Team" ToRole="User" />
-          <NavigationProperty Name="User4" Relationship="Self.C_Member4" FromRole="Team" ToRole="User" />
-          <NavigationProperty Name="User5" Relationship="Self.C_Member5" FromRole="Team" ToRole="User" />
-          <NavigationProperty Name="User6" Relationship="Self.C_Member6" FromRole="Team" ToRole="User" />
-          <NavigationProperty Name="User7" Relationship="Self.C_Member7" FromRole="Team" ToRole="User" />
-          <NavigationProperty Name="User8" Relationship="Self.C_Member8" FromRole="Team" ToRole="User" />
-          <NavigationProperty Name="User9" Relationship="Self.C_Member9" FromRole="Team" ToRole="User" />
+          <NavigationProperty Name="Team" Relationship="MyTeamDataModel.C_Team" FromRole="Project" ToRole="Team" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -402,17 +374,17 @@
           <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="SystemRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Evaluations" Relationship="Self.C_Assessor" FromRole="User" ToRole="Evaluation" />
-          <NavigationProperty Name="Teams" Relationship="Self.C_Member1" FromRole="User" ToRole="Team" />
-          <NavigationProperty Name="Teams1" Relationship="Self.C_Member2" FromRole="User" ToRole="Team" />
-          <NavigationProperty Name="Teams2" Relationship="Self.C_Member20" FromRole="User" ToRole="Team" />
-          <NavigationProperty Name="Teams3" Relationship="Self.C_Member3" FromRole="User" ToRole="Team" />
-          <NavigationProperty Name="Teams4" Relationship="Self.C_Member4" FromRole="User" ToRole="Team" />
-          <NavigationProperty Name="Teams5" Relationship="Self.C_Member5" FromRole="User" ToRole="Team" />
-          <NavigationProperty Name="Teams6" Relationship="Self.C_Member6" FromRole="User" ToRole="Team" />
-          <NavigationProperty Name="Teams7" Relationship="Self.C_Member7" FromRole="User" ToRole="Team" />
-          <NavigationProperty Name="Teams8" Relationship="Self.C_Member8" FromRole="User" ToRole="Team" />
-          <NavigationProperty Name="Teams9" Relationship="Self.C_Member9" FromRole="User" ToRole="Team" />
           <NavigationProperty Name="WorkTasks" Relationship="Self.C_AssignedTo" FromRole="User" ToRole="WorkTask" />
+          <NavigationProperty Name="Teams" Relationship="MyTeamDataModel.C_Member1" FromRole="User" ToRole="Team" />
+          <NavigationProperty Name="Teams1" Relationship="MyTeamDataModel.C_Member2" FromRole="User" ToRole="Team" />
+          <NavigationProperty Name="Teams2" Relationship="MyTeamDataModel.C_Member20" FromRole="User" ToRole="Team" />
+          <NavigationProperty Name="Teams3" Relationship="MyTeamDataModel.C_Member3" FromRole="User" ToRole="Team" />
+          <NavigationProperty Name="Teams4" Relationship="MyTeamDataModel.C_Member4" FromRole="User" ToRole="Team" />
+          <NavigationProperty Name="Teams5" Relationship="MyTeamDataModel.C_Member5" FromRole="User" ToRole="Team" />
+          <NavigationProperty Name="Teams6" Relationship="MyTeamDataModel.C_Member6" FromRole="User" ToRole="Team" />
+          <NavigationProperty Name="Teams7" Relationship="MyTeamDataModel.C_Member7" FromRole="User" ToRole="Team" />
+          <NavigationProperty Name="Teams8" Relationship="MyTeamDataModel.C_Member8" FromRole="User" ToRole="Team" />
+          <NavigationProperty Name="Teams9" Relationship="MyTeamDataModel.C_Member9" FromRole="User" ToRole="Team" />
         </EntityType>
         <EntityType Name="WorkTask">
           <Key>
@@ -469,138 +441,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="C_Team">
-          <End Role="Team" Type="Self.Team" Multiplicity="1" />
-          <End Role="Project" Type="Self.Project" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Team">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Project">
-              <PropertyRef Name="FK_Team" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="C_Member1">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Team" Type="Self.Team" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="PK_UserID" />
-            </Principal>
-            <Dependent Role="Team">
-              <PropertyRef Name="FK_Member1" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="C_Member2">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Team" Type="Self.Team" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="PK_UserID" />
-            </Principal>
-            <Dependent Role="Team">
-              <PropertyRef Name="FK_Member2" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="C_Member20">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Team" Type="Self.Team" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="PK_UserID" />
-            </Principal>
-            <Dependent Role="Team">
-              <PropertyRef Name="FK_Member10" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="C_Member3">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Team" Type="Self.Team" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="PK_UserID" />
-            </Principal>
-            <Dependent Role="Team">
-              <PropertyRef Name="FK_Member3" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="C_Member4">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Team" Type="Self.Team" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="PK_UserID" />
-            </Principal>
-            <Dependent Role="Team">
-              <PropertyRef Name="FK_Member4" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="C_Member5">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Team" Type="Self.Team" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="PK_UserID" />
-            </Principal>
-            <Dependent Role="Team">
-              <PropertyRef Name="FK_Member5" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="C_Member6">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Team" Type="Self.Team" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="PK_UserID" />
-            </Principal>
-            <Dependent Role="Team">
-              <PropertyRef Name="FK_Member6" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="C_Member7">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Team" Type="Self.Team" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="PK_UserID" />
-            </Principal>
-            <Dependent Role="Team">
-              <PropertyRef Name="FK_Member7" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="C_Member8">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Team" Type="Self.Team" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="PK_UserID" />
-            </Principal>
-            <Dependent Role="Team">
-              <PropertyRef Name="FK_Member8" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="C_Member9">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Team" Type="Self.Team" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="PK_UserID" />
-            </Principal>
-            <Dependent Role="Team">
-              <PropertyRef Name="FK_Member9" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="C_AssignedTo">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="WorkTask" Type="Self.WorkTask" Multiplicity="*" />
@@ -616,7 +456,6 @@
         <EntityContainer Name="MyTeamDataEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Evaluations" EntityType="Self.Evaluation" />
           <EntitySet Name="Projects" EntityType="Self.Project" />
-          <EntitySet Name="Teams" EntityType="Self.Team" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="WorkTasks" EntityType="Self.WorkTask" />
           <AssociationSet Name="C_Assessor" Association="Self.C_Assessor">
@@ -631,55 +470,215 @@
             <End Role="Project" EntitySet="Projects" />
             <End Role="WorkTask" EntitySet="WorkTasks" />
           </AssociationSet>
-          <AssociationSet Name="C_Team" Association="Self.C_Team">
-            <End Role="Team" EntitySet="Teams" />
-            <End Role="Project" EntitySet="Projects" />
-          </AssociationSet>
-          <AssociationSet Name="C_Member1" Association="Self.C_Member1">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Team" EntitySet="Teams" />
-          </AssociationSet>
-          <AssociationSet Name="C_Member2" Association="Self.C_Member2">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Team" EntitySet="Teams" />
-          </AssociationSet>
-          <AssociationSet Name="C_Member20" Association="Self.C_Member20">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Team" EntitySet="Teams" />
-          </AssociationSet>
-          <AssociationSet Name="C_Member3" Association="Self.C_Member3">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Team" EntitySet="Teams" />
-          </AssociationSet>
-          <AssociationSet Name="C_Member4" Association="Self.C_Member4">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Team" EntitySet="Teams" />
-          </AssociationSet>
-          <AssociationSet Name="C_Member5" Association="Self.C_Member5">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Team" EntitySet="Teams" />
-          </AssociationSet>
-          <AssociationSet Name="C_Member6" Association="Self.C_Member6">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Team" EntitySet="Teams" />
-          </AssociationSet>
-          <AssociationSet Name="C_Member7" Association="Self.C_Member7">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Team" EntitySet="Teams" />
-          </AssociationSet>
-          <AssociationSet Name="C_Member8" Association="Self.C_Member8">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Team" EntitySet="Teams" />
-          </AssociationSet>
-          <AssociationSet Name="C_Member9" Association="Self.C_Member9">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Team" EntitySet="Teams" />
-          </AssociationSet>
           <AssociationSet Name="C_AssignedTo" Association="Self.C_AssignedTo">
             <End Role="User" EntitySet="Users" />
             <End Role="WorkTask" EntitySet="WorkTasks" />
           </AssociationSet>
+          <EntitySet Name="Teams" EntityType="MyTeamDataModel.Team" />
+          <AssociationSet Name="C_Team" Association="MyTeamDataModel.C_Team">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="C_Member1" Association="MyTeamDataModel.C_Member1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="C_Member2" Association="MyTeamDataModel.C_Member2">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="C_Member20" Association="MyTeamDataModel.C_Member20">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="C_Member3" Association="MyTeamDataModel.C_Member3">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="C_Member4" Association="MyTeamDataModel.C_Member4">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="C_Member5" Association="MyTeamDataModel.C_Member5">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="C_Member6" Association="MyTeamDataModel.C_Member6">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="C_Member7" Association="MyTeamDataModel.C_Member7">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="C_Member8" Association="MyTeamDataModel.C_Member8">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="C_Member9" Association="MyTeamDataModel.C_Member9">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="PK_TeamID" />
+          </Key>
+          <Property Name="PK_TeamID" Type="Int32" Nullable="false" />
+          <Property Name="FK_Member1" Type="Int32" />
+          <Property Name="FK_Member2" Type="Int32" />
+          <Property Name="FK_Member3" Type="Int32" />
+          <Property Name="FK_Member4" Type="Int32" />
+          <Property Name="FK_Member5" Type="Int32" />
+          <Property Name="FK_Member6" Type="Int32" />
+          <Property Name="FK_Member7" Type="Int32" />
+          <Property Name="FK_Member8" Type="Int32" />
+          <Property Name="FK_Member9" Type="Int32" />
+          <Property Name="FK_Member10" Type="Int32" />
+          <NavigationProperty Name="Projects" Relationship="MyTeamDataModel.C_Team" FromRole="Team" ToRole="Project" />
+          <NavigationProperty Name="User" Relationship="MyTeamDataModel.C_Member1" FromRole="Team" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="MyTeamDataModel.C_Member2" FromRole="Team" ToRole="User" />
+          <NavigationProperty Name="User2" Relationship="MyTeamDataModel.C_Member20" FromRole="Team" ToRole="User" />
+          <NavigationProperty Name="User3" Relationship="MyTeamDataModel.C_Member3" FromRole="Team" ToRole="User" />
+          <NavigationProperty Name="User4" Relationship="MyTeamDataModel.C_Member4" FromRole="Team" ToRole="User" />
+          <NavigationProperty Name="User5" Relationship="MyTeamDataModel.C_Member5" FromRole="Team" ToRole="User" />
+          <NavigationProperty Name="User6" Relationship="MyTeamDataModel.C_Member6" FromRole="Team" ToRole="User" />
+          <NavigationProperty Name="User7" Relationship="MyTeamDataModel.C_Member7" FromRole="Team" ToRole="User" />
+          <NavigationProperty Name="User8" Relationship="MyTeamDataModel.C_Member8" FromRole="Team" ToRole="User" />
+          <NavigationProperty Name="User9" Relationship="MyTeamDataModel.C_Member9" FromRole="Team" ToRole="User" />
+        </EntityType>
+        <Association Name="C_Team">
+          <End Type="MyTeamDataModel.Team" Role="Team" Multiplicity="1" />
+          <End Type="MyTeamDataModel.Project" Role="Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="PK_TeamID" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="FK_Team" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_Member1">
+          <End Type="MyTeamDataModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MyTeamDataModel.Team" Role="Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="PK_UserID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="FK_Member1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_Member2">
+          <End Type="MyTeamDataModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MyTeamDataModel.Team" Role="Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="PK_UserID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="FK_Member2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_Member20">
+          <End Type="MyTeamDataModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MyTeamDataModel.Team" Role="Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="PK_UserID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="FK_Member10" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_Member3">
+          <End Type="MyTeamDataModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MyTeamDataModel.Team" Role="Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="PK_UserID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="FK_Member3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_Member4">
+          <End Type="MyTeamDataModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MyTeamDataModel.Team" Role="Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="PK_UserID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="FK_Member4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_Member5">
+          <End Type="MyTeamDataModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MyTeamDataModel.Team" Role="Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="PK_UserID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="FK_Member5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_Member6">
+          <End Type="MyTeamDataModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MyTeamDataModel.Team" Role="Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="PK_UserID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="FK_Member6" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_Member7">
+          <End Type="MyTeamDataModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MyTeamDataModel.Team" Role="Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="PK_UserID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="FK_Member7" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_Member8">
+          <End Type="MyTeamDataModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MyTeamDataModel.Team" Role="Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="PK_UserID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="FK_Member8" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_Member9">
+          <End Type="MyTeamDataModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MyTeamDataModel.Team" Role="Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="PK_UserID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="FK_Member9" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -709,23 +708,6 @@
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="Duration" ColumnName="Duration" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Teams">
-            <EntityTypeMapping TypeName="MyTeamDataModel.Team">
-              <MappingFragment StoreEntitySet="Team">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FK_Member1" ColumnName="FK_Member1" />
-                <ScalarProperty Name="FK_Member2" ColumnName="FK_Member2" />
-                <ScalarProperty Name="FK_Member3" ColumnName="FK_Member3" />
-                <ScalarProperty Name="FK_Member4" ColumnName="FK_Member4" />
-                <ScalarProperty Name="FK_Member5" ColumnName="FK_Member5" />
-                <ScalarProperty Name="FK_Member6" ColumnName="FK_Member6" />
-                <ScalarProperty Name="FK_Member7" ColumnName="FK_Member7" />
-                <ScalarProperty Name="FK_Member8" ColumnName="FK_Member8" />
-                <ScalarProperty Name="FK_Member9" ColumnName="FK_Member9" />
-                <ScalarProperty Name="FK_Member10" ColumnName="FK_Member10" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -761,6 +743,23 @@
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="MyTeamDataModel.Team">
+              <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="FK_Member10" ColumnName="FK_Member10" />
+                <ScalarProperty Name="FK_Member9" ColumnName="FK_Member9" />
+                <ScalarProperty Name="FK_Member8" ColumnName="FK_Member8" />
+                <ScalarProperty Name="FK_Member7" ColumnName="FK_Member7" />
+                <ScalarProperty Name="FK_Member6" ColumnName="FK_Member6" />
+                <ScalarProperty Name="FK_Member5" ColumnName="FK_Member5" />
+                <ScalarProperty Name="FK_Member4" ColumnName="FK_Member4" />
+                <ScalarProperty Name="FK_Member3" ColumnName="FK_Member3" />
+                <ScalarProperty Name="FK_Member2" ColumnName="FK_Member2" />
+                <ScalarProperty Name="FK_Member1" ColumnName="FK_Member1" />
+                <ScalarProperty Name="PK_TeamID" ColumnName="PK_TeamID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
