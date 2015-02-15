@@ -167,38 +167,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Evaluation.cs">
-      <DependentUpon>MyTeamDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\MyTeamDataModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MyTeamDataModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MyTeamDataModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MyTeamDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MyTeamDataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MyTeamDataModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Project.cs">
-      <DependentUpon>MyTeamDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Team.cs">
-      <DependentUpon>MyTeamDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\User.cs">
-      <DependentUpon>MyTeamDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WorkTask.cs">
-      <DependentUpon>MyTeamDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -211,23 +181,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\MyTeamDataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MyTeamDataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\MyTeamDataModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MyTeamDataModel.edmx</DependentUpon>
-      <LastGenOutput>MyTeamDataModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\MyTeamDataModel.edmx.diagram">
-      <DependentUpon>MyTeamDataModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\MyTeamDataModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MyTeamDataModel.edmx</DependentUpon>
-      <LastGenOutput>MyTeamDataModel.cs</LastGenOutput>
-    </Content>
     <None Include="Properties\PublishProfiles\MyTeamTest.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
