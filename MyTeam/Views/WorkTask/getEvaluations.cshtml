@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MyTeam.Data.Evaluation>
+
+@{
+    ViewBag.Title = "getEvaluations";
+}
+
+<h2>getEvaluations</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Mark)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkTask.Title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mark)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkTask.Title)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PK_EvaluationID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PK_EvaluationID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PK_EvaluationID })
+        </td>
+    </tr>
+}
+
+</table>

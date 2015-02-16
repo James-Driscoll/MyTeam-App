@@ -239,11 +239,11 @@
     <Content Include="Views\WorkTask\getWorkTask.cshtml" />
     <Content Include="Views\WorkTask\editWorkTask.cshtml" />
     <Content Include="Views\WorkTask\deleteWorkTask.cshtml" />
+    <Content Include="Views\WorkTask\getEvaluations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\" />
-    <Folder Include="Views\WorkTasks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

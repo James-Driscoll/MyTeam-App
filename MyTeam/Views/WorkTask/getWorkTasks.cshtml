@@ -64,7 +64,8 @@
         <td>
             @Html.ActionLink("Edit", "editWorkTask", new { id=item.PK_WorkTaskID }) |
             @Html.ActionLink("Details", "getWorkTask", new { id = item.PK_WorkTaskID }) |
-            @Html.ActionLink("Delete", "deleteWorkTask", new { id = item.PK_WorkTaskID })
+            @Html.ActionLink("Delete", "deleteWorkTask", new { id = item.PK_WorkTaskID }) |
+            @Html.ActionLink("Evaluate", "addEvaluation", new { FK_WorkTask = item.PK_WorkTaskID })
         </td>
     </tr>
 }
