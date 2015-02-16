@@ -184,6 +184,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\MyTeamTest.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -242,6 +243,7 @@
     <Content Include="Views\WorkTask\deleteWorkTask.cshtml" />
     <Content Include="Views\WorkTask\getEvaluations.cshtml" />
     <Content Include="Views\WorkTask\addEvaluation.cshtml" />
+    <Content Include="Views\Project\Projects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

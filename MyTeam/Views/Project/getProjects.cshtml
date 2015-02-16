@@ -10,62 +10,39 @@
     @Html.ActionLink("New Project", "addProject", "Project")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PercentageCompleted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Duration)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @*@Html.DisplayFor(modelItem => item.Title)*@
-            @Html.ActionLink(item.Title, "getWorkTasks", new { project = item.PK_ProjectID, controller = "WorkTask" })
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PercentageCompleted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Duration)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "editProject", new { id=item.PK_ProjectID }) |
-            @Html.ActionLink("Details", "getProject", new { id=item.PK_ProjectID }) |
-            @Html.ActionLink("Delete", "deleteProject", new { id=item.PK_ProjectID }) |
-            @Html.ActionLink("Add Work Task", "addWorkTask", new { controller = "WorkTask", FK_Project = item.PK_ProjectID })
-        </td>
-    </tr>
-}
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Title, "getWorkTasks", new { project = item.PK_ProjectID, controller = "WorkTask" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PercentageCompleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "editProject", new { id = item.PK_ProjectID }) |
+                @Html.ActionLink("Details", "getProject", new { id = item.PK_ProjectID }) |
+                @Html.ActionLink("Delete", "deleteProject", new { id = item.PK_ProjectID }) |
+                @Html.ActionLink("Add Work Task", "addWorkTask", new { controller = "WorkTask", FK_Project = item.PK_ProjectID })
+            </td>
+        </tr>
+    }
 
 </table>

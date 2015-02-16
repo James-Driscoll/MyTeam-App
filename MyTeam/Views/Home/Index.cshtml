@@ -1,21 +1,37 @@
 ﻿@ViewBag.Title @{
     ViewBag.Title = "Home";
 }
-
-<div class="jumbotron">
-    <h1>MyTeam</h1>
-    <p class="lead">Accurate, innovate, productive, constructive.</p>
 </div>
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <h1>MyTeam</h1>
+            <h2 class="lead">Accurate, innovate, productive, constructive.</h2>
+        </div>
 
-<div class="row">
-    <div style="margin-bottom:100px;" class="col-md-12 text-center">
-        <h2 class="detail-title">Contribution management software to improve your teamwork.</h2>
-        <div class="detail-title-bar"></div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <a href="@Url.Action("Login", "Account")">
+                    <span style="font-size:100px; padding-right:10px;" class="glyphicon glyphicon-log-in sign-in-icon" aria-hidden="true"></span>
+                    <span class="sign-in-text">Sign In</span>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 
 
-<div class="row text-center">
+<div class="container">
+
+<div class="row col-md-12 text-center">
+    <h2 class="home-details">Team member contribution management.</h2>
+</div>
+    
+<div class="row col-md-12 text-center">
+    <h2 class="home-details">Contribution management software to improve your teamwork.</h2>
+</div>
+
+<div class="row text-center points">
     <div class="col-md-4">
         <span style="font-size:100px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
         <h2>Task Management</h2>
@@ -30,11 +46,5 @@
         <span style="font-size:100px;" class="glyphicon glyphicon-user" aria-hidden="true"></span>
         <h2>Team</h2>
         <p>Closely monitor how well your team works together.</p>
-    </div>
-</div>
-
-<div class="row">
-    <div class="well well-lg text-center">
-        <h3>@Html.ActionLink("See your projects", "getProjects", "Project")</h3>
     </div>
 </div>

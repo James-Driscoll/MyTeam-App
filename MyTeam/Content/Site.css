@@ -1,9 +1,4 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
+﻿/* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -22,6 +17,79 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* ====================================================================================*/
+/* ====================================================================================*/
+/* Author Custom Styles*/
+/* ====================================================================================*/
+/* ====================================================================================*/
+
+/* Site Wide Items ====================================================================*/
 body {
-    padding-top: 70px;
+    padding-bottom: 20px;
+    color: #3d3d3e;
+    font-family: 'Raleway', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Raleway', Helvetica, sans-serif, Arial;
+}
+.navbar {
+    margin-bottom: 0px;
+}
+
+/* Index Page =========================================================================*/
+/* Header ======================================*/
+.header {
+    height: 1000px;
+    color: #3d3d3e;
+    background: #97dbed;
+}
+.header h1 {
+    font-size: 75px;
+    margin-top: 200px;
+}
+.header h2 {
+    font-size: 40px;
+    margin-bottom: 100px;
+}
+.header a {
+    color: #3d3d3e;
+    font-size: 23px;
+    position: relative;
+}
+.header .sign-in-text {
+    position: absolute;
+    top: -38px;
+    width: 100px;
+}
+.header a:hover {
+    opacity: 0.7;
+}
+
+/* Details======================================*/
+.home-details {
+    margin-top: 150px;
+}
+.points {
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
+
+/* Projects Page=======================================================================*/
+.project {
+    background: #588c73;
+    border-radius: 5px;
+    min-height: 200px;
+    color: #FFF;
+}
+.project a {
+    color: #FFF;
+}
+.new-project {
+    font-size: 30px;
+    padding-right: 20px;
+}
+.new-project span {
+    padding-left: 10px;
 }

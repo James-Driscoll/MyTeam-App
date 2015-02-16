@@ -40,6 +40,11 @@ namespace MyTeam.Controllers
             return View(_projectService.getProject(id));
         }
 
+        // Projects
+        public ActionResult Projects()
+        {
+            return View(_projectService.getProjects());
+        }
 
         // UPDATE ===================================================================
         // editProject
