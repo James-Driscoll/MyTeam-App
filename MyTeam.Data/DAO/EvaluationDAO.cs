@@ -59,6 +59,8 @@ namespace MyTeam.Data.DAO
                                  select rec).ToList<Evaluation>().First();
             record.FK_Assessor = evaluation.FK_Assessor;
             record.FK_Task = evaluation.FK_Task;
+            record.Mark = evaluation.Mark;
+            record.Comments = evaluation.Comments;
             _context.SaveChanges();
         }
 
