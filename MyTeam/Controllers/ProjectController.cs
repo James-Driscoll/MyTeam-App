@@ -33,7 +33,7 @@ namespace MyTeam.Controllers
         {
             View();
             _projectService.addProject(project);
-            return RedirectToAction("getProjectes", "Project");
+            return RedirectToAction("getProjects", "Project");
         }
 
         // READ =====================================================================
@@ -90,7 +90,7 @@ namespace MyTeam.Controllers
             {
                 Project _project = _projectService.getProject(id);
                 _projectService.deleteProject(_project);
-                return RedirectToAction("getProjectes", "Project");
+                return RedirectToAction("getProjects", "Project");
             }
             catch
             {
