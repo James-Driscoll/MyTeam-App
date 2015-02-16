@@ -32,6 +32,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Duration)
         </th>
+        <th>
+            Evaluations
+        </th>
         <th></th>
     </tr>
 
@@ -60,6 +63,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Duration)
+        </td>
+        <td>
+            <a href="@Url.Action("getEvaluations", "WorkTask", new { worktask = item.PK_WorkTaskID })"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></a>
         </td>
         <td>
             @Html.ActionLink("Edit", "editWorkTask", new { id=item.PK_WorkTaskID }) |
