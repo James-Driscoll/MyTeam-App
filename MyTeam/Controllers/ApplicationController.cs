@@ -28,7 +28,7 @@ namespace MyTeam.Controllers
             _userService = new MyTeam.Services.Service.UserService();
             _worktaskService = new MyTeam.Services.Service.WorkTaskService();
 
-            ViewBag.statuses = _teamService.getTeames();
+            ViewBag.statuses = _teamService.getTeams();
         }
 
     }

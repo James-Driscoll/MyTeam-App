@@ -27,8 +27,8 @@ namespace MyTeam.Services.Service
         }
 
         // READ =====================================================================
-        // getTeames
-        public IList<Team> getTeames()
+        // getTeams
+        public IList<Team> getTeams()
         {
             return _teamDAO.getTeams();
         }

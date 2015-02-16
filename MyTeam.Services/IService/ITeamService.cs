@@ -16,8 +16,8 @@ namespace MyTeam.Services.IService
         void addTeam(Team team);
 
         // READ =====================================================================
-        // getTeames
-        IList<Team> getTeames();
+        // getTeams
+        IList<Team> getTeams();
 
         // getTeam
         Team getTeam(int id);
