@@ -234,6 +234,7 @@
     <Content Include="Views\Project\getProject.cshtml" />
     <Content Include="Views\Project\editProject.cshtml" />
     <Content Include="Views\Project\deleteProject.cshtml" />
+    <Content Include="Views\WorkTask\addWorkTask.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
