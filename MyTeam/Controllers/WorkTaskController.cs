@@ -69,6 +69,12 @@ namespace MyTeam.Controllers
             return View(_worktaskService.getWorkTask(id));
         }
 
+        // getEvaluations
+        public ActionResult getEvaluations(int worktask)
+        {
+            return View(_evaluationService.getEvaluations(worktask));
+        }
+
 
         // UPDATE ===================================================================
         // editWorkTask

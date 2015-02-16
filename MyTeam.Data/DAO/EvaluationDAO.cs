@@ -28,12 +28,13 @@ namespace MyTeam.Data.DAO
 
         // READ ======================================================================
         // getEvaluations
-        public IList<Evaluation> getEvaluations()
+        public IList<Evaluation> getEvaluations(int worktask)
         {
             IQueryable<Evaluation> _evaluations;
             _evaluations = from evaluation
-                          in _context.Evaluations
-                     select evaluation;
+                           in _context.Evaluations
+                           where evaluation.FK_Task == worktask
+                           select evaluation;
             return _evaluations.ToList<Evaluation>();
         }
 
@@ -43,8 +44,8 @@ namespace MyTeam.Data.DAO
             IQueryable<Evaluation> _evaluation;
             _evaluation = from evaluation
                           in _context.Evaluations
-                    where evaluation.PK_EvaluationID == id
-                    select evaluation;
+                          where evaluation.PK_EvaluationID == id
+                          select evaluation;
             return _evaluation.ToList<Evaluation>().First();
         }
 

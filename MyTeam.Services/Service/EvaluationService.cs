@@ -27,10 +27,10 @@ namespace MyTeam.Services.Service
         }
 
         // READ =====================================================================
-        // getEvaluationes
-        public IList<Evaluation> getEvaluationes()
+        // getEvaluations
+        public IList<Evaluation> getEvaluations(int worktask)
         {
-            return _evaluationDAO.getEvaluations();
+            return _evaluationDAO.getEvaluations(worktask);
         }
 
         // getEvaluation
