@@ -28,7 +28,7 @@ namespace MyTeam.Services.Service
 
         // READ =====================================================================
         // getWorkTaskes
-        public IList<WorkTask> getWorkTaskes()
+        public IList<WorkTask> getWorkTasks()
         {
             return _worktaskDAO.getWorkTasks();
         }
