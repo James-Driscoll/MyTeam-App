@@ -7,7 +7,7 @@
 <h2>Projects</h2>
 
 <p>
-    @Html.ActionLink("Create New", "addProject", "Project")
+    @Html.ActionLink("New Project", "addProject", "Project")
 </p>
 <table class="table">
     <tr>
@@ -62,7 +62,8 @@
         <td>
             @Html.ActionLink("Edit", "editProject", new { id=item.PK_ProjectID }) |
             @Html.ActionLink("Details", "getProject", new { id=item.PK_ProjectID }) |
-            @Html.ActionLink("Delete", "deleteProject", new { id=item.PK_ProjectID })
+            @Html.ActionLink("Delete", "deleteProject", new { id=item.PK_ProjectID }) |
+            @Html.ActionLink("Add Work Task", "addWorkTask", new { controller = "WorkTask", FK_Project = item.PK_ProjectID })
         </td>
     </tr>
 }

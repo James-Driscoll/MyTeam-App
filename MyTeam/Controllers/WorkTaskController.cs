@@ -15,15 +15,19 @@ namespace MyTeam.Controllers
         // Declare a local work task service.
         private WorkTaskService _worktaskService;
 
+        // Declare a local evaluation service.
+        private EvaluationService _evaluationService;
+
         public WorkTaskController()
         {
             _worktaskService = new WorkTaskService();
+            _evaluationService = new EvaluationService();
         }
 
         // CREATE ===================================================================
         // addWorkTask
         [HttpGet]
-        public ActionResult addWorkTask()
+        public ActionResult addWorkTask(string FK_Project)
         {
             return View();
         }
@@ -35,6 +39,22 @@ namespace MyTeam.Controllers
             _worktaskService.addWorkTask(worktask);
             return RedirectToAction("getWorkTasks", "WorkTask");
         }
+
+        // addEvaluation
+        [HttpGet]
+        public ActionResult addEvaluation()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult addEvaluation(Evaluation evaluation)
+        {
+            View();
+            _evaluationService.addEvaluation(evaluation);
+            return RedirectToAction("getWorkTasks", "WorkTask");
+        }
+
 
         // READ =====================================================================
         // getWorkTasks
@@ -65,7 +85,7 @@ namespace MyTeam.Controllers
             try
             {
                 _worktaskService.editWorkTask(worktask);
-                return RedirectToAction("getWorkTasks", "WorkTask");
+                return RedirectToAction("getProjects", "Project");
             }
             catch
             {
@@ -90,7 +110,7 @@ namespace MyTeam.Controllers
             {
                 WorkTask _worktask = _worktaskService.getWorkTask(id);
                 _worktaskService.deleteWorkTask(_worktask);
-                return RedirectToAction("getWorkTasks", "WorkTask");
+                return RedirectToAction("getProjects", "Project");
             }
             catch
             {
