@@ -27,8 +27,8 @@ namespace MyTeam.Data
     
         public virtual DbSet<Evaluation> Evaluations { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<WorkTask> WorkTasks { get; set; }
-        public virtual DbSet<Team> Teams { get; set; }
     }
 }

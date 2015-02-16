@@ -5,15 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="be7b34ff775e404890d3e7561155256f" Name="Diagram1">
-        <EntityTypeShape EntityType="MyTeamDataModel.Evaluation" Width="1.5" PointX="9" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyTeamDataModel.Project" Width="1.5" PointX="9" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyTeamDataModel.User" Width="1.5" PointX="5.625" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyTeamDataModel.WorkTask" Width="1.5" PointX="9" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="MyTeamDataModel.C_Assessor" ManuallyRouted="false" />
-        <AssociationConnector Association="MyTeamDataModel.C_Task" ManuallyRouted="false" />
-        <AssociationConnector Association="MyTeamDataModel.C_Project" ManuallyRouted="false" />
-        <AssociationConnector Association="MyTeamDataModel.C_AssignedTo" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="MyTeamDataModel.Team" Width="1.5" PointX="3.25" PointY="3.75" />
+        <EntityTypeShape EntityType="MyTeamDataModel.Evaluation" Width="1.5" PointX="9" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyTeamDataModel.Project" Width="1.5" PointX="9" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyTeamDataModel.Team" Width="1.5" PointX="4" PointY="3.625" />
+        <EntityTypeShape EntityType="MyTeamDataModel.User" Width="1.5" PointX="6.125" PointY="3.625" />
+        <EntityTypeShape EntityType="MyTeamDataModel.WorkTask" Width="1.5" PointX="9" PointY="4.5" />
+        <AssociationConnector Association="MyTeamDataModel.C_Assessor" />
+        <AssociationConnector Association="MyTeamDataModel.C_Task" />
+        <AssociationConnector Association="MyTeamDataModel.C_Project" />
         <AssociationConnector Association="MyTeamDataModel.C_Team" />
         <AssociationConnector Association="MyTeamDataModel.C_Member1" />
         <AssociationConnector Association="MyTeamDataModel.C_Member2" />
@@ -25,7 +24,8 @@
         <AssociationConnector Association="MyTeamDataModel.C_Member7" />
         <AssociationConnector Association="MyTeamDataModel.C_Member8" />
         <AssociationConnector Association="MyTeamDataModel.C_Member9" />
-      </Diagram>
+        <AssociationConnector Association="MyTeamDataModel.C_AssignedTo" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
