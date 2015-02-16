@@ -31,8 +31,8 @@ namespace MyTeam.Data
         public Nullable<System.DateTime> EndDate { get; set; }
         public Nullable<int> Duration { get; set; }
     
-        public virtual ICollection<Evaluation> Evaluations { get; set; }
         public virtual Project Project { get; set; }
         public virtual User User { get; set; }
+        public virtual ICollection<Evaluation> Evaluations { get; set; }
     }
 }

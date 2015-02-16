@@ -33,7 +33,7 @@ namespace MyTeam.Data.DAO
             IQueryable<Evaluation> _evaluations;
             _evaluations = from evaluation
                            in _context.Evaluations
-                           where evaluation.FK_Task == worktask
+                           where evaluation.FK_WorkTask == worktask
                            select evaluation;
             return _evaluations.ToList<Evaluation>();
         }
@@ -58,7 +58,7 @@ namespace MyTeam.Data.DAO
                                  where rec.PK_EvaluationID == evaluation.PK_EvaluationID
                                  select rec).ToList<Evaluation>().First();
             record.FK_Assessor = evaluation.FK_Assessor;
-            record.FK_Task = evaluation.FK_Task;
+            record.FK_WorkTask = evaluation.FK_WorkTask;
             record.Mark = evaluation.Mark;
             record.Comments = evaluation.Comments;
             _context.SaveChanges();

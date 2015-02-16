@@ -16,8 +16,8 @@ namespace MyTeam.Data
     {
         public int PK_EvaluationID { get; set; }
         public int FK_Assessor { get; set; }
-        public int FK_Task { get; set; }
-        public Nullable<int> Mark { get; set; }
+        public int FK_WorkTask { get; set; }
+        public int Mark { get; set; }
         public string Comments { get; set; }
     
         public virtual User User { get; set; }

@@ -11,8 +11,8 @@
           </Key>
           <Property Name="PK_EvaluationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FK_Assessor" Type="int" Nullable="false" />
-          <Property Name="FK_Task" Type="int" Nullable="false" />
-          <Property Name="Mark" Type="int" />
+          <Property Name="FK_WorkTask" Type="int" Nullable="false" />
+          <Property Name="Mark" Type="int" Nullable="false" />
           <Property Name="Comments" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Project">
@@ -242,7 +242,7 @@
               <PropertyRef Name="PK_WorkTaskID" />
             </Principal>
             <Dependent Role="Evaluation">
-              <PropertyRef Name="FK_Task" />
+              <PropertyRef Name="FK_WorkTask" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -329,18 +329,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MyTeamDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Evaluation">
-          <Key>
-            <PropertyRef Name="PK_EvaluationID" />
-          </Key>
-          <Property Name="PK_EvaluationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FK_Assessor" Type="Int32" Nullable="false" />
-          <Property Name="FK_Task" Type="Int32" Nullable="false" />
-          <Property Name="Mark" Type="Int32" />
-          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="MyTeamDataModel.C_Assessor" FromRole="Evaluation" ToRole="User" />
-          <NavigationProperty Name="WorkTask" Relationship="MyTeamDataModel.C_Task" FromRole="Evaluation" ToRole="WorkTask" />
-        </EntityType>
         <EntityType Name="Project">
           <Key>
             <PropertyRef Name="PK_ProjectID" />
@@ -358,19 +346,10 @@
           <NavigationProperty Name="Team" Relationship="MyTeamDataModel.C_Team" FromRole="Project" ToRole="Team" />
         </EntityType>
         <EntityContainer Name="MyTeamDataEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Evaluations" EntityType="Self.Evaluation" />
           <EntitySet Name="Projects" EntityType="Self.Project" />
           <EntitySet Name="Teams" EntityType="MyTeamDataModel.Team" />
           <EntitySet Name="Users" EntityType="MyTeamDataModel.User" />
           <EntitySet Name="WorkTasks" EntityType="MyTeamDataModel.WorkTask" />
-          <AssociationSet Name="C_Assessor" Association="MyTeamDataModel.C_Assessor">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Evaluation" EntitySet="Evaluations" />
-          </AssociationSet>
-          <AssociationSet Name="C_Task" Association="MyTeamDataModel.C_Task">
-            <End Role="WorkTask" EntitySet="WorkTasks" />
-            <End Role="Evaluation" EntitySet="Evaluations" />
-          </AssociationSet>
           <AssociationSet Name="C_Project" Association="MyTeamDataModel.C_Project">
             <End Role="Project" EntitySet="Projects" />
             <End Role="WorkTask" EntitySet="WorkTasks" />
@@ -423,6 +402,15 @@
             <End Role="User" EntitySet="Users" />
             <End Role="WorkTask" EntitySet="WorkTasks" />
           </AssociationSet>
+          <EntitySet Name="Evaluations" EntityType="MyTeamDataModel.Evaluation" />
+          <AssociationSet Name="C_Assessor" Association="MyTeamDataModel.C_Assessor">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Evaluation" EntitySet="Evaluations" />
+          </AssociationSet>
+          <AssociationSet Name="C_Task" Association="MyTeamDataModel.C_Task">
+            <End Role="WorkTask" EntitySet="WorkTasks" />
+            <End Role="Evaluation" EntitySet="Evaluations" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Team">
           <Key>
@@ -467,7 +455,6 @@
           <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="SystemRole" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Evaluations" Relationship="MyTeamDataModel.C_Assessor" FromRole="User" ToRole="Evaluation" />
           <NavigationProperty Name="Teams" Relationship="MyTeamDataModel.C_Member1" FromRole="User" ToRole="Team" />
           <NavigationProperty Name="Teams1" Relationship="MyTeamDataModel.C_Member2" FromRole="User" ToRole="Team" />
           <NavigationProperty Name="Teams2" Relationship="MyTeamDataModel.C_Member20" FromRole="User" ToRole="Team" />
@@ -479,6 +466,7 @@
           <NavigationProperty Name="Teams8" Relationship="MyTeamDataModel.C_Member8" FromRole="User" ToRole="Team" />
           <NavigationProperty Name="Teams9" Relationship="MyTeamDataModel.C_Member9" FromRole="User" ToRole="Team" />
           <NavigationProperty Name="WorkTasks" Relationship="MyTeamDataModel.C_AssignedTo" FromRole="User" ToRole="WorkTask" />
+          <NavigationProperty Name="Evaluations" Relationship="MyTeamDataModel.C_Assessor" FromRole="User" ToRole="Evaluation" />
         </EntityType>
         <EntityType Name="WorkTask">
           <Key>
@@ -495,34 +483,10 @@
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EndDate" Type="DateTime" Precision="0" />
           <Property Name="Duration" Type="Int32" />
-          <NavigationProperty Name="Evaluations" Relationship="MyTeamDataModel.C_Task" FromRole="WorkTask" ToRole="Evaluation" />
           <NavigationProperty Name="Project" Relationship="MyTeamDataModel.C_Project" FromRole="WorkTask" ToRole="Project" />
           <NavigationProperty Name="User" Relationship="MyTeamDataModel.C_AssignedTo" FromRole="WorkTask" ToRole="User" />
+          <NavigationProperty Name="Evaluations" Relationship="MyTeamDataModel.C_Task" FromRole="WorkTask" ToRole="Evaluation" />
         </EntityType>
-        <Association Name="C_Assessor">
-          <End Type="MyTeamDataModel.User" Role="User" Multiplicity="1" />
-          <End Type="MyTeamDataModel.Evaluation" Role="Evaluation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="PK_UserID" />
-            </Principal>
-            <Dependent Role="Evaluation">
-              <PropertyRef Name="FK_Assessor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="C_Task">
-          <End Type="MyTeamDataModel.WorkTask" Role="WorkTask" Multiplicity="1" />
-          <End Type="MyTeamDataModel.Evaluation" Role="Evaluation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WorkTask">
-              <PropertyRef Name="PK_WorkTaskID" />
-            </Principal>
-            <Dependent Role="Evaluation">
-              <PropertyRef Name="FK_Task" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="C_Project">
           <End Type="MyTeamDataModel.Project" Role="Project" Multiplicity="1" />
           <End Type="MyTeamDataModel.WorkTask" Role="WorkTask" Multiplicity="*" />
@@ -679,23 +643,48 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Evaluation">
+          <Key>
+            <PropertyRef Name="PK_EvaluationID" />
+          </Key>
+          <Property Name="PK_EvaluationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_Assessor" Type="Int32" Nullable="false" />
+          <Property Name="FK_WorkTask" Type="Int32" Nullable="false" />
+          <Property Name="Mark" Type="Int32" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="MyTeamDataModel.C_Assessor" FromRole="Evaluation" ToRole="User" />
+          <NavigationProperty Name="WorkTask" Relationship="MyTeamDataModel.C_Task" FromRole="Evaluation" ToRole="WorkTask" />
+        </EntityType>
+        <Association Name="C_Assessor">
+          <End Type="MyTeamDataModel.User" Role="User" Multiplicity="1" />
+          <End Type="MyTeamDataModel.Evaluation" Role="Evaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="PK_UserID" />
+            </Principal>
+            <Dependent Role="Evaluation">
+              <PropertyRef Name="FK_Assessor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_Task">
+          <End Type="MyTeamDataModel.WorkTask" Role="WorkTask" Multiplicity="1" />
+          <End Type="MyTeamDataModel.Evaluation" Role="Evaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkTask">
+              <PropertyRef Name="PK_WorkTaskID" />
+            </Principal>
+            <Dependent Role="Evaluation">
+              <PropertyRef Name="FK_WorkTask" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MyTeamDataModelStoreContainer" CdmEntityContainer="MyTeamDataEntities">
-          <EntitySetMapping Name="Evaluations">
-            <EntityTypeMapping TypeName="MyTeamDataModel.Evaluation">
-              <MappingFragment StoreEntitySet="Evaluation">
-                <ScalarProperty Name="PK_EvaluationID" ColumnName="PK_EvaluationID" />
-                <ScalarProperty Name="FK_Assessor" ColumnName="FK_Assessor" />
-                <ScalarProperty Name="FK_Task" ColumnName="FK_Task" />
-                <ScalarProperty Name="Mark" ColumnName="Mark" />
-                <ScalarProperty Name="Comments" ColumnName="Comments" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Projects">
             <EntityTypeMapping TypeName="MyTeamDataModel.Project">
               <MappingFragment StoreEntitySet="Project">
@@ -760,6 +749,17 @@
                 <ScalarProperty Name="FK_Project" ColumnName="FK_Project" />
                 <ScalarProperty Name="FK_AssignedTo" ColumnName="FK_AssignedTo" />
                 <ScalarProperty Name="PK_WorkTaskID" ColumnName="PK_WorkTaskID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evaluations">
+            <EntityTypeMapping TypeName="MyTeamDataModel.Evaluation">
+              <MappingFragment StoreEntitySet="Evaluation">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="FK_WorkTask" ColumnName="FK_WorkTask" />
+                <ScalarProperty Name="FK_Assessor" ColumnName="FK_Assessor" />
+                <ScalarProperty Name="PK_EvaluationID" ColumnName="PK_EvaluationID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
