@@ -1,27 +1,40 @@
-﻿<div class="jumbotron">
+﻿@ViewBag.Title @{
+    ViewBag.Title = "Home";
+}
+
+<div class="jumbotron">
     <h1>MyTeam</h1>
     <p class="lead">Accurate, innovate, productive, constructive.</p>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div style="margin-bottom:100px;" class="col-md-12 text-center">
         <h2 class="detail-title">Contribution management software to improve your teamwork.</h2>
         <div class="detail-title-bar"></div>
     </div>
 </div>
 
 
-<div class="row">
-    <div class="col-md-4 text-center">
+<div class="row text-center">
+    <div class="col-md-4">
+        <span style="font-size:100px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
         <h2>Task Management</h2>
         <p>Easily log and manage task lists.</p>
     </div>
     <div class="col-md-4">
+        <span style="font-size:100px;" class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
         <h2>Reports</h2>
         <p>View automated reports of the team’s current contribution.</p>
     </div>
     <div class="col-md-4">
+        <span style="font-size:100px;" class="glyphicon glyphicon-user" aria-hidden="true"></span>
         <h2>Team</h2>
         <p>Closely monitor how well your team works together.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="well well-lg text-center">
+        <h3>@Html.ActionLink("See your projects", "getProjects", "Project")</h3>
     </div>
 </div>
