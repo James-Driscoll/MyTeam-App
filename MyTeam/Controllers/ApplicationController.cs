@@ -29,6 +29,19 @@ namespace MyTeam.Controllers
             _worktaskService = new MyTeam.Services.Service.WorkTaskService();
 
             ViewBag.statuses = _teamService.getTeams();
+
+            var statusList = new SelectList(new[] 
+            {
+                new { ID = "Not Started", Name = "Not Started" },
+                new { ID = "Started", Name = "Started" },
+                new { ID = "Getting There", Name = "Getting There" },
+                new { ID = "Nealy Done", Name = "Nealy Done" },
+                new { ID = "Finished", Name = "Finished" }
+            },
+            "ID", "Name", 1);
+
+            ViewData["statusList"] = statusList;
+
         }
 
     }
