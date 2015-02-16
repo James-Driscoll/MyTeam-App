@@ -96,19 +96,51 @@ footer {
 }
 
 /* Projects Page=======================================================================*/
-.project {
-    background: #588c73;
-    border-radius: 5px;
-    min-height: 200px;
-    color: #FFF;
-}
-.project a {
-    color: #FFF;
-}
+/* Top =========================================*/
 .new-project {
     font-size: 30px;
     padding-right: 20px;
 }
 .new-project span {
     padding-left: 10px;
+}
+
+/* Project =====================================*/
+.project {
+    background: #97b0ed;
+    border-radius: 5px;
+    min-height: 320px;
+    color: #3d3d3e;
+    margin-bottom: 30px;
+    -moz-transition: all .1s ease-in;
+    -o-transition: all .1s ease-in;
+    -ms-transition: all .1s ease-in;
+    -webkit-transition: all .1s ease-in;
+    transition: all .1s ease-in;
+}
+.project:hover {
+    background: #6c8fe5;
+    color: #000;
+    -moz-transition: all .1s ease-in;
+    -o-transition: all .1s ease-in;
+    -ms-transition: all .1s ease-in;
+    -webkit-transition: all .1s ease-in;
+    transition: all .1s ease-in;
+}
+.project .pr-title {
+    padding-top: 15px;
+}
+.project .pr-title {
+    margin-top: 25px;
+}
+.project .pr-actions a {
+    font-size: 20px;
+    display: block;
+    color: #3d3d3e;
+    margin-top: 70px;
+    margin-left: 20px;
+    text-decoration: none;
+}
+.project .pr-actions a:hover {
+    color: #000;
 }

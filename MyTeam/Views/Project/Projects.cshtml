@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MyTeam.Data.Project>
+
+    @{
+        ViewBag.Title = "Projects";
+    }
+
+    <div class="row">
+        <h1>Projects</h1>
+        
+    </div>
+    <div class="row">
+        <h4>Hi User</h4>
+    </div>
+
+    <div class="row">
+        <h4>@Html.ActionLink("Team", "getTeam", "Project") / @Html.ActionLink("Projects", "getProjects", "Project")</h4>
+        <a class="pull-right new-project" href="@Url.Action("addProject", "Project")">New Project<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+    </div>
+
+    <div class="row">
+        <p>Select a project below to view it's tasks.</p>
+    </div>
+
+    @foreach (var item in Model)
+    {
+        <div class="row project">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-center pr-title">@Html.DisplayFor(modelItem => item.Title)</h3>
+                    <p class="text-center pr-description">@Html.DisplayFor(modelItem => item.Description)</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-4 col-md-offset-2 pr-details">
+                        <p>Date Started: <strong>@Html.DisplayFor(modelItem => item.StartDate)</strong></p>
+                        <p>Date Finished: <strong>@Html.DisplayFor(modelItem => item.EndDate)</strong></p>
+                        <p>Status: <strong>@Html.DisplayFor(modelItem => item.Status)</strong></p>
+                        <p>Percentage Completed: <strong>@Html.DisplayFor(modelItem => item.PercentageCompleted)%</strong></p>
+                        <p>Duration: <strong>@Html.DisplayFor(modelItem => item.Duration)</strong></p>
+                    </div>
+                    <div class="col-md-4 pr-actions">
+                        <a class="pull-right" href="@Url.Action("editProject", new { id = item.PK_ProjectID, controller = "Project" })"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+                        <a class="pull-right" href="@Url.Action("deleteProject", new { id = item.PK_ProjectID, controller = "Project" })"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <form action="@Url.Action("getWorkTasks", new { project = item.PK_ProjectID, controller = "WorkTask" })">
+                    <button class="btn btn-primary btn-tasks" type="submit">See Tasks</button>
+                </form>
+            </div>
+
+        </div>
+
+    }
