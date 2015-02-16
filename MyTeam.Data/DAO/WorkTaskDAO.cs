@@ -27,11 +27,12 @@ namespace MyTeam.Data.DAO
 
         // READ ======================================================================
         // getWorkTasks
-        public IList<WorkTask> getWorkTasks()
+        public IList<WorkTask> getWorkTasks(int project)
         {
             IQueryable<WorkTask> _worktasks;
             _worktasks = from worktask
                          in _context.WorkTasks
+                         where worktask.FK_Project == project
                          select worktask;
             return _worktasks.ToList<WorkTask>();
         }

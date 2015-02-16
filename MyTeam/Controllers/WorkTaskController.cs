@@ -38,9 +38,9 @@ namespace MyTeam.Controllers
 
         // READ =====================================================================
         // getWorkTasks
-        public ActionResult getWorkTasks()
+        public ActionResult getWorkTasks(int project)
         {
-            return View(_worktaskService.getWorkTasks());
+            return View(_worktaskService.getWorkTasks(project));
         }
 
         // getWorkTask

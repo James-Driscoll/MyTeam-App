@@ -17,7 +17,7 @@ namespace MyTeam.Services.IService
 
         // READ =====================================================================
         // getWorkTaskes
-        IList<WorkTask> getWorkTasks();
+        IList<WorkTask> getWorkTasks(int project);
 
         // getWorkTask
         WorkTask getWorkTask(int id);

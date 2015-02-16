@@ -1,13 +1,13 @@
-﻿@model IEnumerable<MyTeam.Data.Project>
+﻿@model IEnumerable<MyTeam.Data.WorkTask>
 
 @{
-    ViewBag.Title = "Projects";
+    ViewBag.Title = "Work Tasks";
 }
 
-<h2>Projects</h2>
+<h2>Work Tasks</h2>
 
 <p>
-    @Html.ActionLink("Create New", "addProject", "Project")
+    @Html.ActionLink("Create New", "addWorkTask", "WorkTask")
 </p>
 <table class="table">
     <tr>
@@ -24,6 +24,9 @@
             @Html.DisplayNameFor(model => model.PercentageCompleted)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.EstimatedDuration)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.StartDate)
         </th>
         <th>
@@ -38,8 +41,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @*@Html.DisplayFor(modelItem => item.Title)*@
-            @Html.ActionLink(item.Title, "getWorkTasks", new { project = item.PK_ProjectID, controller = "WorkTask" })
+            @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
@@ -51,6 +53,9 @@
             @Html.DisplayFor(modelItem => item.PercentageCompleted)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.EstimatedDuration)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.StartDate)
         </td>
         <td>
@@ -60,9 +65,9 @@
             @Html.DisplayFor(modelItem => item.Duration)
         </td>
         <td>
-            @Html.ActionLink("Edit", "editProject", new { id=item.PK_ProjectID }) |
-            @Html.ActionLink("Details", "getProject", new { id=item.PK_ProjectID }) |
-            @Html.ActionLink("Delete", "deleteProject", new { id=item.PK_ProjectID })
+            @Html.ActionLink("Edit", "editWorkTask", new { id=item.PK_WorkTaskID }) |
+            @Html.ActionLink("Details", "getWorkTask", new { id = item.PK_WorkTaskID }) |
+            @Html.ActionLink("Delete", "deleteWorkTask", new { id = item.PK_WorkTaskID })
         </td>
     </tr>
 }
