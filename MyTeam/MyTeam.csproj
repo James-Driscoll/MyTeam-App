@@ -240,6 +240,7 @@
     <Content Include="Views\WorkTask\editWorkTask.cshtml" />
     <Content Include="Views\WorkTask\deleteWorkTask.cshtml" />
     <Content Include="Views\WorkTask\getEvaluations.cshtml" />
+    <Content Include="Views\WorkTask\addEvaluation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -37,12 +37,12 @@ namespace MyTeam.Controllers
         {
             View();
             _worktaskService.addWorkTask(worktask);
-            return RedirectToAction("getWorkTasks", "WorkTask");
+            return RedirectToAction("getProjects", "Project");
         }
 
         // addEvaluation
         [HttpGet]
-        public ActionResult addEvaluation()
+        public ActionResult addEvaluation(int FK_WorkTask)
         {
             return View();
         }
