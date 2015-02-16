@@ -34,10 +34,17 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - MyTeam</p>
-        </footer>
+
     </div>
+
+    <footer>
+        <div class="container">
+            <div class="row footer">
+                <p class="pull-left">@DateTime.Now.Year - MyTeam</p>
+                <p class="pull-right">Site designed and developed by James Driscoll.</p>
+            </div>
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
