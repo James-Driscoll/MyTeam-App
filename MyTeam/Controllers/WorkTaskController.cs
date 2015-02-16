@@ -4,26 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MyTeam.Data;
-using MyTeam.Services;
-using MyTeam.Services.Service;
 
 namespace MyTeam.Controllers
 {
-    public class WorkTaskController : Controller
+    public class WorkTaskController : ApplicationController
     {
         
-        // Declare a local work task service.
-        private WorkTaskService _worktaskService;
-
-        // Declare a local evaluation service.
-        private EvaluationService _evaluationService;
-
-        public WorkTaskController()
-        {
-            _worktaskService = new WorkTaskService();
-            _evaluationService = new EvaluationService();
-        }
-
         // CREATE ===================================================================
         // addWorkTask
         [HttpGet]

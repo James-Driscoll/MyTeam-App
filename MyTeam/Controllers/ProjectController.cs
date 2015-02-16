@@ -4,21 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MyTeam.Data;
-using MyTeam.Services;
-using MyTeam.Services.Service;
 
 namespace MyTeam.Controllers
 {
     
-    public class ProjectController : Controller
+    public class ProjectController : ApplicationController
     {
-        // Declare a local project service.
-        private ProjectService _projectService;
-
-        public ProjectController()
-        {
-            _projectService = new ProjectService();
-        }
 
         // CREATE ===================================================================
         // addProject
