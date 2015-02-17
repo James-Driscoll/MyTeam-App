@@ -49,6 +49,12 @@ namespace MyTeam.Controllers
             return View(_worktaskService.getWorkTasks(project));
         }
 
+        // Tasks
+        public ActionResult Tasks(int project)
+        {
+            return View(_worktaskService.getWorkTasks(project));
+        }
+
         // getWorkTask
         public ActionResult getWorkTask(int id)
         {

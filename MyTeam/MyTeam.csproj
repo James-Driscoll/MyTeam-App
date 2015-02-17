@@ -243,6 +243,7 @@
     <Content Include="Views\WorkTask\getEvaluations.cshtml" />
     <Content Include="Views\WorkTask\addEvaluation.cshtml" />
     <Content Include="Views\Project\Projects.cshtml" />
+    <Content Include="Views\WorkTask\Tasks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
