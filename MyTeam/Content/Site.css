@@ -98,7 +98,7 @@ footer {
 /* Projects Page=======================================================================*/
 /* Top =========================================*/
 .new-project {
-    font-size: 30px;
+    font-size: 23px;
     padding-right: 20px;
 }
 .new-project span {
@@ -112,15 +112,6 @@ footer {
     min-height: 320px;
     color: #3d3d3e;
     margin-bottom: 30px;
-    -moz-transition: all .1s ease-in;
-    -o-transition: all .1s ease-in;
-    -ms-transition: all .1s ease-in;
-    -webkit-transition: all .1s ease-in;
-    transition: all .1s ease-in;
-}
-.project:hover {
-    background: #6c8fe5;
-    color: #000;
     -moz-transition: all .1s ease-in;
     -o-transition: all .1s ease-in;
     -ms-transition: all .1s ease-in;
