@@ -24,26 +24,21 @@ namespace MyTeam.Controllers
         {
             View();
             _projectService.addProject(project);
-            return RedirectToAction("getProjects", "Project");
+            return RedirectToAction("Projects", "Project");
         }
 
         // READ =====================================================================
-        // getProjects
-        public ActionResult getProjects()
+        // Projects
+        
+        public ActionResult Projects()
         {
             return View(_projectService.getProjects());
         }
-
+        
         // getProject
         public ActionResult getProject(int id)
         {
             return View(_projectService.getProject(id));
-        }
-
-        // Projects
-        public ActionResult Projects()
-        {
-            return View(_projectService.getProjects());
         }
 
         // UPDATE ===================================================================
@@ -61,7 +56,7 @@ namespace MyTeam.Controllers
             try
             {
                 _projectService.editProject(project);
-                return RedirectToAction("getProjects", "Project");
+                return RedirectToAction("Projects", "Project");
             }
             catch
             {
@@ -86,7 +81,7 @@ namespace MyTeam.Controllers
             {
                 Project _project = _projectService.getProject(id);
                 _projectService.deleteProject(_project);
-                return RedirectToAction("getProjects", "Project");
+                return RedirectToAction("Projects", "Project");
             }
             catch
             {
