@@ -233,7 +233,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Project\addProject.cshtml" />
     <Content Include="Views\Project\getProjects.cshtml" />
-    <Content Include="Views\Project\getProject.cshtml" />
     <Content Include="Views\Project\editProject.cshtml" />
     <Content Include="Views\Project\deleteProject.cshtml" />
     <Content Include="Views\WorkTask\addWorkTask.cshtml" />

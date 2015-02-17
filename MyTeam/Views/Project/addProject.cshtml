@@ -43,9 +43,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.DropDownListFor(model => model.Status, ViewData["statusList"] as SelectList)
-                @*@Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -90,7 +88,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to Projects", "Projects", "Project")
+    @Html.ActionLink("Back to Projects List", "Projects", "Project")
 </div>
 
 @section Scripts {
