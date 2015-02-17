@@ -49,9 +49,7 @@
             </div>
 
             <div class="row text-center">
-                <form action="@Url.Action("getWorkTasks", new { project = item.PK_ProjectID, controller = "WorkTask" })">
-                    <button class="btn btn-primary btn-tasks" type="submit">See Tasks</button>
-                </form>
+                <a href="@Url.Action("getWorkTasks", new { project = item.PK_ProjectID, controller = "WorkTask" }) " class=" btn btn-primary btn-tasks">Tasks</a>
             </div>
 
         </div>
