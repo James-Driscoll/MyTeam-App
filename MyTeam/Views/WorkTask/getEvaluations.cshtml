@@ -4,48 +4,50 @@
     ViewBag.Title = "Evaluations";
 }
 
-<h2>Evaluations</h2>
+<div class="container body-content">
+    <h2>Evaluations</h2>
 
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Mark)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comments)
-        </th>
-        <th>
-            Assessor
-        </th>
-        <th>
-            Task Title
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @*@Html.ActionLink("Create New", "Create")*@
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Mark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments)
+            </th>
+            <th>
+                Assessor
+            </th>
+            <th>
+                Task Title
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mark)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comments)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WorkTask.Title)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PK_EvaluationID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PK_EvaluationID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PK_EvaluationID })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mark)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comments)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkTask.Title)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PK_EvaluationID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PK_EvaluationID })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>

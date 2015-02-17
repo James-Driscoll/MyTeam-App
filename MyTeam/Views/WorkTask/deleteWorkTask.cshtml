@@ -3,86 +3,88 @@
 @{
     ViewBag.Title = "Delete Work Task";
 }
+<div class="container body-content">
+    <h2>Delete Work Task</h2>
 
-<h2>Delete Work Task</h2>
+    <h3>Are you sure you want to delete this task?</h3>
+    <div>
+        <h4>WorkTask</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>WorkTask</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PercentageCompleted)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PercentageCompleted)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PercentageCompleted)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PercentageCompleted)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EstimatedDuration)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EstimatedDuration)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EstimatedDuration)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.EstimatedDuration)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.StartDate)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.StartDate)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EndDate)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.EndDate)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Duration)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Duration)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Duration)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Duration)
-        </dd>
+        </dl>
 
-    </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "getWorkTasks", "WorkTask")
-        </div>
-    }
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                @Html.ActionLink("Back to Projects List", "getProjects", "Project")
+            </div>
+        }
+    </div>
 </div>

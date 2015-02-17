@@ -23,7 +23,7 @@ namespace MyTeam.Controllers
         {
             View();
             _worktaskService.addWorkTask(worktask);
-            return RedirectToAction("getProjects", "Project");
+            return RedirectToAction("Projects", "Project");
         }
 
         // addEvaluation
@@ -77,7 +77,7 @@ namespace MyTeam.Controllers
             try
             {
                 _worktaskService.editWorkTask(worktask);
-                return RedirectToAction("getProjects", "Project");
+                return RedirectToAction("Projects", "Project");
             }
             catch
             {
@@ -102,7 +102,7 @@ namespace MyTeam.Controllers
             {
                 WorkTask _worktask = _worktaskService.getWorkTask(id);
                 _worktaskService.deleteWorkTask(_worktask);
-                return RedirectToAction("getProjects", "Project");
+                return RedirectToAction("Projects", "Project");
             }
             catch
             {
