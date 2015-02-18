@@ -14,7 +14,7 @@
     </div>
 
     <div class="row">
-        <h4>@Html.ActionLink("Team", "getTeam", "Project") / @Html.ActionLink("Projects", "getProjects", "Project")</h4>
+        <h4>@Html.ActionLink("Team", "getTeam", "Project") / @Html.ActionLink("Projects", "Projects", "Project")</h4>
         <a class="pull-right new-project" href="@Url.Action("addProject", "Project")">New Project<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
     </div>
 
@@ -50,7 +50,7 @@
             </div>
 
             <div class="row text-center">
-                <a href="@Url.Action("getWorkTasks", new { project = item.PK_ProjectID, controller = "WorkTask" }) " class=" btn btn-primary btn-tasks">Tasks</a>
+                <a href="@Url.Action("Tasks", new { project = item.PK_ProjectID, controller = "WorkTask" }) " class=" btn btn-primary btn-tasks">Tasks</a>
             </div>
 
         </div>

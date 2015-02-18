@@ -89,6 +89,7 @@ span.coloured {
 footer {
     height: 300px;
     background: #97dbed;
+    margin-top: 30px;
 }
 .footer {
     margin-top: 140px;
@@ -102,7 +103,6 @@ footer {
 /* Top =========================================*/
 .new-project {
     font-size: 23px;
-    padding-right: 20px;
 }
 .new-project span {
     padding-left: 10px;
@@ -144,4 +144,22 @@ footer {
 /* Task ========================================*/
 .task {
     background: #b0ed97;
+    border-radius: 5px;
+    min-height: 335px;
+    color: #3d3d3e;
+}
+.task .ta-title {
+    padding-top: 15px;
+}
+.task .ta-title {
+    margin-top: 25px;
+}
+.task .ta-actions a:hover {
+    color: #000;
+}
+.task .btn-evals {
+    width: 100px;
+    height: 50px;
+    line-height: 38px;
+    border: none;
 }

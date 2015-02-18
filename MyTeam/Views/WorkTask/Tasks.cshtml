@@ -14,7 +14,7 @@
     </div>
 
     <div class="row">
-        <h4>@Html.ActionLink("Team", "getTeam", "Project") / @Html.ActionLink("Projects", "getProjects", "Project") / Tasks</h4>
+        <h4>@Html.ActionLink("Team", "getTeam", "Project") / @Html.ActionLink("Projects", "Projects", "Project") / Tasks</h4>
         <a class="pull-right new-project" href="@Url.Action("addWorkTask", "WorkTask")">New Task<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
     </div>
 
@@ -25,126 +25,36 @@
     <div class="row">
         @foreach (var item in Model)
         {
-            <div class="col-md-4 task">
-
-                <div class="col-md-12 row">
-                    <h3 class="text-center pr-title">@Html.DisplayFor(modelItem => item.Title)</h3>
-                    <p class="text-center pr-description">@Html.DisplayFor(modelItem => item.Description)</p>
-                </div>
-
-                <div class="row">
+            <div class="col-md-4">
+                <div class="task">
                     <div class="col-md-12">
-                        <div class="pr-details">
+                        <h3 class="text-center ta-title">@Html.DisplayFor(modelItem => item.Title)</h3>
+                        <p class="text-center ta-description">@Html.DisplayFor(modelItem => item.Description)</p>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="ta-details">
                             <p>Date Started: <strong>@Html.DisplayFor(modelItem => item.StartDate)</strong></p>
                             <p>Date Finished: <strong>@Html.DisplayFor(modelItem => item.EndDate)</strong></p>
                             <p>Status: <strong>@Html.DisplayFor(modelItem => item.Status)</strong></p>
                             <p>Percentage Completed: <strong>@Html.DisplayFor(modelItem => item.PercentageCompleted)%</strong></p>
-                            <p>Estimated Duration: <strong>@Html.DisplayFor(modelItem => item.EstimatedDuration)</strong></p>
+                            <p>Estimated Duration: <strong>@Html.DisplayFor(modelItem => item.EstimatedDuration) hours</strong></p>
                             <p>Duration: <strong>@Html.DisplayFor(modelItem => item.Duration)</strong></p>
                         </div>
-                        <div class="col-md-12 pr-actions">
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="pr-actions">
                             <a class="" href="@Url.Action("editWorkTask", new { id = item.PK_WorkTaskID, controller = "WorkTask" })"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                             <a class="" href="@Url.Action("deleteWorkTask", new { id = item.PK_WorkTaskID, controller = "WorkTask" })"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
                         </div>
                     </div>
-                </div>
 
-                <div class="row text-center">
-                    <a href="@Url.Action("getEvaluations", "WorkTask", new { worktask = item.PK_WorkTaskID })" class=" btn btn-primary btn-tasks">Evaluations</a>
+                    <div class="col-md-12 text-center">
+                        <a href="@Url.Action("getEvaluations", "WorkTask", new { worktask = item.PK_WorkTaskID })" class=" btn btn-primary btn-tasks">Evaluations</a>
+                    </div>
                 </div>
-
             </div>
         }
     </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PercentageCompleted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstimatedDuration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Duration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Project.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User.FirstName)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PercentageCompleted)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EstimatedDuration)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Duration)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Project.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.FirstName)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.PK_WorkTaskID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.PK_WorkTaskID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.PK_WorkTaskID })
-                </td>
-            </tr>
-        }
-
-    </table>
+</div>

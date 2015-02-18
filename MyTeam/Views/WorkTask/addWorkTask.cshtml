@@ -107,7 +107,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "getWorkTasks", "WorkTask")
+    @Html.ActionLink("Back to List", "Tasks", new { project = Model.FK_Project })
 </div>
 
 @section Scripts {
