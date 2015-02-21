@@ -5,6 +5,9 @@
 <div class="container body-content">
 
     <h2>Users</h2>
+    
+    @Html.ActionLink("Add User", "Register", new { controller = "Account" })
+
     @foreach (var user in Model)
     {
         <p>
