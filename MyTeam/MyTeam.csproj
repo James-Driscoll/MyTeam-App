@@ -248,6 +248,7 @@
     <Content Include="Views\Admin\Users.cshtml" />
     <Content Include="Views\Admin\ControlPanel.cshtml" />
     <Content Include="Views\Admin\AddRole.cshtml" />
+    <Content Include="Views\Admin\Roles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

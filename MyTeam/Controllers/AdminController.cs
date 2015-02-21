@@ -23,7 +23,7 @@ namespace MyTeam.Controllers
         }
 
         // CREATE ===================================================================
-        // CreateRole
+        // AddRole
         [HttpGet]
         public ActionResult AddRole()
         {
@@ -43,7 +43,6 @@ namespace MyTeam.Controllers
             {
                 return View("ControlPanel");
             }
-
         }
 
         // READ =====================================================================
@@ -56,6 +55,12 @@ namespace MyTeam.Controllers
         public ActionResult Users()
         {
             return View(_context.Users.ToList());
+        }
+
+        // Roles
+        public ActionResult Roles()
+        {
+            return View(_context.Roles.ToList());
         }
 
         // UPDATE ===================================================================
