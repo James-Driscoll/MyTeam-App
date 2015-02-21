@@ -19,6 +19,22 @@ namespace MyTeam.Controllers
             _context = new MyTeam.Models.ApplicationDbContext();
         }
 
+        // CREATE ===================================================================
+        
+
+        // READ =====================================================================
+        // Users
+        public ActionResult Users()
+        {
+            return View(_context.Users.ToList());
+        }
+
+        // UPDATE ===================================================================
+        
+
+        // DELETE ===================================================================
+        
+
     }
 
 }
