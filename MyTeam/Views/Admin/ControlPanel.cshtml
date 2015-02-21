@@ -5,7 +5,8 @@
 <div class="container body-content">
 
     <h2>Admin Control Panel</h2>
-
-    @Html.ActionLink("Users", "Users", "Admin")
-
+    <ul>
+        <li>@Html.ActionLink("Users", "Users", "Admin")</li>
+        <li>@Html.ActionLink("Add Role", "AddRole", "Admin")</li>
+    </ul>
 </div>

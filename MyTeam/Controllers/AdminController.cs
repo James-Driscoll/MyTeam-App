@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MyTeam.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MyTeam.Controllers
 {
@@ -20,7 +23,28 @@ namespace MyTeam.Controllers
         }
 
         // CREATE ===================================================================
-        
+        // CreateRole
+        [HttpGet]
+        public ActionResult AddRole()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddRole(FormCollection collection)
+        {
+            try
+            {
+                _context.Roles.Add(new IdentityRole() { Name = collection["RoleName"] });
+                _context.SaveChanges();
+                return RedirectToAction("ControlPanel");
+            }
+            catch
+            {
+                return View("ControlPanel");
+            }
+
+        }
 
         // READ =====================================================================
         // ControlPanel
