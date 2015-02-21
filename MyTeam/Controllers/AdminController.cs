@@ -23,6 +23,11 @@ namespace MyTeam.Controllers
         
 
         // READ =====================================================================
+        // ControlPanel
+        public ActionResult ControlPanel() {
+            return View();
+        }
+
         // Users
         public ActionResult Users()
         {
