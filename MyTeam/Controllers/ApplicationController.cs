@@ -12,6 +12,7 @@ namespace MyTeam.Controllers
     public abstract class ApplicationController : Controller
     {
 
+        // Declare services.
         public MyTeam.Services.Service.EvaluationService _evaluationService;
         public MyTeam.Services.Service.ProjectService _projectService;
         public MyTeam.Services.Service.TeamService _teamService;
@@ -20,6 +21,7 @@ namespace MyTeam.Controllers
 
         public Dictionary<int, string> _teamDictionary;
 
+        // CONSTRUCTOR ==============================================================
         public ApplicationController()
         {
             _evaluationService = new MyTeam.Services.Service.EvaluationService();
