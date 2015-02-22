@@ -55,6 +55,7 @@ namespace MyTeam.Data.DAO
                            in _context.Teams
                            where rec.PK_TeamID == team.PK_TeamID
                            select rec).ToList<Team>().First();
+            record.Name = team.Name;
             record.FK_Member1 = team.FK_Member1;
             record.FK_Member2 = team.FK_Member2;
             record.FK_Member3 = team.FK_Member3;

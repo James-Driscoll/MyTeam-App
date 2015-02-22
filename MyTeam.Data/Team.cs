@@ -20,6 +20,7 @@ namespace MyTeam.Data
         }
     
         public int PK_TeamID { get; set; }
+        public string Name { get; set; }
         public Nullable<int> FK_Member1 { get; set; }
         public Nullable<int> FK_Member2 { get; set; }
         public Nullable<int> FK_Member3 { get; set; }
