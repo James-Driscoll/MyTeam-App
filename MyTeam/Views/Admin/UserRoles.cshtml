@@ -14,14 +14,14 @@
 
     <div class="row">
         <h4>@Html.ActionLink("Control Panel", "ControlPanel", "Admin") / @Html.ActionLink("Roles", "Roles", "Admin") / User Roles</h4>
-        <a class="pull-right new-item" href="@Url.Action("ManageUserRoles", "Admin")">Add Roles Assosiation<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+        <a class="pull-right new-item" href="@Url.Action("ManageUserRoles", "Admin")">Manage User Roles<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
     </div>
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
         <p>
-            UserName: @Html.TextBox("UserName")
+            User UserName: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select...")
             <input type="submit" value="See User Roles" />
         </p>
     }

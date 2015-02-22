@@ -14,7 +14,7 @@
 
     <div class="row">
         <h4>@Html.ActionLink("Control Panel", "ControlPanel", "Admin") / @Html.ActionLink("Roles", "Roles", "Admin") / @Html.ActionLink("User Roles", "UserRoles", "Admin") / User Roles Confirmed</h4>
-        <a class="pull-right new-item" href="@Url.Action("ManageUserRoles", "Admin")">Add Roles Assosiation<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+        <a class="pull-right new-item" href="@Url.Action("ManageUserRoles", "Admin")">Manage User Roles<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
     </div>
 
     <h2>Roles for this user are:</h2>
@@ -29,6 +29,10 @@
                 }
             </ol>
         </div>
+    }
+    else
+    {
+        <p>This user has no associated roles. Manage user roles @Html.ActionLink("here", "ManageUserRoles", "Admin")</p>
     }
 
 </div>

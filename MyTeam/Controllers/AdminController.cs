@@ -67,6 +67,9 @@ namespace MyTeam.Controllers
         [HttpGet]
         public ActionResult UserRoles()
         {
+            // populate users for the view dropdown
+            var userList = _context.Users.OrderBy(u => u.UserName).ToList().Select(uu => new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
+            ViewBag.Users = userList;
             return View();
         }
 
