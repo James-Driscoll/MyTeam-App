@@ -89,7 +89,38 @@ namespace MyTeam.Controllers
         }
 
         // UPDATE ===================================================================
-        
+        [HttpGet]
+        public ActionResult ManageUserRoles()
+        {
+            // populate roles for the view dropdown
+            var roleList = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+            ViewBag.Roles = roleList;
+
+            // populate users for the view dropdown
+            var userList = _context.Users.OrderBy(u => u.UserName).ToList().Select(uu => new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
+            ViewBag.Users = userList;
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ManageUserRoles(string UserName, string RoleName)
+        {
+            ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_context));
+            var idResult = um.AddToRole(user.Id, RoleName);
+
+            // repopulate roles for the view dropdown
+            var roleList = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+            ViewBag.Roles = roleList;
+
+            // populate users for the view dropdown
+            var userList = _context.Users.OrderBy(u => u.UserName).ToList().Select(uu => new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
+            ViewBag.Users = userList;
+
+            return View("ManageUserRoles");
+        }
 
         // DELETE ===================================================================
         
