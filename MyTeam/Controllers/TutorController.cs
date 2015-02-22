@@ -40,6 +40,12 @@ namespace MyTeam.Controllers
         }
 
         // READ =====================================================================
+        // Dashboard : Returns control page for Tutors.
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+        
         // Teams : Returns list of student teams.
         public ActionResult Teams()
         {
