@@ -4,10 +4,17 @@
 
 <div class="container body-content">
 
-    <h2>Add Role</h2>
-    
-    @Html.ActionLink("List Roles", "Index") |
-    @Html.ActionLink("Manage User Role", "ManageUserRoles")
+    <div class="row">
+        <h1>Add Role</h1>
+    </div>
+
+    <div class="row">
+        <h4>Hi user</h4>
+    </div>
+
+    <div class="row">
+        <h4>@Html.ActionLink("Control Panel", "ControlPanel", "Admin") / @Html.ActionLink("Roles", "Roles", "Admin") / Add Role</h4>
+    </div>
 
     @using (Html.BeginForm())
     {
@@ -15,7 +22,7 @@
         @Html.ValidationSummary(true)
         <div>Role Name</div>
         <p>@Html.TextBox("RoleName")</p>
-        <input type="submit" value="Save" />
+        <input class="btn btn-primary" type="submit" value="Save" />
     }
 
 </div>

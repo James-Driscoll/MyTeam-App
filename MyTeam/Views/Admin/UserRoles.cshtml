@@ -22,7 +22,7 @@
         @Html.AntiForgeryToken()
         <p>
             User UserName: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select...")
-            <input type="submit" value="See User Roles" />
+            <input class="btn btn-primary" type="submit" value="See User Roles" />
         </p>
     }
 
