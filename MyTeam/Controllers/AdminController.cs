@@ -13,7 +13,7 @@ namespace MyTeam.Controllers
     public class AdminController : Controller
     {
 
-        // Declare services.
+        // Declare model.
         private MyTeam.Models.ApplicationDbContext _context;
 
         // CONSTRUCTOR ==============================================================
@@ -23,7 +23,7 @@ namespace MyTeam.Controllers
         }
 
         // CREATE ===================================================================
-        // AddRole
+        // AddRole : Adds a new system role.
         [HttpGet]
         public ActionResult AddRole()
         {
@@ -61,6 +61,26 @@ namespace MyTeam.Controllers
         public ActionResult Roles()
         {
             return View(_context.Roles.ToList());
+        }
+
+        // UserRoles : Returns a list of roles associated with a particular user.
+        [HttpGet]
+        public ActionResult UserRoles()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserRoles(string UserName)
+        {
+            if (!string.IsNullOrWhiteSpace(UserName))
+            {
+                ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+                var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_context));
+                ViewBag.RolesForThisUser = um.GetRoles(user.Id);
+            }
+            return View("UserRolesConfirmed");
         }
 
         // EditRole : Allows modification of the saved role name.
