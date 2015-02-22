@@ -1,0 +1,82 @@
+﻿@model IEnumerable<MyTeam.Data.Team>
+
+<div class="container body-content">
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User1.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User2.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User3.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User4.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User5.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User6.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User7.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User8.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User9.FirstName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User1.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User2.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User3.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User4.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User5.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User6.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User7.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User8.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User9.FirstName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PK_TeamID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PK_TeamID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PK_TeamID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -15,7 +15,11 @@ namespace MyTeam.Controllers
 
 
         // READ =====================================================================
-
+        // Teams : Returns list of student teams.
+        public ActionResult Teams()
+        {
+            return View(_teamService.getTeams());
+        }
 
         // UPDATE ===================================================================
 

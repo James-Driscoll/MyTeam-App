@@ -254,13 +254,13 @@
     <Content Include="Views\Admin\ManageUserRoles.cshtml" />
     <Content Include="Views\Admin\UserRoles.cshtml" />
     <Content Include="Views\Admin\UserRolesConfirmed.cshtml" />
+    <Content Include="Views\Tutor\Teams.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\" />
     <Folder Include="Views\Application\" />
     <Folder Include="Views\RoleAdmin\" />
-    <Folder Include="Views\Tutor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
