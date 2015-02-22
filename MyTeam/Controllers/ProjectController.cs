@@ -26,7 +26,7 @@ namespace MyTeam.Controllers
             _projectService.addProject(project);
             return RedirectToAction("Projects", "Project");
         }
-
+        
         // READ =====================================================================
         // Projects
         
