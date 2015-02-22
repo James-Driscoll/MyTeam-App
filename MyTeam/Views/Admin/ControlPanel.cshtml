@@ -4,10 +4,35 @@
 
 <div class="container body-content">
 
-    <h2>Admin Control Panel</h2>
-    <ul>
-        <li>@Html.ActionLink("Users", "Users", "Admin")</li>
-        <li>@Html.ActionLink("Roles", "Roles", "Admin")</li>
-        <li>@Html.ActionLink("Add Role", "AddRole", "Admin")</li>
-    </ul>
+    <div class="row">
+        <h1>Admin Control Panel</h1>
+    </div>
+
+    <div class="row">
+        <h4>Hi user</h4>
+    </div>
+
+    <div class="row">
+        <h4>@Html.ActionLink("Control Panel", "ControlPanel", "Admin")</h4>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Users</h3>
+        </div>
+        <div class="panel-body">
+            <p>@Html.ActionLink("List All Users", "Users", "Admin")</p>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Roles</h3>
+        </div>
+        <div class="panel-body">
+            <p>@Html.ActionLink("List All Roles", "Roles", "Admin")</p>
+            <p>@Html.ActionLink("Add Role", "AddRole", "Admin")</p>
+        </div>
+    </div>
+    
 </div>

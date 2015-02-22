@@ -4,18 +4,27 @@
 
 <div class="container body-content">
 
-    <h2>Users</h2>
-    
-    @Html.ActionLink("Add User", "Register", new { controller = "Account" })
+    <div class="row">
+        <h1>Users</h1>
+    </div>
 
-    @foreach (var user in Model)
-    {
-        <p>
-            @user.UserName |
-            @Html.ActionLink("Edit", "editUser", new { Id = user.Id }) |
-            @Html.ActionLink("Delete", "deleteUser", new { Id = user.Id })
-        </p>
-    }
-    @Html.ActionLink("Add User", "Register", new { controller = "Account" })
+    <div class="row">
+        <h4>Hi user</h4>
+    </div>
+
+    <div class="row">
+        <h4>@Html.ActionLink("Control Panel", "ControlPanel", "Admin") / @Html.ActionLink("Users", "Users", "Admin")</h4>
+    </div>
+    
+    <ul class="list-group">
+        @foreach (var user in Model)
+        {
+            <li class="list-group-item">
+                @user.UserName |
+                @Html.ActionLink("Edit", "editUser", new { Id = user.Id }) |
+                @Html.ActionLink("Delete", "deleteUser", new { Id = user.Id })
+            </li>
+        }
+    </ul>
 
 </div>
