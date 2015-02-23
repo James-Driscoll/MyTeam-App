@@ -58,11 +58,11 @@ namespace MyTeam
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "501280077107-ituce7p0863qf7t6aj6lpvsroob4jln0.apps.googleusercontent.com",
+                ClientSecret = "i1CckOWfACq3lPYD68dSZryu"
+            });
         }
     }
 }
