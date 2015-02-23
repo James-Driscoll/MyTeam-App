@@ -33,6 +33,7 @@ namespace MyTeam.Data.DAO
             IQueryable<Project> _projects;
             _projects = from project
                         in _context.Projects
+                        
                         select project;
             return _projects.ToList<Project>();
         }

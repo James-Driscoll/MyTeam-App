@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MyTeam.Data;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using MyTeam.Models;
 
 namespace MyTeam.Controllers
 {
@@ -12,6 +15,28 @@ namespace MyTeam.Controllers
     [Authorize(Roles= "Student")]
     public class ProjectController : ApplicationController
     {
+
+        // Declare model.
+        private MyTeam.Models.ApplicationDbContext _context;
+        protected UserManager<ApplicationUser> UserManager { get; set; }
+
+        // CONSTRUCTOR ==============================================================
+        public ProjectController()
+        {
+            _context = new MyTeam.Models.ApplicationDbContext();
+            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this._context));
+        }
+        
+        //// Declare local context and user manager services.
+        //protected ApplicationDbContext ApplicationDbContext { get; set; }
+        //protected UserManager<ApplicationUser> UserManager { get; set; }
+
+        //// CONSTRUCTOR ==============================================================
+        //public ProjectController()
+        //{
+        //    this.ApplicationDbContext = new ApplicationDbContext();
+        //    this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
+        //}
 
         // CREATE ===================================================================
         // addProject
@@ -30,8 +55,15 @@ namespace MyTeam.Controllers
         }
         
         // READ =====================================================================
+        // Teams : Returns list of teams that the signed in user is a member of.
+        //public ActionResult Teams()
+        //{
+        //    var studentId = User.Identity.GetUserId();
+        //    ViewBag.StudentID = studentId;
+        //    return View(_teamService.getStudentTeams(studentId));
+        //}
+
         // Projects
-        
         public ActionResult Projects()
         {
             return View(_projectService.getProjects());

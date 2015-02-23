@@ -10,22 +10,25 @@ namespace MyTeam.Data.IDAO
     {
 
         // CREATE ====================================================================
-        // addTeam
+        // addTeam : Adds a new team record to the database.
         void addTeam(Team team);
 
         // READ ======================================================================
-        // getTeams
+        // getTeams : Rreturns a list of all registered teams.
         IList<Team> getTeams();
 
-        // getTeam
+        // getStudentTeams : Returns list of teams that the signed in user is a member of.
+        IList<Team> getStudentTeams(int studentId);
+
+        // getTeam : Returns a single team.
         Team getTeam(int id);
 
         // UPDATE ====================================================================
-        // editTeam
+        // editTeam : Updates one team in the database.
         void editTeam(Team team);
 
         // DELETE ====================================================================
-        // deleteTeam
+        // deleteTeam : Removed one team from the database.
         void deleteTeam(Team team);
 
     }

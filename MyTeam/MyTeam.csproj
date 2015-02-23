@@ -257,6 +257,7 @@
     <Content Include="Views\Tutor\Teams.cshtml" />
     <Content Include="Views\Tutor\AddTeam.cshtml" />
     <Content Include="Views\Tutor\Dashboard.cshtml" />
+    <Content Include="Views\Project\TestView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
