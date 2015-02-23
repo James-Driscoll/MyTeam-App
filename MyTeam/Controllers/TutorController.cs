@@ -9,6 +9,8 @@ using MyTeam.Models;
 namespace MyTeam.Controllers
 {
     
+    [Authorize]
+    [Authorize(Roles= "Tutor")]
     public class TutorController : ApplicationController
     {
 
