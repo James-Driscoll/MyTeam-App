@@ -8,6 +8,8 @@ using MyTeam.Data;
 namespace MyTeam.Controllers
 {
     
+    [Authorize]
+    [Authorize(Roles= "Student")]
     public class ProjectController : ApplicationController
     {
 
