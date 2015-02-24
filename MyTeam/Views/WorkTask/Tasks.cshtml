@@ -15,7 +15,7 @@
 
     <div class="row">
         <h4>@Html.ActionLink("Team", "getTeam", "Project") / @Html.ActionLink("Projects", "Projects", "Project") / Tasks</h4>
-        <a class="pull-right new-project" href="@Url.Action("addWorkTask", "WorkTask")">New Task<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+        <a class="pull-right new-item" href="@Url.Action("addWorkTask", "WorkTask")">New Task<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
     </div>
 
     <div class="row">
@@ -50,8 +50,11 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12 text-center">
+                    <div class="col-md-6 text-center">
                         <a href="@Url.Action("getEvaluations", "WorkTask", new { worktask = item.PK_WorkTaskID })" class=" btn btn-primary btn-tasks">Evaluations</a>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <a href="@Url.Action("AddEvaluation", "WorkTask", new { FK_WorkTask = item.PK_WorkTaskID })" class=" btn btn-primary btn-tasks">Evaluate</a>
                     </div>
                 </div>
             </div>

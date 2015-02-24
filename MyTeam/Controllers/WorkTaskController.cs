@@ -38,7 +38,7 @@ namespace MyTeam.Controllers
         {
             View();
             _evaluationService.addEvaluation(evaluation);
-            return RedirectToAction("Tasks", "WorkTask");
+            return RedirectToAction("Projects", "Project");
         }
 
 
