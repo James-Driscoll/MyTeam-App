@@ -11,8 +11,8 @@ using MyTeam.Models;
 namespace MyTeam.Controllers
 {
     
-    [Authorize]
-    [Authorize(Roles= "Student")]
+    //[Authorize]
+    //[Authorize(Roles= "Student")]
     public class ProjectController : ApplicationController
     {
 

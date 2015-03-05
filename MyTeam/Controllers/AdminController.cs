@@ -9,8 +9,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MyTeam.Controllers
 {
-    [Authorize]
-    [Authorize(Roles= "Admin")]
+    //[Authorize]
+    //[Authorize(Roles= "Admin")]
     public class AdminController : Controller
     {
 
