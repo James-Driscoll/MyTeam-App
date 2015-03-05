@@ -79,6 +79,15 @@ namespace MyTeam.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string ContactNumber { get; set; }
+        public string AddressLine1 { get; set; }
+        public string AddressLine2 { get; set; }
+        public string Town { get; set; }
+        public string County { get; set; }
+        public string Postcode { get; set; }
+        public System.DateTime BirthDate { get; set; }
     }
 
     public class ResetPasswordViewModel
