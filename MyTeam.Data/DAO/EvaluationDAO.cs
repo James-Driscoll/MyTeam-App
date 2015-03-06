@@ -28,12 +28,12 @@ namespace MyTeam.Data.DAO
 
         // READ ======================================================================
         // getEvaluations
-        public IList<Evaluation> getEvaluations(int task)
+        public IList<Evaluation> getEvaluations(int id)
         {
             IQueryable<Evaluation> _evaluations;
             _evaluations = from evaluation
                            in _context.Evaluations
-                           where evaluation.FK_Task == task
+                           where evaluation.FK_Task == id
                            select evaluation;
             return _evaluations.ToList<Evaluation>();
         }

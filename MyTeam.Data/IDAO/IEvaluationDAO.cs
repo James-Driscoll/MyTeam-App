@@ -16,7 +16,7 @@ namespace MyTeam.Data.IDAO
 
         // READ ======================================================================
         // getEvaluations
-        IList<Evaluation> getEvaluations(int task);
+        IList<Evaluation> getEvaluations(int id);
 
         // getEvaluation
         Evaluation getEvaluation(int id);

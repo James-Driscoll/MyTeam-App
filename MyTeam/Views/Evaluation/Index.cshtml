@@ -5,11 +5,23 @@
 }
 
 <div class="container body-content">
-    <h2>Evaluations</h2>
+    <div class="row">
+        <h1>Evaluations</h1>
+    </div>
 
-    <p>
-        @*@Html.ActionLink("Create New", "Create")*@
-    </p>
+    <div class="row">
+        <h4>Hi @User.Identity.Name</h4>
+    </div>
+
+    <div class="row">
+        <h4>@Html.ActionLink("Teams", "Index", "Team") / Projects / Tasks / Evaluations</h4>
+        <a class="pull-right new-item" href="@Url.Action("addProject", "Project")">New Evaluation<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+    </div>
+
+    <div class="row">
+        <p>Select a project below to view it's tasks.</p>
+    </div>
+
     <table class="table">
         <tr>
             <th>
@@ -17,12 +29,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Comments)
-            </th>
-            <th>
-                Assessor
-            </th>
-            <th>
-                Task Title
             </th>
             <th></th>
         </tr>
@@ -37,14 +43,8 @@
                     @Html.DisplayFor(modelItem => item.Comments)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.User.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WorkTask.Title)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.PK_EvaluationID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.PK_EvaluationID })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 </td>
             </tr>
         }

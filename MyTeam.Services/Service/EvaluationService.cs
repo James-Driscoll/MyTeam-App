@@ -28,9 +28,9 @@ namespace MyTeam.Services.Service
 
         // READ =====================================================================
         // getEvaluations
-        public IList<Evaluation> getEvaluations(int task)
+        public IList<Evaluation> getEvaluations(int id)
         {
-            return _evaluationDAO.getEvaluations(task);
+            return _evaluationDAO.getEvaluations(id);
         }
 
         // getEvaluation
