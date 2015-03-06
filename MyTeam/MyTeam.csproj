@@ -258,12 +258,9 @@
     <Content Include="Views\WorkTask\Tasks.cshtml" />
     <Content Include="Views\Admin\Users.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\AddRole.cshtml" />
-    <Content Include="Views\Admin\Roles.cshtml" />
-    <Content Include="Views\Admin\EditRole.cshtml" />
     <Content Include="Views\Admin\ManageUserRoles.cshtml" />
-    <Content Include="Views\Admin\UserRoles.cshtml" />
-    <Content Include="Views\Admin\UserRolesConfirmed.cshtml" />
+    <Content Include="Views\Admin\RolesForUser.cshtml" />
+    <Content Include="Views\Admin\RolesForUserConfirmed.cshtml" />
     <Content Include="Views\Tutor\Teams.cshtml" />
     <Content Include="Views\Tutor\AddTeam.cshtml" />
     <Content Include="Views\Tutor\Dashboard.cshtml" />

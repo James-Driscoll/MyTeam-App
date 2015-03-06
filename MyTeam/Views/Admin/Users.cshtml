@@ -3,28 +3,48 @@
 }
 
 <div class="container body-content">
-
     <div class="row">
         <h1>Users</h1>
     </div>
 
     <div class="row">
-        <h4>Hi user</h4>
+        <h4>Hi @User.Identity.Name</h4>
     </div>
 
     <div class="row">
-        <h4>@Html.ActionLink("Control Panel", "ControlPanel", "Admin") / @Html.ActionLink("Users", "Users", "Admin")</h4>
+        <h4>@Html.ActionLink("Admin", "Index", "Admin") / Users</h4>
+        <a class="pull-right new-item" href="@Url.Action("Register", "Account")">New User<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
     </div>
-    
-    <ul class="list-group">
+
+    <table class="table">
+        <tr>
+            <th>First Name</th>
+            <th>Lastname</th>
+            <th>Email / Username</th>
+            <th>Contact Number</th>
+            <th>Address Line 1</th>
+            <th>Address Line 2</th>
+            <th>Town</th>
+            <th>County</th>
+            <th>Postcode</th>
+        </tr>
         @foreach (var user in Model)
         {
-            <li class="list-group-item">
-                @user.UserName |
-                @Html.ActionLink("Edit", "editUser", new { Id = user.Id }) |
-                @Html.ActionLink("Delete", "deleteUser", new { Id = user.Id })
-            </li>
+            <tr>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.UserName</td>
+                <td>@user.ContactNumber</td>
+                <td>@user.AddressLine1</td>
+                <td>@user.AddressLine2</td>
+                <td>@user.Town</td>
+                <td>@user.County</td>
+                <td>@user.Postcode</td>
+            </tr>
         }
-    </ul>
+    </table>
 
+    <div>
+        @Html.ActionLink("Back to Admin Control Panel", "Index")
+    </div>
 </div>

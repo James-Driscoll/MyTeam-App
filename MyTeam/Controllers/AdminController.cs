@@ -24,30 +24,10 @@ namespace MyTeam.Controllers
         }
 
         // CREATE ===================================================================
-        // AddRole : Adds a new system role.
-        [HttpGet]
-        public ActionResult AddRole()
-        {
-            return View();
-        }
 
-        [HttpPost]
-        public ActionResult AddRole(FormCollection collection)
-        {
-            try
-            {
-                _context.Roles.Add(new IdentityRole() { Name = collection["RoleName"] });
-                _context.SaveChanges();
-                return RedirectToAction("ControlPanel");
-            }
-            catch
-            {
-                return View("ControlPanel");
-            }
-        }
 
         // READ =====================================================================
-        // ControlPanel : Returns view that contains a list of Admin specific operations.
+        // Index : Returns view that contains a list of Admin specific operations.
         public ActionResult Index() {
             return View();
         }
@@ -58,72 +38,52 @@ namespace MyTeam.Controllers
             return View(_context.Users.ToList());
         }
 
-        // Roles : Returns list of all system registered roles.
-        public ActionResult Roles()
-        {
-            return View(_context.Roles.ToList());
-        }
-
-        // UserRoles : Returns a list of roles associated with a particular user.
+        // RolesForUser : Returns list of roles associated with a particular user.
         [HttpGet]
-        public ActionResult UserRoles()
+        public ActionResult RolesForUser()
         {
-            // populate users for the view dropdown
-            var userList = _context.Users.OrderBy(u => u.UserName).ToList().Select(uu => new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
-            ViewBag.Users = userList;
+            // populates user list for the view drop down menu.
+            List<SelectListItem> userList = new List<SelectListItem>();
+            foreach (var item in _context.Users.ToList())
+            {
+                userList.Add(
+                    new SelectListItem()
+                    {
+                        Text = item.FirstName + " " + item.LastName + " | " + item.UserName,
+                        Value = item.UserName
+                    });
+            }
+            ViewBag.userList = userList;
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UserRoles(string UserName)
+        public ActionResult RolesForUser(string userName)
         {
-            if (!string.IsNullOrWhiteSpace(UserName))
+            if (!string.IsNullOrWhiteSpace(userName))
             {
-                ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-                var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_context));
-                ViewBag.RolesForThisUser = um.GetRoles(user.Id);
+                ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(userName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_context));
+                ViewBag.RolesForThisUser = userManager.GetRoles(user.Id);
             }
-            return View("UserRolesConfirmed");
+            return View("RolesForUserConfirmed");
         }
-
-        // EditRole : Allows modification of the saved role name.
-        [HttpGet]
-        public ActionResult EditRole(string role)
-        {
-            var thisRole = _context.Roles.Where(r => r.Name.Equals(role, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-            return View(thisRole);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditRole(Microsoft.AspNet.Identity.EntityFramework.IdentityRole role)
-        {
-            try
-            {
-                _context.Entry(role).State = System.Data.Entity.EntityState.Modified;
-                _context.SaveChanges();
-                return RedirectToAction("Roles", "Admin");
-            }
-            catch
-            {
-                return View();
-            }
-            
-        }
-
-        // UPDATE ===================================================================
+        
+        // UPDATE ===================================================================   
+        // ManageUserRoles : Allows Admin to manage the roles associate with a particular user.
         [HttpGet]
         public ActionResult ManageUserRoles()
         {
-            // populate roles for the view dropdown
-            var roleList = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+            // populates roles for the view dropdown
+            var roleList = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr =>
+                new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
             ViewBag.Roles = roleList;
 
-            // populate users for the view dropdown
-            var userList = _context.Users.OrderBy(u => u.UserName).ToList().Select(uu => new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
+            // populates users for the view dropdown
+            var userList = _context.Users.OrderBy(u => u.UserName).ToList().Select(uu =>
+                new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
             ViewBag.Users = userList;
-
             return View();
         }
 
@@ -132,23 +92,25 @@ namespace MyTeam.Controllers
         public ActionResult ManageUserRoles(string UserName, string RoleName)
         {
             ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_context));
-            var idResult = um.AddToRole(user.Id, RoleName);
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_context));
+            userManager.AddToRole(user.Id, RoleName);
 
-            // repopulate roles for the view dropdown
-            var roleList = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
-            ViewBag.Roles = roleList;
+            // prepopulat roles for the view dropdown
+            //var roleList = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+            //ViewBag.Roles = roleList;
 
             // populate users for the view dropdown
-            var userList = _context.Users.OrderBy(u => u.UserName).ToList().Select(uu => new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
-            ViewBag.Users = userList;
+            //var userList = _context.Users.OrderBy(u => u.UserName).ToList().Select(uu => new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
+            //ViewBag.Users = userList;
 
-            return View("ManageUserRoles");
+            //return View();
+
+            return RedirectToAction("Index");
         }
 
         // DELETE ===================================================================
-        
 
+        
     }
 
 }

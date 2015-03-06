@@ -3,29 +3,30 @@
 }
 
 <div class="container body-content">
-
     <div class="row">
         <h1>Manage User Roles</h1>
     </div>
 
     <div class="row">
-        <h4>Hi user</h4>
+        <h4>Hi @User.Identity.Name</h4>
     </div>
 
     <div class="row">
-        <h4>@Html.ActionLink("Control Panel", "ControlPanel", "Admin") / @Html.ActionLink("Roles", "Roles", "Admin") / Manage User Roles</h4>
+        <h4>@Html.ActionLink("Admin", "Index", "Admin") / Manage User Roles</h4>
     </div>
 
     @using (Html.BeginForm("ManageUserRoles", "Admin"))
     {
-        @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken();
         @Html.ValidationSummary(true)
-
         <p>
-            User UserName: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select...")
+            Username: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select...")
             Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select...")
         </p>
         <input class="btn btn-primary" type="submit" value="Save" />
     }
 
+    <div>
+        @Html.ActionLink("Back to Admin Control Panel", "Index")
+    </div>
 </div>
