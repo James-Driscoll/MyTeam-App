@@ -28,9 +28,9 @@ namespace MyTeam.Services.Service
 
         // READ =====================================================================
         // getProjectes
-        public IList<Project> getProjects()
+        public IList<Project> getProjects(int id)
         {
-            return _projectDAO.getProjects();
+            return _projectDAO.getProjects(id);
         }
 
         // getProject

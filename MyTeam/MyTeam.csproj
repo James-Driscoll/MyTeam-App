@@ -245,18 +245,16 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Project\addProject.cshtml" />
-    <Content Include="Views\Project\getProjects.cshtml" />
     <Content Include="Views\Project\editProject.cshtml" />
     <Content Include="Views\Project\deleteProject.cshtml" />
-    <Content Include="Views\WorkTask\addWorkTask.cshtml" />
-    <Content Include="Views\WorkTask\getWorkTasks.cshtml" />
-    <Content Include="Views\WorkTask\getWorkTask.cshtml" />
-    <Content Include="Views\WorkTask\editWorkTask.cshtml" />
-    <Content Include="Views\WorkTask\deleteWorkTask.cshtml" />
-    <Content Include="Views\WorkTask\getEvaluations.cshtml" />
-    <Content Include="Views\WorkTask\addEvaluation.cshtml" />
-    <Content Include="Views\Project\Projects.cshtml" />
-    <Content Include="Views\WorkTask\Tasks.cshtml" />
+    <Content Include="Views\Task\addWorkTask.cshtml" />
+    <Content Include="Views\Task\getWorkTasks.cshtml" />
+    <Content Include="Views\Task\getWorkTask.cshtml" />
+    <Content Include="Views\Task\editWorkTask.cshtml" />
+    <Content Include="Views\Task\deleteWorkTask.cshtml" />
+    <Content Include="Views\Task\getEvaluations.cshtml" />
+    <Content Include="Views\Task\addEvaluation.cshtml" />
+    <Content Include="Views\Task\Index.cshtml" />
     <Content Include="Views\Admin\Users.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\ManageUserRoles.cshtml" />
@@ -265,12 +263,12 @@
     <Content Include="Views\Tutor\Teams.cshtml" />
     <Content Include="Views\Tutor\AddTeam.cshtml" />
     <Content Include="Views\Tutor\Dashboard.cshtml" />
-    <Content Include="Views\Project\TestView.cshtml" />
     <Content Include="Views\RoleAdmin\Create.cshtml" />
     <Content Include="Views\RoleAdmin\Delete.cshtml" />
     <Content Include="Views\RoleAdmin\Edit.cshtml" />
     <Content Include="Views\RoleAdmin\Index.cshtml" />
     <Content Include="Views\Team\Index.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

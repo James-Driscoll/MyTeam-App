@@ -51,9 +51,9 @@ namespace MyTeam.Controllers
         }
 
         // Tasks
-        public ActionResult Tasks(int project)
+        public ActionResult Index(int id)
         {
-            return View(_taskService.getTasks(project));
+            return View(_taskService.getTasks(id));
         }
 
         // getTask

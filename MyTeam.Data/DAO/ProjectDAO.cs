@@ -29,12 +29,12 @@ namespace MyTeam.Data.DAO
 
         // READ ======================================================================
         // getProjects
-        public IList<Project> getProjects()
+        public IList<Project> getProjects(int id)
         {
             IQueryable<Project> _projects;
             _projects = from project
                         in _context.Projects
-                        
+                        where project.FK_Team == id
                         select project;
             return _projects.ToList<Project>();
         }

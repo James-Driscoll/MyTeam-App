@@ -16,7 +16,7 @@ namespace MyTeam.Data.IDAO
 
         // READ ======================================================================
         // getProjects
-        IList<Project> getProjects();
+        IList<Project> getProjects(int id);
 
         // getProject
         Project getProject(int id);

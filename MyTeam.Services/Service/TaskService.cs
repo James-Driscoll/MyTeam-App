@@ -30,9 +30,9 @@ namespace MyTeam.Services.Service
 
         // READ =====================================================================
         // getTasks
-        public IList<MyTeam.Data.Task> getTasks(int project)
+        public IList<MyTeam.Data.Task> getTasks(int id)
         {
-            return _taskDAO.getTasks(project);
+            return _taskDAO.getTasks(id);
         }
 
         // getTask

@@ -17,7 +17,7 @@ namespace MyTeam.Services.IService
 
         // READ =====================================================================
         // getProjectes
-        IList<Project> getProjects();
+        IList<Project> getProjects(int id);
 
         // getProject
         Project getProject(int id);

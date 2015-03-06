@@ -55,18 +55,10 @@ namespace MyTeam.Controllers
         }
         
         // READ =====================================================================
-        // Teams : Returns list of teams that the signed in user is a member of.
-        //public ActionResult Teams()
-        //{
-        //    var studentId = User.Identity.GetUserId();
-        //    ViewBag.StudentID = studentId;
-        //    return View(_teamService.getStudentTeams(studentId));
-        //}
-
-        // Projects
-        public ActionResult Projects()
+        // Index
+        public ActionResult Index(int id)
         {
-            return View(_projectService.getProjects());
+            return View(_projectService.getProjects(id));
         }
         
         // getProject
