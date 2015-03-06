@@ -39,19 +39,36 @@ namespace MyTeam.Controllers
         //}
 
         // CREATE ===================================================================
-        // addProject
+        // Create
         [HttpGet]
-        public ActionResult addProject()
+        public ActionResult Create()
         {
+            // get the current user.
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            ApplicationUser user = userManager.FindByIdAsync(User.Identity.GetUserId()).Result;
+            var currentUser = userManager.FindById(User.Identity.GetUserId());
+
+            // construct list of team names.
+            List<SelectListItem> teamList = new List<SelectListItem>();
+            foreach (var item in _teamService.getStudentTeams(currentUser.Id))
+            {
+                teamList.Add(
+                    new SelectListItem()
+                    {
+                        Text = item.Name,
+                        Value = item.Id.ToString()
+                    });
+            }
+            ViewBag.teamList = teamList;
             return View();
         }
 
         [HttpPost]
-        public ActionResult addProject(Project project)
+        public ActionResult Create(Project project)
         {
             View();
             _projectService.addProject(project);
-            return RedirectToAction("Projects", "Project");
+            return RedirectToAction("Index", "Team");
         }
         
         // READ =====================================================================
@@ -68,21 +85,39 @@ namespace MyTeam.Controllers
         }
 
         // UPDATE ===================================================================
-        // editProject
+        // Edit
         [HttpGet]
-        public ActionResult editProject(int id)
+        public ActionResult Edit(int id)
         {
+            // get the current user.
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            ApplicationUser user = userManager.FindByIdAsync(User.Identity.GetUserId()).Result;
+            var currentUser = userManager.FindById(User.Identity.GetUserId());
+
+            // construct list of team names.
+            List<SelectListItem> teamList = new List<SelectListItem>();
+            foreach (var item in _teamService.getStudentTeams(currentUser.Id))
+            {
+                teamList.Add(
+                    new SelectListItem()
+                    {
+                        Text = item.Name,
+                        Value = item.Id.ToString()
+                    });
+            }
+            ViewBag.teamList = teamList;
+            
             Project record = _projectService.getProject(id);
             return View(record);
         }
 
         [HttpPost]
-        public ActionResult editProject(Project project)
+        public ActionResult Edit(Project project)
         {
             try
             {
                 _projectService.editProject(project);
-                return RedirectToAction("Projects", "Project");
+                return RedirectToAction("Index", "Team");
             }
             catch
             {
@@ -92,22 +127,22 @@ namespace MyTeam.Controllers
 
 
         // DELETE ===================================================================
-        // deleteProject
+        // Delete
         [HttpGet]
-        public ActionResult deleteProject(int id)
+        public ActionResult Delete(int id)
         {
             Project project = _projectService.getProject(id);
             return View(project);
         }
 
         [HttpPost]
-        public ActionResult deleteProject(Project project, int id)
+        public ActionResult Delete(Project project, int id)
         {
             try
             {
                 Project _project = _projectService.getProject(id);
                 _projectService.deleteProject(_project);
-                return RedirectToAction("Projects", "Project");
+                return RedirectToAction("Index", "Team");
             }
             catch
             {

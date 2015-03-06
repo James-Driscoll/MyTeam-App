@@ -4,7 +4,18 @@
     ViewBag.Title = "Delete Project";
 }
 <div class="container body-content">
-    <h2>Delete Project</h2>
+    <div class="row">
+        <h1>Delete Project</h1>
+    </div>
+
+    <div class="row">
+        <h4>Hi @User.Identity.Name</h4>
+    </div>
+
+    <div class="row">
+        <h4>@Html.ActionLink("Teams", "Index", "Team") / Projects / Delete Project</h4>
+        <a class="pull-right new-item" href="@Url.Action("Create", "Project")">New Project<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+    </div>
 
     <h3>Are you sure you want to delete this project?</h3>
     <div>
@@ -67,14 +78,6 @@
                 @Html.DisplayFor(model => model.Duration)
             </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Team.PK_TeamID)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Team.PK_TeamID)
-            </dd>
-
         </dl>
 
         @using (Html.BeginForm())
@@ -83,7 +86,7 @@
 
             <div class="form-actions no-color">
                 <input type="submit" value="Delete" class="btn btn-danger" /> |
-                @Html.ActionLink("Back to Projects List", "Projects", "Project")
+                @Html.ActionLink("Back to Teams List", "Index", "Team")
             </div>
         }
     </div>

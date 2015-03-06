@@ -18,17 +18,17 @@ namespace MyTeam.Controllers
         public MyTeam.Services.Service.TeamService _teamService;
         public MyTeam.Services.Service.TaskService _taskService;
 
-        // Declare dictionaries.
-        public Dictionary<int, string> _teamDictionary;
-
         // CONSTRUCTOR ==============================================================
         public ApplicationController()
         {
+            
+            // Construct services.
             _evaluationService = new MyTeam.Services.Service.EvaluationService();
             _projectService = new MyTeam.Services.Service.ProjectService();
             _teamService = new MyTeam.Services.Service.TeamService();
             _taskService = new MyTeam.Services.Service.TaskService();
 
+            // Construct lists of statuses.
             var statusList = new SelectList(new[] 
             {
                 new { ID = "Not Started", Name = "Not Started" },

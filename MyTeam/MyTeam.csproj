@@ -245,9 +245,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Project\addProject.cshtml" />
-    <Content Include="Views\Project\editProject.cshtml" />
-    <Content Include="Views\Project\deleteProject.cshtml" />
+    <Content Include="Views\Project\Create.cshtml" />
+    <Content Include="Views\Project\Edit.cshtml" />
+    <Content Include="Views\Project\Delete.cshtml" />
     <Content Include="Views\Task\addWorkTask.cshtml" />
     <Content Include="Views\Task\getWorkTasks.cshtml" />
     <Content Include="Views\Task\getWorkTask.cshtml" />
