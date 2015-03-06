@@ -166,6 +166,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\RoleAdminController.cs" />
     <Compile Include="Controllers\TutorController.cs" />
     <Compile Include="Controllers\WorkTaskController.cs" />
     <Compile Include="Global.asax.cs">
@@ -256,7 +257,7 @@
     <Content Include="Views\Project\Projects.cshtml" />
     <Content Include="Views\WorkTask\Tasks.cshtml" />
     <Content Include="Views\Admin\Users.cshtml" />
-    <Content Include="Views\Admin\ControlPanel.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\AddRole.cshtml" />
     <Content Include="Views\Admin\Roles.cshtml" />
     <Content Include="Views\Admin\EditRole.cshtml" />
@@ -267,12 +268,15 @@
     <Content Include="Views\Tutor\AddTeam.cshtml" />
     <Content Include="Views\Tutor\Dashboard.cshtml" />
     <Content Include="Views\Project\TestView.cshtml" />
+    <Content Include="Views\RoleAdmin\Create.cshtml" />
+    <Content Include="Views\RoleAdmin\Delete.cshtml" />
+    <Content Include="Views\RoleAdmin\Edit.cshtml" />
+    <Content Include="Views\RoleAdmin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\" />
     <Folder Include="Views\Application\" />
-    <Folder Include="Views\RoleAdmin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

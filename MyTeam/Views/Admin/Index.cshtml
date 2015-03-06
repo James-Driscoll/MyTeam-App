@@ -1,0 +1,60 @@
+﻿﻿@{
+    ViewBag.Title = "Admin Control Panel";
+}
+<div class="container body-content">
+    <div class="row">
+        <h1>Admin Control Panel</h1>
+    </div>
+
+    <div class="row">
+        <h4>Hi @User.Identity.Name</h4>
+    </div>
+
+    <div class="row">
+        <h4>@Html.ActionLink("Team", "getTeam", "Project") / @Html.ActionLink("Projects", "Projects", "Project")</h4>
+        <a class="pull-right new-item" href="@Url.Action("addProject", "Project")">New Project<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+    </div>
+
+    <div class="row">
+        <p>Select a project below to view it's tasks.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Users</h3>
+                </div>
+                <div class="panel-body">
+                    <p>@Html.ActionLink("Manage Users", "Users", "Admin")</p>
+                    <p>@Html.ActionLink("View Roles for User", "RolesForUser", "Admin")</p>
+                    <p>@Html.ActionLink("Manage User Roles", "ManageUserRoles", "Admin")</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Roles</h3>
+                </div>
+                <div class="panel-body">
+                    <p>@Html.ActionLink("Manage Roles", "Index", "RoleAdmin")</p>
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Branches</h3>
+                </div>
+                <div class="panel-body">
+                    <p>@Html.ActionLink("Manage Branches", "Index", "BranchAdmin")</p>
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

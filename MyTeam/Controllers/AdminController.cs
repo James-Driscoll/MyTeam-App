@@ -48,7 +48,7 @@ namespace MyTeam.Controllers
 
         // READ =====================================================================
         // ControlPanel : Returns view that contains a list of Admin specific operations.
-        public ActionResult ControlPanel() {
+        public ActionResult Index() {
             return View();
         }
 

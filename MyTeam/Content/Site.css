@@ -2,6 +2,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    min-height: 800px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -38,9 +39,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 a {
     color: #50bfde;
-}
-.body-content {
-    min-height: 800px;
 }
 
 /* New Items ===================================*/
