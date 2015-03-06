@@ -7,28 +7,29 @@ using MyTeam.Data;
 
 namespace MyTeam.Controllers
 {
-    public class WorkTaskController : ApplicationController
+    
+    public class TaskController : ApplicationController
     {
         
         // CREATE ===================================================================
-        // addWorkTask
+        // addTask
         [HttpGet]
-        public ActionResult addWorkTask(string FK_Project)
+        public ActionResult addTask(string FK_Project)
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult addWorkTask(WorkTask worktask)
+        public ActionResult addTask(Task task)
         {
             View();
-            _worktaskService.addWorkTask(worktask);
+            _taskService.addTask(task);
             return RedirectToAction("Projects", "Project");
         }
 
         // addEvaluation
         [HttpGet]
-        public ActionResult addEvaluation(int FK_WorkTask)
+        public ActionResult addEvaluation(int FK_Task)
         {
             return View();
         }
@@ -43,46 +44,46 @@ namespace MyTeam.Controllers
 
 
         // READ =====================================================================
-        // getWorkTasks
-        public ActionResult getWorkTasks(int project)
+        // getTasks
+        public ActionResult getTasks(int project)
         {
-            return View(_worktaskService.getWorkTasks(project));
+            return View(_taskService.getTasks(project));
         }
 
         // Tasks
         public ActionResult Tasks(int project)
         {
-            return View(_worktaskService.getWorkTasks(project));
+            return View(_taskService.getTasks(project));
         }
 
-        // getWorkTask
-        public ActionResult getWorkTask(int id)
+        // getTask
+        public ActionResult getTask(int id)
         {
-            return View(_worktaskService.getWorkTask(id));
+            return View(_taskService.getTask(id));
         }
 
         // getEvaluations
-        public ActionResult getEvaluations(int worktask)
+        public ActionResult getEvaluations(int task)
         {
-            return View(_evaluationService.getEvaluations(worktask));
+            return View(_evaluationService.getEvaluations(task));
         }
 
 
         // UPDATE ===================================================================
-        // editWorkTask
+        // editTask
         [HttpGet]
-        public ActionResult editWorkTask(int id)
+        public ActionResult editTask(int id)
         {
-            WorkTask record = _worktaskService.getWorkTask(id);
+            Task record = _taskService.getTask(id);
             return View(record);
         }
 
         [HttpPost]
-        public ActionResult editWorkTask(WorkTask worktask)
+        public ActionResult editTask(Task task)
         {
             try
             {
-                _worktaskService.editWorkTask(worktask);
+                _taskService.editTask(task);
                 return RedirectToAction("Projects", "Project");
             }
             catch
@@ -93,21 +94,21 @@ namespace MyTeam.Controllers
 
 
         // DELETE ===================================================================
-        // deleteWorkTask
+        // deleteTask
         [HttpGet]
-        public ActionResult deleteWorkTask(int id)
+        public ActionResult deleteTask(int id)
         {
-            WorkTask WorkTask = _worktaskService.getWorkTask(id);
-            return View(WorkTask);
+            Task task = _taskService.getTask(id);
+            return View(task);
         }
 
         [HttpPost]
-        public ActionResult deleteWorkTask(WorkTask worktask, int id)
+        public ActionResult deleteTask(Task task, int id)
         {
             try
             {
-                WorkTask _worktask = _worktaskService.getWorkTask(id);
-                _worktaskService.deleteWorkTask(_worktask);
+                Task _task = _taskService.getTask(id);
+                _taskService.deleteTask(_task);
                 return RedirectToAction("Projects", "Project");
             }
             catch

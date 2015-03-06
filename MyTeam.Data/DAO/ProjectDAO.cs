@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyTeam.Data.DAO
 {
+    
     public class ProjectDAO : IProjectDAO
     {
 
@@ -44,7 +45,7 @@ namespace MyTeam.Data.DAO
             IQueryable<Project> _project;
             _project = from project
                        in _context.Projects
-                       where project.PK_ProjectID == id
+                       where project.Id == id
                        select project;
             return _project.ToList<Project>().First();
         }
@@ -55,7 +56,7 @@ namespace MyTeam.Data.DAO
         {
             Project record = (from rec
                               in _context.Projects
-                              where rec.PK_ProjectID == project.PK_ProjectID
+                              where rec.Id == project.Id
                               select rec).ToList<Project>().First();
             record.FK_Team = project.FK_Team;
             record.Title = project.Title;

@@ -17,7 +17,7 @@ namespace MyTeam.Services.IService
 
         // READ =====================================================================
         // getEvaluations
-        IList<Evaluation> getEvaluations(int worktask);
+        IList<Evaluation> getEvaluations(int task);
 
         // getEvaluation
         Evaluation getEvaluation(int id);

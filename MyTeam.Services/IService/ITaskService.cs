@@ -8,27 +8,27 @@ using MyTeam.Data;
 namespace MyTeam.Services.IService
 {
     
-    interface IWorkTaskService
+    interface ITaskService
     {
 
         // CREATE ===================================================================
-        // addWorkTask
-        void addWorkTask(WorkTask worktask);
+        // addTask
+        void addTask(MyTeam.Data.Task task);
 
         // READ =====================================================================
-        // getWorkTaskes
-        IList<WorkTask> getWorkTasks(int project);
+        // getTaskes
+        IList<MyTeam.Data.Task> getTasks(int project);
 
-        // getWorkTask
-        WorkTask getWorkTask(int id);
+        // getTask
+        MyTeam.Data.Task getTask(int id);
 
         // UPDATE ===================================================================
-        // editWorkTask
-        void editWorkTask(WorkTask worktask);
+        // editTask
+        void editTask(MyTeam.Data.Task task);
 
         // DELETE ===================================================================
-        // deleteWorkTask
-        void deleteWorkTask(WorkTask worktask);
+        // deleteTask
+        void deleteTask(MyTeam.Data.Task task);
 
     }
 

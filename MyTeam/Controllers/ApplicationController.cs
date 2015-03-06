@@ -16,8 +16,7 @@ namespace MyTeam.Controllers
         public MyTeam.Services.Service.EvaluationService _evaluationService;
         public MyTeam.Services.Service.ProjectService _projectService;
         public MyTeam.Services.Service.TeamService _teamService;
-        public MyTeam.Services.Service.UserService _userService;
-        public MyTeam.Services.Service.WorkTaskService _worktaskService;
+        public MyTeam.Services.Service.TaskService _taskService;
 
         // Declare dictionaries.
         public Dictionary<int, string> _teamDictionary;
@@ -28,8 +27,7 @@ namespace MyTeam.Controllers
             _evaluationService = new MyTeam.Services.Service.EvaluationService();
             _projectService = new MyTeam.Services.Service.ProjectService();
             _teamService = new MyTeam.Services.Service.TeamService();
-            _userService = new MyTeam.Services.Service.UserService();
-            _worktaskService = new MyTeam.Services.Service.WorkTaskService();
+            _taskService = new MyTeam.Services.Service.TaskService();
 
             var statusList = new SelectList(new[] 
             {

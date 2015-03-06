@@ -52,16 +52,14 @@
     <Compile Include="DAO\EvaluationDAO.cs" />
     <Compile Include="DAO\ProjectDAO.cs" />
     <Compile Include="DAO\TeamDAO.cs" />
-    <Compile Include="DAO\UserDAO.cs" />
-    <Compile Include="DAO\WorkTaskDAO.cs" />
+    <Compile Include="DAO\TaskDAO.cs" />
     <Compile Include="Evaluation.cs">
       <DependentUpon>MyTeamData.tt</DependentUpon>
     </Compile>
     <Compile Include="IDAO\IEvaluationDAO.cs" />
     <Compile Include="IDAO\IProjectDAO.cs" />
     <Compile Include="IDAO\ITeamDAO.cs" />
-    <Compile Include="IDAO\IUserDAO.cs" />
-    <Compile Include="IDAO\IWorkTaskDAO.cs" />
+    <Compile Include="IDAO\ITaskDAO.cs" />
     <Compile Include="MyTeamData.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -81,13 +79,13 @@
       <DependentUpon>MyTeamData.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Task.cs">
+      <DependentUpon>MyTeamData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Team.cs">
       <DependentUpon>MyTeamData.tt</DependentUpon>
     </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>MyTeamData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WorkTask.cs">
+    <Compile Include="TeamMember.cs">
       <DependentUpon>MyTeamData.tt</DependentUpon>
     </Compile>
   </ItemGroup>

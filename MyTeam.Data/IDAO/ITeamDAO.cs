@@ -18,7 +18,7 @@ namespace MyTeam.Data.IDAO
         IList<Team> getTeams();
 
         // getStudentTeams : Returns list of teams that the signed in user is a member of.
-        IList<Team> getStudentTeams(int studentId);
+        //IList<Team> getStudentTeams(int studentId);
 
         // getTeam : Returns a single team.
         Team getTeam(int id);

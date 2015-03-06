@@ -12,12 +12,10 @@ namespace MyTeam.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Evaluation
+    public partial class TeamMember
     {
         public int Id { get; set; }
-        public int FK_Assessor { get; set; }
-        public int FK_Task { get; set; }
-        public int Mark { get; set; }
-        public string Comments { get; set; }
+        public Nullable<int> FK_Team { get; set; }
+        public Nullable<int> FK_Member { get; set; }
     }
 }

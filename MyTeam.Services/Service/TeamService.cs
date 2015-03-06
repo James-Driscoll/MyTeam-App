@@ -33,11 +33,11 @@ namespace MyTeam.Services.Service
             return _teamDAO.getTeams();
         }
 
-        // getStudentTeams : Returns list of teams that the signed in user is a member of.
-        public IList<Team> getStudentTeams(int studentId)
-        {
-            return _teamDAO.getStudentTeams(studentId);
-        }
+        //// getStudentTeams : Returns list of teams that the signed in user is a member of.
+        //public IList<Team> getStudentTeams(int studentId)
+        //{
+        //    return _teamDAO.getStudentTeams(studentId);
+        //}
 
         // getTeam
         public Team getTeam(int id)

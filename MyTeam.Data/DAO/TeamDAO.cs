@@ -39,24 +39,24 @@ namespace MyTeam.Data.DAO
         }
 
         // getStudentTeams :  Returns list of teams that the signed in user is a member of.
-        public IList<Team> getStudentTeams(int studentId) {
-            IQueryable<Team> _teams;
-            _teams = from team
-                     in _context.Teams
-                     where
-                        team.FK_Member1 == studentId ||
-                        team.FK_Member2 == studentId ||
-                        team.FK_Member3 == studentId ||
-                        team.FK_Member4 == studentId ||
-                        team.FK_Member5 == studentId ||
-                        team.FK_Member6 == studentId ||
-                        team.FK_Member7 == studentId ||
-                        team.FK_Member8 == studentId ||
-                        team.FK_Member9 == studentId ||
-                        team.FK_Member10 == studentId       
-                     select team;
-            return _teams.ToList<Team>();
-        }
+        //public IList<Team> getStudentTeams(int studentId) {
+        //    IQueryable<Team> _teams;
+        //    _teams = from team
+        //             in _context.Teams
+        //             where
+        //                team.FK_Member1 == studentId ||
+        //                team.FK_Member2 == studentId ||
+        //                team.FK_Member3 == studentId ||
+        //                team.FK_Member4 == studentId ||
+        //                team.FK_Member5 == studentId ||
+        //                team.FK_Member6 == studentId ||
+        //                team.FK_Member7 == studentId ||
+        //                team.FK_Member8 == studentId ||
+        //                team.FK_Member9 == studentId ||
+        //                team.FK_Member10 == studentId       
+        //             select team;
+        //    return _teams.ToList<Team>();
+        //}
 
         // getTeam : Returns a single team.
         public Team getTeam(int id)
@@ -64,7 +64,7 @@ namespace MyTeam.Data.DAO
             IQueryable<Team> _team;
             _team = from team
                     in _context.Teams
-                    where team.PK_TeamID == id
+                    where team.Id == id
                     select team;
             return _team.ToList<Team>().First();
         }
@@ -75,19 +75,9 @@ namespace MyTeam.Data.DAO
         {
             Team record = (from rec
                            in _context.Teams
-                           where rec.PK_TeamID == team.PK_TeamID
+                           where rec.Id == team.Id
                            select rec).ToList<Team>().First();
             record.Name = team.Name;
-            record.FK_Member1 = team.FK_Member1;
-            record.FK_Member2 = team.FK_Member2;
-            record.FK_Member3 = team.FK_Member3;
-            record.FK_Member4 = team.FK_Member4;
-            record.FK_Member5 = team.FK_Member5;
-            record.FK_Member6 = team.FK_Member6;
-            record.FK_Member7 = team.FK_Member7;
-            record.FK_Member8 = team.FK_Member8;
-            record.FK_Member9 = team.FK_Member9;
-            record.FK_Member10 = team.FK_Member10;
             _context.SaveChanges();
         }
 

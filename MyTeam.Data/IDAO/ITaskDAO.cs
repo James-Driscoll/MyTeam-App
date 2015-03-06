@@ -7,27 +7,27 @@ using System.Threading.Tasks;
 namespace MyTeam.Data.IDAO
 {
     
-    interface IWorkTaskDAO
+    interface ITaskDAO
     {
 
         // CREATE ====================================================================
-        // addWorkTask
-        void addWorkTask(WorkTask worktask);
+        // addTask
+        void addTask(Task task);
 
         // READ ======================================================================
-        // getWorkTasks
-        IList<WorkTask> getWorkTasks(int project);
+        // getTasks
+        IList<Task> getTasks(int project);
 
-        // getWorkTask
-        WorkTask getWorkTask(int id);
+        // getTask
+        Task getTask(int id);
 
         // UPDATE ====================================================================
-        // editWorkTask
-        void editWorkTask(WorkTask worktask);
+        // editTask
+        void editTask(Task task);
 
         // DELETE ====================================================================
-        // deleteWorkTask
-        void deleteWorkTask(WorkTask worktask);
+        // deleteTask
+        void deleteTask(Task task);
 
     }
 

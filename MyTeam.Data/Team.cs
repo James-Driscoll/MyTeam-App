@@ -14,34 +14,7 @@ namespace MyTeam.Data
     
     public partial class Team
     {
-        public Team()
-        {
-            this.Projects = new HashSet<Project>();
-        }
-    
-        public int PK_TeamID { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public Nullable<int> FK_Member1 { get; set; }
-        public Nullable<int> FK_Member2 { get; set; }
-        public Nullable<int> FK_Member3 { get; set; }
-        public Nullable<int> FK_Member4 { get; set; }
-        public Nullable<int> FK_Member5 { get; set; }
-        public Nullable<int> FK_Member6 { get; set; }
-        public Nullable<int> FK_Member7 { get; set; }
-        public Nullable<int> FK_Member8 { get; set; }
-        public Nullable<int> FK_Member9 { get; set; }
-        public Nullable<int> FK_Member10 { get; set; }
-    
-        public virtual ICollection<Project> Projects { get; set; }
-        public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
-        public virtual User User2 { get; set; }
-        public virtual User User3 { get; set; }
-        public virtual User User4 { get; set; }
-        public virtual User User5 { get; set; }
-        public virtual User User6 { get; set; }
-        public virtual User User7 { get; set; }
-        public virtual User User8 { get; set; }
-        public virtual User User9 { get; set; }
     }
 }

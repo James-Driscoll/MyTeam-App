@@ -12,27 +12,18 @@ namespace MyTeam.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class WorkTask
+    public partial class Task
     {
-        public WorkTask()
-        {
-            this.Evaluations = new HashSet<Evaluation>();
-        }
-    
-        public int PK_WorkTaskID { get; set; }
+        public int Id { get; set; }
         public int FK_AssignedTo { get; set; }
         public int FK_Project { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Status { get; set; }
-        public Nullable<int> PercentageCompleted { get; set; }
-        public Nullable<int> EstimatedDuration { get; set; }
+        public int PercentageCompleted { get; set; }
+        public int EstimatedDuration { get; set; }
         public System.DateTime StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public Nullable<int> Duration { get; set; }
-    
-        public virtual Project Project { get; set; }
-        public virtual User User { get; set; }
-        public virtual ICollection<Evaluation> Evaluations { get; set; }
     }
 }
