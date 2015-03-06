@@ -10,7 +10,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FK_Assessor" Type="int" Nullable="false" />
+          <Property Name="FK_Assessor" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FK_Task" Type="int" Nullable="false" />
           <Property Name="Mark" Type="int" Nullable="false" />
           <Property Name="Comments" Type="nvarchar" MaxLength="50" />
@@ -34,7 +34,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FK_AssignedTo" Type="int" Nullable="false" />
+          <Property Name="FK_AssignedTo" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FK_Project" Type="int" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
@@ -51,7 +51,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FK_Team" Type="int" />
-          <Property Name="FK_Member" Type="int" />
+          <Property Name="FK_Member" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Teams">
           <Key>
@@ -73,10 +73,10 @@
       <Schema Namespace="MyTeamDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="MyTeamDataEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Projects" EntityType="MyTeamDataModel.Project" />
-          <EntitySet Name="Tasks" EntityType="MyTeamDataModel.Task" />
-          <EntitySet Name="TeamMembers" EntityType="MyTeamDataModel.TeamMember" />
           <EntitySet Name="Teams" EntityType="MyTeamDataModel.Team" />
           <EntitySet Name="Evaluations" EntityType="MyTeamDataModel.Evaluation" />
+          <EntitySet Name="Tasks" EntityType="MyTeamDataModel.Task" />
+          <EntitySet Name="TeamMembers" EntityType="MyTeamDataModel.TeamMember" />
         </EntityContainer>
         <EntityType Name="Project">
           <Key>
@@ -92,12 +92,29 @@
           <Property Name="EndDate" Type="DateTime" Precision="0" />
           <Property Name="Duration" Type="Int32" />
         </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Evaluation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_Assessor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FK_Task" Type="Int32" Nullable="false" />
+          <Property Name="Mark" Type="Int32" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Task">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FK_AssignedTo" Type="Int32" Nullable="false" />
+          <Property Name="FK_AssignedTo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FK_Project" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -114,24 +131,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FK_Team" Type="Int32" />
-          <Property Name="FK_Member" Type="Int32" />
-        </EntityType>
-        <EntityType Name="Team">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Evaluation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FK_Assessor" Type="Int32" Nullable="false" />
-          <Property Name="FK_Task" Type="Int32" Nullable="false" />
-          <Property Name="Mark" Type="Int32" Nullable="false" />
-          <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FK_Member" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -150,6 +150,25 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="FK_Team" ColumnName="FK_Team" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="MyTeamDataModel.Team">
+              <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evaluations">
+            <EntityTypeMapping TypeName="MyTeamDataModel.Evaluation">
+              <MappingFragment StoreEntitySet="Evaluations">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="FK_Task" ColumnName="FK_Task" />
+                <ScalarProperty Name="FK_Assessor" ColumnName="FK_Assessor" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -176,25 +195,6 @@
               <MappingFragment StoreEntitySet="TeamMembers">
                 <ScalarProperty Name="FK_Member" ColumnName="FK_Member" />
                 <ScalarProperty Name="FK_Team" ColumnName="FK_Team" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Teams">
-            <EntityTypeMapping TypeName="MyTeamDataModel.Team">
-              <MappingFragment StoreEntitySet="Teams">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Evaluations">
-            <EntityTypeMapping TypeName="MyTeamDataModel.Evaluation">
-              <MappingFragment StoreEntitySet="Evaluations">
-                <ScalarProperty Name="Comments" ColumnName="Comments" />
-                <ScalarProperty Name="Mark" ColumnName="Mark" />
-                <ScalarProperty Name="FK_Task" ColumnName="FK_Task" />
-                <ScalarProperty Name="FK_Assessor" ColumnName="FK_Assessor" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

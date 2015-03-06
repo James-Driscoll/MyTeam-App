@@ -15,7 +15,7 @@ namespace MyTeam.Data
     public partial class Evaluation
     {
         public int Id { get; set; }
-        public int FK_Assessor { get; set; }
+        public string FK_Assessor { get; set; }
         public int FK_Task { get; set; }
         public int Mark { get; set; }
         public string Comments { get; set; }

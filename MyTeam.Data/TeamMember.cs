@@ -16,6 +16,6 @@ namespace MyTeam.Data
     {
         public int Id { get; set; }
         public Nullable<int> FK_Team { get; set; }
-        public Nullable<int> FK_Member { get; set; }
+        public string FK_Member { get; set; }
     }
 }

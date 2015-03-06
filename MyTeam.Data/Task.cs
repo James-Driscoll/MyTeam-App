@@ -15,7 +15,7 @@ namespace MyTeam.Data
     public partial class Task
     {
         public int Id { get; set; }
-        public int FK_AssignedTo { get; set; }
+        public string FK_AssignedTo { get; set; }
         public int FK_Project { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

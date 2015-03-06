@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MyTeam.Data.Team>
+
+<div class="container body-content">
+    <div class="row">
+        <h1>Teams</h1>
+    </div>
+
+    <div class="row">
+        <h4>Hi @User.Identity.Name</h4>
+    </div>
+
+    <div class="row">
+        <h4>Team</h4>
+    </div>
+
+    <div class="row">
+        <p>Select a team below to view it's projects.</p>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("View Projects", "Index", new { id = item.Id, controller = "Project" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

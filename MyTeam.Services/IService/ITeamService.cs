@@ -20,7 +20,7 @@ namespace MyTeam.Services.IService
         IList<Team> getTeams();
 
         // getStudentTeams : Returns list of teams that the signed in user is a member of.
-        //IList<Team> getStudentTeams(int studentId);
+        IList<Team> getStudentTeams(string id);
 
         // getTeam
         Team getTeam(int id);

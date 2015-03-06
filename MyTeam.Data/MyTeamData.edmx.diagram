@@ -6,10 +6,10 @@
     <edmx:Diagrams>
       <Diagram DiagramId="be7b34ff775e404890d3e7561155256f" Name="Diagram1" ZoomLevel="116">
         <EntityTypeShape EntityType="MyTeamDataModel.Project" Width="1.5" PointX="7.75" PointY="2.75" />
-        <EntityTypeShape EntityType="MyTeamDataModel.Task" Width="1.5" PointX="9.375" PointY="2.75" />
-        <EntityTypeShape EntityType="MyTeamDataModel.TeamMember" Width="1.5" PointX="4.5" PointY="2.75" />
         <EntityTypeShape EntityType="MyTeamDataModel.Team" Width="1.5" PointX="2.875" PointY="2.75" />
         <EntityTypeShape EntityType="MyTeamDataModel.Evaluation" Width="1.5" PointX="6.125" PointY="2.75" />
+        <EntityTypeShape EntityType="MyTeamDataModel.Task" Width="1.5" PointX="9.375" PointY="2.75" />
+        <EntityTypeShape EntityType="MyTeamDataModel.TeamMember" Width="1.5" PointX="4.5" PointY="2.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
