@@ -48,7 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BEANS\TeamMemberBEAN.cs" />
     <Compile Include="DAO\EvaluationDAO.cs" />
     <Compile Include="DAO\ProjectDAO.cs" />
     <Compile Include="DAO\TeamDAO.cs" />
@@ -89,7 +88,9 @@
       <DependentUpon>MyTeamData.tt</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="BEANS\" />
+  </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="MyTeamData.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
