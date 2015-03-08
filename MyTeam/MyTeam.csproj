@@ -254,7 +254,7 @@
     <Content Include="Views\Task\editWorkTask.cshtml" />
     <Content Include="Views\Task\deleteWorkTask.cshtml" />
     <Content Include="Views\Evaluation\Index.cshtml" />
-    <Content Include="Views\Task\addEvaluation.cshtml" />
+    <Content Include="Views\Task\Evaluate.cshtml" />
     <Content Include="Views\Task\Index.cshtml" />
     <Content Include="Views\Admin\Users.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />

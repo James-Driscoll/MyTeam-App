@@ -58,17 +58,21 @@ namespace MyTeam.Controllers
 
         // addEvaluation
         [HttpGet]
-        public ActionResult addEvaluation(int id)
+        public ActionResult Evaluate(int id)
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult addEvaluation(Evaluation evaluation)
+        public ActionResult Evaluate(Evaluation evaluation, int id)
         {
             View();
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            ApplicationUser user = userManager.FindByIdAsync(User.Identity.GetUserId()).Result;
+            evaluation.FK_Assessor = userManager.FindById(User.Identity.GetUserId()).Id;
+            evaluation.FK_Task = id;
             _evaluationService.addEvaluation(evaluation);
-            return RedirectToAction("Projects", "Project");
+            return RedirectToAction("Index", "Team");
         }
 
 
