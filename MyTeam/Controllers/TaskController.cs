@@ -110,7 +110,7 @@ namespace MyTeam.Controllers
 
 
         // UPDATE ===================================================================
-        // editTask
+        // Edit
         [HttpGet]
         public ActionResult Edit(int id)
         {  
@@ -136,22 +136,22 @@ namespace MyTeam.Controllers
 
 
         // DELETE ===================================================================
-        // deleteTask
+        // Delete
         [HttpGet]
-        public ActionResult deleteTask(int id)
+        public ActionResult Delete(int id)
         {
             Task task = _taskService.getTask(id);
             return View(task);
         }
 
         [HttpPost]
-        public ActionResult deleteTask(Task task, int id)
+        public ActionResult Delete(Task task, int id)
         {
             try
             {
                 Task _task = _taskService.getTask(id);
                 _taskService.deleteTask(_task);
-                return RedirectToAction("Projects", "Project");
+                return RedirectToAction("Index", "Team");
             }
             catch
             {

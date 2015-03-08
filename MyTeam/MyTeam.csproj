@@ -249,10 +249,8 @@
     <Content Include="Views\Project\Edit.cshtml" />
     <Content Include="Views\Project\Delete.cshtml" />
     <Content Include="Views\Task\Add.cshtml" />
-    <Content Include="Views\Task\getWorkTasks.cshtml" />
-    <Content Include="Views\Task\getWorkTask.cshtml" />
     <Content Include="Views\Task\Edit.cshtml" />
-    <Content Include="Views\Task\deleteWorkTask.cshtml" />
+    <Content Include="Views\Task\Delete.cshtml" />
     <Content Include="Views\Evaluation\Index.cshtml" />
     <Content Include="Views\Task\Evaluate.cshtml" />
     <Content Include="Views\Task\Index.cshtml" />
