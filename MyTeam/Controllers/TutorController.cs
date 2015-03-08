@@ -24,36 +24,15 @@ namespace MyTeam.Controllers
         }
 
         // CREATE ===================================================================
-        // AddTeam : Allows Tutors to create new teams of existing registered students.
-        [HttpGet]
-        public ActionResult AddTeam()
-        {
-            var userList = _context.Users.OrderBy(u => u.UserName).ToList().Select(uu => new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
-            ViewBag.Users = userList;
-            return View();
-        }
 
-        [HttpPost]
-        public ActionResult AddTeam(Team team)
-        {
-            View();
-            _teamService.addTeam(team);
-            return View("Teams", "Tutor");
-        }
-
-        // READ =====================================================================
-        // Dashboard : Returns control page for Tutors.
-        public ActionResult Dashboard()
-        {
-            return View();
-        }
         
-        // Teams : Returns list of student teams.
-        public ActionResult Teams()
+        // READ =====================================================================
+        // Index : Returns an IList of all teams.
+        public ActionResult Index()
         {
             return View(_teamService.getTeams());
         }
-
+        
         // UPDATE ===================================================================
 
 

@@ -13,6 +13,9 @@ namespace MyTeam.Data.IDAO
         // addTeam : Adds a new team record to the database.
         void addTeam(Team team);
 
+        // addTeamMember : Adds a new TeamMember record.
+        void addTeamMember(TeamMember teamMember);
+
         // READ ======================================================================
         // getTeams : Rreturns a list of all registered teams.
         IList<Team> getTeams();
@@ -22,6 +25,9 @@ namespace MyTeam.Data.IDAO
 
         // getTeam : Returns a single team.
         Team getTeam(int id);
+
+        // getTeamMembers : Returns an IList of all members that are part of a particular team.
+        IList<TeamMember> getTeamMembers(int id);
 
         // UPDATE ====================================================================
         // editTeam : Updates one team in the database.

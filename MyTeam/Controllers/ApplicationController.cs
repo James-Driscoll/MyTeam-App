@@ -17,6 +17,7 @@ namespace MyTeam.Controllers
         public MyTeam.Services.Service.ProjectService _projectService;
         public MyTeam.Services.Service.TeamService _teamService;
         public MyTeam.Services.Service.TaskService _taskService;
+        private MyTeam.Models.ApplicationDbContext _userService;
 
         // CONSTRUCTOR ==============================================================
         public ApplicationController()
@@ -27,6 +28,7 @@ namespace MyTeam.Controllers
             _projectService = new MyTeam.Services.Service.ProjectService();
             _teamService = new MyTeam.Services.Service.TeamService();
             _taskService = new MyTeam.Services.Service.TaskService();
+            _userService = new MyTeam.Models.ApplicationDbContext();
 
             // Construct lists of statuses.
             var statusList = new SelectList(new[] 
@@ -39,6 +41,19 @@ namespace MyTeam.Controllers
             },
             "ID", "Name", 1);
             ViewData["statusList"] = statusList;
+
+            // Construct list of User names.
+            List<SelectListItem> userList = new List<SelectListItem>();
+            foreach (var item in _userService.Users.ToList())
+            {
+                userList.Add(
+                    new SelectListItem()
+                    {
+                        Text = item.FirstName + " " + item.LastName + " | " + item.UserName,
+                        Value = item.Id.ToString()
+                    });
+            }
+            ViewBag.userList = userList;
 
         }
 

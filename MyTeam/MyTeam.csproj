@@ -261,15 +261,18 @@
     <Content Include="Views\Admin\ManageUserRoles.cshtml" />
     <Content Include="Views\Admin\RolesForUser.cshtml" />
     <Content Include="Views\Admin\RolesForUserConfirmed.cshtml" />
-    <Content Include="Views\Tutor\Teams.cshtml" />
-    <Content Include="Views\Tutor\AddTeam.cshtml" />
-    <Content Include="Views\Tutor\Dashboard.cshtml" />
     <Content Include="Views\RoleAdmin\Create.cshtml" />
     <Content Include="Views\RoleAdmin\Delete.cshtml" />
     <Content Include="Views\RoleAdmin\Edit.cshtml" />
     <Content Include="Views\RoleAdmin\Index.cshtml" />
     <Content Include="Views\Team\Index.cshtml" />
     <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Tutor\Index.cshtml" />
+    <Content Include="Views\Team\Create.cshtml" />
+    <Content Include="Views\Team\Edit.cshtml" />
+    <Content Include="Views\Team\Delete.cshtml" />
+    <Content Include="Views\Team\Members.cshtml" />
+    <Content Include="Views\Team\AddMember.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

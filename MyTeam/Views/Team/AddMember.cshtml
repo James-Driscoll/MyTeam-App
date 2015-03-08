@@ -1,0 +1,49 @@
+﻿@model MyTeam.Data.TeamMember
+
+@{
+    ViewBag.Title = "Add Member";
+}
+
+<div class="container body-content">
+    <div class="row">
+        <h1>Add Member</h1>
+    </div>
+
+    <div class="row">
+        <h4>Hi @User.Identity.Name</h4>
+    </div>
+
+    <div class="row">
+        <h4>@Html.ActionLink("Tutor", "Index", "Tutor") / Add Member</h4>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Team Members</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.FK_Member, (List<SelectListItem>)ViewBag.userList)
+                    @Html.ValidationMessageFor(model => model.FK_Member, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Add" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", "Tutor")
+    </div>
+
+</div>

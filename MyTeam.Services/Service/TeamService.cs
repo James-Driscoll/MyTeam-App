@@ -26,6 +26,12 @@ namespace MyTeam.Services.Service
             _teamDAO.addTeam(team);
         }
 
+        // addTeamMember : Adds a new TeamMember record.
+        public void addTeamMember(TeamMember teamMember)
+        {
+            _teamDAO.addTeamMember(teamMember);
+        }
+
         // READ =====================================================================
         // getTeams
         public IList<Team> getTeams()
@@ -37,6 +43,12 @@ namespace MyTeam.Services.Service
         public IList<Team> getStudentTeams(string id)
         {
             return _teamDAO.getStudentTeams(id);
+        }
+
+        // getTeamMembers : Returns an IList of all members that are part of a particular team.
+        public IList<TeamMember> getTeamMembers(int id)
+        {
+            return _teamDAO.getTeamMembers(id);
         }
 
         // getTeam

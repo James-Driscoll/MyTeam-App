@@ -15,12 +15,18 @@ namespace MyTeam.Services.IService
         // addTeam
         void addTeam(Team team);
 
+        // addTeamMember : Adds a new TeamMember record.
+        void addTeamMember(TeamMember teamMember);
+
         // READ =====================================================================
         // getTeams
         IList<Team> getTeams();
 
         // getStudentTeams : Returns list of teams that the signed in user is a member of.
         IList<Team> getStudentTeams(string id);
+
+        // getTeamMembers : Returns an IList of all members that are part of a particular team.
+        IList<TeamMember> getTeamMembers(int id);
 
         // getTeam
         Team getTeam(int id);

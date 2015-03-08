@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BEANS\TeamBEAN.cs" />
+    <Compile Include="BEANS\TeamMemberBEAN.cs" />
     <Compile Include="DAO\EvaluationDAO.cs" />
     <Compile Include="DAO\ProjectDAO.cs" />
     <Compile Include="DAO\TeamDAO.cs" />

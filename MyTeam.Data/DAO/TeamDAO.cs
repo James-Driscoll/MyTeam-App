@@ -27,6 +27,13 @@ namespace MyTeam.Data.DAO
             _context.SaveChanges();
         }
 
+        // addTeamMember : Adds a new TeamMember record.
+        public void addTeamMember(TeamMember teamMember)
+        {
+            _context.TeamMembers.Add(teamMember);
+            _context.SaveChanges();
+        }
+
         // READ ======================================================================
         // getTeams : Rreturns a list of all registered teams.
         public IList<Team> getTeams()
@@ -43,11 +50,21 @@ namespace MyTeam.Data.DAO
         {
             IQueryable<Team> _teams;
             _teams = from teamMember in _context.TeamMembers
-                           from team in _context.Teams
-                           where teamMember.FK_Member == id
-                           where team.Id == teamMember.FK_Team
-                           select team;
+                     from team in _context.Teams
+                     where teamMember.FK_Member == id
+                     where team.Id == teamMember.FK_Team
+                     select team;
             return _teams.ToList<Team>();
+        }
+
+        // getTeamMembers : Returns an IList of all members that are part of a particular team.
+        public IList<TeamMember> getTeamMembers(int id)
+        {
+            IQueryable<TeamMember> _teamMembers;
+            _teamMembers = from teamMember in _context.TeamMembers
+                           where teamMember.FK_Team == id
+                           select teamMember;
+            return _teamMembers.ToList<TeamMember>();
         }
 
         // getTeam : Returns a single team.
