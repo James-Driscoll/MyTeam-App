@@ -1,0 +1,93 @@
+﻿@model IEnumerable<MyTeam.Data.Task>
+
+@{
+    ViewBag.Title = "Tutor - Team Tasks";
+}
+
+<div class="container body-content">
+    <div class="row">
+        <h1>Tutor - Team Tasks</h1>
+    </div>
+
+    <div class="row">
+        <h4>Hi @User.Identity.Name</h4>
+    </div>
+
+    <div class="row">
+        <h4>Tasks</h4>
+    </div>
+
+    <div class="row">
+        <p>Select a task below to view it's evaluations.</p>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                Student
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PercentageCompleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstimatedDuration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FK_AssignedTo)
+                </td>
+                <td>
+                    @Html.ActionLink(item.Title, "Evaluations", new { id = item.Id, controller = "Tutor" })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PercentageCompleted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstimatedDuration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duration)
+                </td>
+            </tr>
+        }
+    </table>
+
+    <div>
+        @Html.ActionLink("Back to Teams List", "Index", "Tutor")
+    </div>
+
+</div>

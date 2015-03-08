@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using MyTeam.Data;
 using MyTeam.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
 
 namespace MyTeam.Controllers
 {
@@ -32,7 +34,64 @@ namespace MyTeam.Controllers
         {
             return View(_teamService.getTeams());
         }
+
+        // Projects
+        public ActionResult Projects(int id)
+        {
+            return View(_projectService.getProjects(id));
+        }
         
+        // Tasks
+        public ActionResult Tasks(int id)
+        {
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            IList<Task> _tasks = _taskService.getTasks(id);
+
+            for (int i = 0; i < _tasks.Count; i++)
+            {
+                ApplicationUser user = userManager.FindById(_tasks[i].FK_AssignedTo);
+                _tasks[i].FK_AssignedTo = user.UserName;
+            }
+
+            return View(_tasks);
+        }
+
+        // Evaluations
+        public ActionResult Evaluations(int id)
+        {
+            IList<Evaluation> _evaluations = _evaluationService.getEvaluations(id);
+            int markTotal = 0;
+            int lowestMark = 101;
+            int highestMark = 0;
+            
+            if (_evaluations.Count > 0)
+            {
+                for (int i = 0; i < _evaluations.Count; i++)
+                {
+                    markTotal = markTotal + _evaluations[i].Mark;
+
+                    if (_evaluations[i].Mark > highestMark)
+                    {
+                        highestMark = _evaluations[i].Mark;
+                    }
+
+                    if (_evaluations[i].Mark < lowestMark)
+                    {
+                        lowestMark = _evaluations[i].Mark;
+                    }
+
+                }
+
+                float averageMark = markTotal / _evaluations.Count;
+
+                ViewBag.averageMark = averageMark;
+                ViewBag.highestMark = highestMark;
+                ViewBag.lowestMark = lowestMark;
+            };
+
+            return View(_evaluationService.getEvaluations(id));
+        }
+
         // UPDATE ===================================================================
 
 

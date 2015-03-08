@@ -26,17 +26,6 @@ namespace MyTeam.Controllers
             _context = new MyTeam.Models.ApplicationDbContext();
             this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this._context));
         }
-        
-        //// Declare local context and user manager services.
-        //protected ApplicationDbContext ApplicationDbContext { get; set; }
-        //protected UserManager<ApplicationUser> UserManager { get; set; }
-
-        //// CONSTRUCTOR ==============================================================
-        //public ProjectController()
-        //{
-        //    this.ApplicationDbContext = new ApplicationDbContext();
-        //    this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
-        //}
 
         // CREATE ===================================================================
         // Create

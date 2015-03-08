@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<MyTeam.Data.Evaluation>
 
 @{
-    ViewBag.Title = "Evaluations";
+    ViewBag.Title = "Tutor - Task Evaluations";
 }
 
 <div class="container body-content">
     <div class="row">
-        <h1>Evaluations</h1>
+        <h1>Tutor - Task Evaluations</h1>
     </div>
 
     <div class="row">
@@ -14,11 +14,7 @@
     </div>
 
     <div class="row">
-        <h4>@Html.ActionLink("Teams", "Index", "Team") / Projects / Tasks / Evaluations</h4>
-    </div>
-
-    <div class="row">
-        <p>Select a project below to view it's tasks.</p>
+        <h4>Evaluations</h4>
     </div>
 
     <table class="table">
@@ -51,7 +47,7 @@
     <p>Lowest Mark:  <strong>@ViewBag.lowestMark</strong></p>
 
     <div>
-        @Html.ActionLink("Back to Teams List", "Index", "Team")
+        @Html.ActionLink("Back to Teams List", "Index", "Tutor")
     </div>
 
 </div>

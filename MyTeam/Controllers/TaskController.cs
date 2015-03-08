@@ -104,27 +104,31 @@ namespace MyTeam.Controllers
             int lowestMark = 101;
             int highestMark = 0;
 
-            for (int i = 0; i < _evaluations.Count; i++)
+            if (_evaluations.Count > 0)
             {
-                markTotal = markTotal + _evaluations[i].Mark;
-
-                if (_evaluations[i].Mark > highestMark)
+                for (int i = 0; i < _evaluations.Count; i++)
                 {
-                    highestMark = _evaluations[i].Mark;
+                    markTotal = markTotal + _evaluations[i].Mark;
+
+                    if (_evaluations[i].Mark > highestMark)
+                    {
+                        highestMark = _evaluations[i].Mark;
+                    }
+
+                    if (_evaluations[i].Mark < lowestMark)
+                    {
+                        lowestMark = _evaluations[i].Mark;
+                    }
+
                 }
 
-                if (_evaluations[i].Mark < lowestMark)
-                {
-                    lowestMark = _evaluations[i].Mark;
-                }
+                float averageMark = markTotal / _evaluations.Count;
 
+                ViewBag.averageMark = averageMark;
+                ViewBag.highestMark = highestMark;
+                ViewBag.lowestMark = lowestMark;
             }
 
-            float averageMark = markTotal / _evaluations.Count;
-
-            ViewBag.averageMark = averageMark;
-            ViewBag.highestMark = highestMark;
-            ViewBag.lowestMark = lowestMark;
             return View(_evaluationService.getEvaluations(id));
         }
 
