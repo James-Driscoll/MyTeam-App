@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MyTeam.Data.Task>
 
 @{
-    ViewBag.Title = "Projects";
+    ViewBag.Title = "Tasks";
 }
 
 <div class="container body-content">
@@ -10,12 +10,11 @@
 
     </div>
     <div class="row">
-        <h4>Hi User</h4>
+        <h4>Hi @User.Identity.Name</h4>
     </div>
 
     <div class="row">
         <h4>@Html.ActionLink("Teams", "Index", "Team") / Projects / Tasks</h4>
-        <a class="pull-right new-item" href="@Url.Action("addTask", "Task")">New Task<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
     </div>
 
     <div class="row">
@@ -34,6 +33,7 @@
 
                     <div class="col-md-12">
                         <div class="ta-details">
+                            <p>Assigned To: <strong>@Html.DisplayFor(modelItem => item.FK_AssignedTo)</strong></p>
                             <p>Date Started: <strong>@Html.DisplayFor(modelItem => item.StartDate)</strong></p>
                             <p>Date Finished: <strong>@Html.DisplayFor(modelItem => item.EndDate)</strong></p>
                             <p>Status: <strong>@Html.DisplayFor(modelItem => item.Status)</strong></p>

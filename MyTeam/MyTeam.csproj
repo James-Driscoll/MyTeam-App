@@ -248,7 +248,7 @@
     <Content Include="Views\Project\Create.cshtml" />
     <Content Include="Views\Project\Edit.cshtml" />
     <Content Include="Views\Project\Delete.cshtml" />
-    <Content Include="Views\Task\addWorkTask.cshtml" />
+    <Content Include="Views\Task\Add.cshtml" />
     <Content Include="Views\Task\getWorkTasks.cshtml" />
     <Content Include="Views\Task\getWorkTask.cshtml" />
     <Content Include="Views\Task\editWorkTask.cshtml" />

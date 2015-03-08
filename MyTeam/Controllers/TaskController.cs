@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MyTeam.Data;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
+using MyTeam.Models;
 
 namespace MyTeam.Controllers
 {
@@ -11,25 +14,51 @@ namespace MyTeam.Controllers
     public class TaskController : ApplicationController
     {
         
-        // CREATE ===================================================================
-        // addTask
-        [HttpGet]
-        public ActionResult addTask(string FK_Project)
+        // Declare model.
+        private MyTeam.Models.ApplicationDbContext _context;
+
+        // CONSTRUCTOR ==============================================================
+        public TaskController()
         {
+            _context = new MyTeam.Models.ApplicationDbContext();
+        }
+
+        // CREATE ===================================================================
+        // Add : Saves new task to the database.
+        [HttpGet]
+        public ActionResult Add(int team, int project)
+        {
+            // declare local list of team members.
+            IList<TeamMember> _teamMembers = _teamService.getTeamMembers(team);
+
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            List<SelectListItem> teamMemberList = new List<SelectListItem>();
+
+            // loop through team member list and replace the UserID with the UserName.
+            for (int i = 0; i < _teamMembers.Count; i++)
+            {
+                ApplicationUser user = userManager.FindById(_teamMembers[i].FK_Member);
+                _teamMembers[i].FK_Member = user.UserName;
+                
+                teamMemberList.Add(new SelectListItem() { Text = user.UserName, Value = user.Id });
+            }
+
+            ViewBag.teamMemberList = teamMemberList;
             return View();
         }
 
         [HttpPost]
-        public ActionResult addTask(Task task)
+        public ActionResult Add(Task task, int project)
         {
             View();
+            task.FK_Project = project;
             _taskService.addTask(task);
-            return RedirectToAction("Projects", "Project");
+            return RedirectToAction("Index", "Team");
         }
 
         // addEvaluation
         [HttpGet]
-        public ActionResult addEvaluation(int FK_Task)
+        public ActionResult addEvaluation(int id)
         {
             return View();
         }
@@ -44,16 +73,23 @@ namespace MyTeam.Controllers
 
 
         // READ =====================================================================
-        // getTasks
-        public ActionResult getTasks(int project)
-        {
-            return View(_taskService.getTasks(project));
-        }
-
         // Tasks
         public ActionResult Index(int id)
         {
-            return View(_taskService.getTasks(id));
+            // declare local list of tasks.
+            IList<Task> _taskList = _taskService.getTasks(id);
+
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+
+            // loop through task list and replace the UserID with the UserName.
+            for (int i = 0; i < _taskList.Count; i++)
+            {
+                ApplicationUser user = userManager.FindById(_taskList[i].FK_AssignedTo);
+                _taskList[i].FK_AssignedTo = user.UserName;
+            }
+
+            // return the modified list to the view.
+            return View(_taskList);
         }
 
         // getTask

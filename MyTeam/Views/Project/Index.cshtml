@@ -45,7 +45,7 @@
                     <div class="col-md-4 pr-actions">
                         <a class="pull-right" href="@Url.Action("Edit", new { id = item.Id, controller = "Project" })"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
                         <a class="pull-right" href="@Url.Action("Delete", new { id = item.Id, controller = "Project" })"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-                        @Html.ActionLink("Add Work Task", "addTask", new { controller = "Task", FK_Project = item.Id })
+                        <a class="pull-right" href="@Url.Action("Add", new { team = item.FK_Team, project = item.Id, controller = "Task" })"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Task</a>
                     </div>
                 </div>
             </div>
