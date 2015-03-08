@@ -112,19 +112,21 @@ namespace MyTeam.Controllers
         // UPDATE ===================================================================
         // editTask
         [HttpGet]
-        public ActionResult editTask(int id)
-        {
+        public ActionResult Edit(int id)
+        {  
             Task record = _taskService.getTask(id);
             return View(record);
         }
 
         [HttpPost]
-        public ActionResult editTask(Task task)
+        public ActionResult Edit(Task task)
         {
             try
             {
+                task.FK_AssignedTo = _taskService.getTask(task.Id).FK_AssignedTo;
+                task.FK_Project = _taskService.getTask(task.Id).FK_Project;
                 _taskService.editTask(task);
-                return RedirectToAction("Projects", "Project");
+                return RedirectToAction("Index", "Team");
             }
             catch
             {

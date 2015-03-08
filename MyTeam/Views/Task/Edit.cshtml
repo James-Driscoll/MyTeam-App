@@ -1,30 +1,38 @@
-﻿@model MyTeam.Data.WorkTask
+﻿@model MyTeam.Data.Task
 
 @{
-    ViewBag.Title = "Edit Work Task";
+    ViewBag.Title = "Edit Task";
 }
 <div class="container body-content">
-    <h2>Edit Work Task</h2>
+    <div class="row">
+        <h1>Edit Task</h1>
+    </div>
+
+    <div class="row">
+        <h4>Hi @User.Identity.Name</h4>
+    </div>
+
+    <div class="row">
+        <h4>@Html.ActionLink("Teams", "Index", "Team") / Projects / Edit Task</h4>
+    </div>
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.FK_AssignedTo)
 
         <div class="form-horizontal">
-            <h4>WorkTask</h4>
+            <h4>Task</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.PK_WorkTaskID)
-            @Html.HiddenFor(model => model.FK_Project)
 
-            <div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(model => model.FK_AssignedTo, "FK_AssignedTo", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.FK_AssignedTo, new { htmlAttributes = new { @class = "form-control" } })
-                    @*@Html.DropDownList("FK_AssignedTo", null, htmlAttributes: new { @class = "form-control" })*@
+                    @Html.DropDownList("FK_AssignedTo", (IEnumerable<SelectListItem>)ViewBag.teamMemberList, "Select...")
                     @Html.ValidationMessageFor(model => model.FK_AssignedTo, "", new { @class = "text-danger" })
                 </div>
-            </div>
+            </div>*@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -92,14 +100,14 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                    <input type="submit" value="Save" class="btn btn-primary" />
                 </div>
             </div>
         </div>
     }
 
     <div>
-        @Html.ActionLink("Back to Tasks List", "Tasks", new { project = Model.FK_Project })
+        @Html.ActionLink("Back to Teams List", "Index", "Team")
     </div>
 
     @section Scripts {
