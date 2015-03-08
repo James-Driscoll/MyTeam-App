@@ -21,6 +21,9 @@ namespace MyTeam.Data.IDAO
         // getEvaluation
         Evaluation getEvaluation(int id);
 
+        // getCompletedEvaluations
+        IList<Evaluation> getCompletedEvaluations(string id);
+
         // UPDATE ====================================================================
         // editEvaluation
         void editEvaluation(Evaluation evaluation);

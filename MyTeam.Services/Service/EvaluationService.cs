@@ -39,6 +39,12 @@ namespace MyTeam.Services.Service
             return _evaluationDAO.getEvaluation(id);
         }
 
+        // getCompletedEvaluations
+        public IList<Evaluation> getCompletedEvaluations(string id)
+        {
+            return _evaluationDAO.getCompletedEvaluations(id);
+        }
+
         // UPDATE ===================================================================
         // editEvaluation
         public void editEvaluation(Evaluation evaluation)

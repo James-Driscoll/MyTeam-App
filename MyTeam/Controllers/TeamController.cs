@@ -70,18 +70,24 @@ namespace MyTeam.Controllers
         {
             // declare local list of team members.
             IList<TeamMember> _teamMembers = _teamService.getTeamMembers(id);
-
+           // MyTeam.Data.BEANS.TeamMemberBEAN _teamMemberBEAN = new MyTeam.Data.BEANS.TeamMemberBEAN();
+            IList<MyTeam.Data.BEANS.TeamMemberBEAN> _teamMemberBEANs = new List<MyTeam.Data.BEANS.TeamMemberBEAN>();
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             
             // loop through team member list and replace the UserID with the UserName.
             for (int i = 0; i < _teamMembers.Count; i++)
             {
                 ApplicationUser user = userManager.FindById(_teamMembers[i].FK_Member);
+                MyTeam.Data.BEANS.TeamMemberBEAN _teamMemberBEAN = new MyTeam.Data.BEANS.TeamMemberBEAN();
                 _teamMembers[i].FK_Member = user.UserName;
+                _teamMemberBEAN.Id = _teamMembers[i].Id;
+                _teamMemberBEAN.userID = user.Id;
+                _teamMemberBEAN.userName = user.UserName;
+                _teamMemberBEANs.Add(_teamMemberBEAN);
             }
             
             // return the modified list to the view.
-            return View(_teamMembers);
+            return View(_teamMemberBEANs);
         }
 
         // UPDATE ===================================================================

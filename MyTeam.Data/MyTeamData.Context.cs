@@ -30,5 +30,7 @@ namespace MyTeam.Data
         public virtual DbSet<Evaluation> Evaluations { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
         public virtual DbSet<TeamMember> TeamMembers { get; set; }
+
+        public System.Data.Entity.DbSet<MyTeam.Data.BEANS.EvaluationBEAN> EvaluationBEANs { get; set; }
     }
 }

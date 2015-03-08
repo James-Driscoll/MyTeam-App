@@ -92,6 +92,48 @@ namespace MyTeam.Controllers
             return View(_evaluationService.getEvaluations(id));
         }
 
+        // StudentStats
+        public ActionResult StudentStats(string id)
+        {
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            MyTeam.Data.BEANS.EvaluationBEAN evaluationBEAN = new MyTeam.Data.BEANS.EvaluationBEAN();
+            ApplicationUser user = userManager.FindById(id);
+
+            IList<Evaluation> _evaluations = _evaluationService.getCompletedEvaluations(user.Id);
+            int markTotal = 0;
+            int lowestMark = 101;
+            int highestMark = 0;
+
+            if (_evaluations.Count > 0)
+            {
+                for (int i = 0; i < _evaluations.Count; i++)
+                {
+                    markTotal = markTotal + _evaluations[i].Mark;
+
+                    if (_evaluations[i].Mark > highestMark)
+                    {
+                        highestMark = _evaluations[i].Mark;
+                    }
+
+                    if (_evaluations[i].Mark < lowestMark)
+                    {
+                        lowestMark = _evaluations[i].Mark;
+                    }
+
+                }
+
+                float averageMark = markTotal / _evaluations.Count;
+                
+                evaluationBEAN.Student = user.UserName;
+                evaluationBEAN.AverageMark = averageMark;
+                evaluationBEAN.HighestMark = highestMark;
+                evaluationBEAN.LowestMark = lowestMark;
+                evaluationBEAN.TasksCompleted = _evaluations.Count();
+            };
+
+            return View(evaluationBEAN);
+        }
+
         // UPDATE ===================================================================
 
 

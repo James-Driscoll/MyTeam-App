@@ -49,6 +49,18 @@ namespace MyTeam.Data.DAO
             return _evaluation.ToList<Evaluation>().First();
         }
 
+        // getCompletedEvaluations
+        public IList<Evaluation> getCompletedEvaluations(string id)
+        {
+            IQueryable<Evaluation> _evaluations;
+            _evaluations = from evaluation in _context.Evaluations
+                           join task in _context.Tasks on evaluation.FK_Task equals task.Id
+                           where task.Status == "Finished"
+                           where task.FK_AssignedTo == id
+                           select evaluation;
+            return _evaluations.ToList<Evaluation>();
+        }
+
         // UPDATE ====================================================================
         // editEvaluation
         public void editEvaluation(Evaluation evaluation)

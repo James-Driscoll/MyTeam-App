@@ -273,6 +273,7 @@
     <Content Include="Views\Tutor\Projects.cshtml" />
     <Content Include="Views\Tutor\Tasks.cshtml" />
     <Content Include="Views\Tutor\Evaluations.cshtml" />
+    <Content Include="Views\Tutor\StudentStats.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
