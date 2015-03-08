@@ -96,18 +96,37 @@ namespace MyTeam.Controllers
             return View(_taskList);
         }
 
-        // getTask
-        public ActionResult getTask(int id)
+        // Evaluations : Returns IList of Eavluations of a particular Task.
+        public ActionResult Evaluations(int id)
         {
-            return View(_taskService.getTask(id));
-        }
+            IList<Evaluation> _evaluations = _evaluationService.getEvaluations(id);
+            int markTotal = 0;
+            int lowestMark = 101;
+            int highestMark = 0;
 
-        // getEvaluations
-        public ActionResult getEvaluations(int task)
-        {
-            return View(_evaluationService.getEvaluations(task));
-        }
+            for (int i = 0; i < _evaluations.Count; i++)
+            {
+                markTotal = markTotal + _evaluations[i].Mark;
 
+                if (_evaluations[i].Mark > highestMark)
+                {
+                    highestMark = _evaluations[i].Mark;
+                }
+
+                if (_evaluations[i].Mark < lowestMark)
+                {
+                    lowestMark = _evaluations[i].Mark;
+                }
+
+            }
+
+            float averageMark = markTotal / _evaluations.Count;
+
+            ViewBag.averageMark = averageMark;
+            ViewBag.highestMark = highestMark;
+            ViewBag.lowestMark = lowestMark;
+            return View(_evaluationService.getEvaluations(id));
+        }
 
         // UPDATE ===================================================================
         // Edit
@@ -133,7 +152,6 @@ namespace MyTeam.Controllers
                 return View();
             }
         }
-
 
         // DELETE ===================================================================
         // Delete

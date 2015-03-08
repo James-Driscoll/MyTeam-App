@@ -163,7 +163,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
-    <Compile Include="Controllers\EvaluationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
@@ -251,7 +250,7 @@
     <Content Include="Views\Task\Add.cshtml" />
     <Content Include="Views\Task\Edit.cshtml" />
     <Content Include="Views\Task\Delete.cshtml" />
-    <Content Include="Views\Evaluation\Index.cshtml" />
+    <Content Include="Views\Task\Evaluations.cshtml" />
     <Content Include="Views\Task\Evaluate.cshtml" />
     <Content Include="Views\Task\Index.cshtml" />
     <Content Include="Views\Admin\Users.cshtml" />
