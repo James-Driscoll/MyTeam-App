@@ -11,8 +11,7 @@ using Microsoft.AspNet.Identity;
 namespace MyTeam.Controllers
 {
 
-    //[Authorize]
-    //[Authorize(Roles = "Tutor")]
+    [Authorize(Roles = "Tutor, Admin")]
     public class TutorController : ApplicationController
     {
 
@@ -139,6 +138,7 @@ namespace MyTeam.Controllers
 
         // DELETE ===================================================================
     
+
     }
 
 }

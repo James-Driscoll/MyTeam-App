@@ -10,7 +10,8 @@ using MyTeam.Models;
 
 namespace MyTeam.Controllers
 {
-    
+
+    [Authorize(Roles = "Student, Tutor, Admin")]
     public class TaskController : ApplicationController
     {
         

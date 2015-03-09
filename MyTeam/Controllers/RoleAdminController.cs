@@ -13,6 +13,7 @@ using MyTeam.Models;
 namespace MyTeam.Controllers
 {
 
+    [Authorize(Roles = "Admin")]
     public class RoleAdminController : Controller
     {
 

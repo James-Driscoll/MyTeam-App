@@ -11,8 +11,7 @@ using MyTeam.Models;
 namespace MyTeam.Controllers
 {
     
-    //[Authorize]
-    //[Authorize(Roles= "Student")]
+    [Authorize(Roles= "Student, Tutor, Admin")]
     public class ProjectController : ApplicationController
     {
 
@@ -65,12 +64,6 @@ namespace MyTeam.Controllers
         public ActionResult Index(int id)
         {
             return View(_projectService.getProjects(id));
-        }
-        
-        // getProject
-        public ActionResult getProject(int id)
-        {
-            return View(_projectService.getProject(id));
         }
 
         // UPDATE ===================================================================

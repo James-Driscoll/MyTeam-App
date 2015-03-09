@@ -25,13 +25,13 @@ namespace MyTeam.Controllers
 
         // CREATE ===================================================================
         // Create : Adds new Team.
-        [HttpGet]
+        [HttpGet] [Authorize(Roles = "Tutor, Admin")]
         public ActionResult Create()
         {
             return View();
         }
 
-        [HttpPost]
+        [HttpPost] [Authorize(Roles = "Tutor, Admin")]
         public ActionResult Create(Team team)
         {
             View();
@@ -40,13 +40,13 @@ namespace MyTeam.Controllers
         }
 
         // AddMember : Adds a new student to a team.
-        [HttpGet]
+        [HttpGet] [Authorize(Roles = "Tutor, Admin")]
         public ActionResult AddMember(int id)
         {
             return View();
         }
 
-        [HttpPost]
+        [HttpPost] [Authorize(Roles = "Tutor, Admin")]
         public ActionResult AddMember(TeamMember teamMember, int id)
         {
             View();
@@ -57,7 +57,8 @@ namespace MyTeam.Controllers
 
         // READ =====================================================================
         // Index : Returns list of teams that a particular student it a member of.
-        public ActionResult Index(string id)
+       [Authorize(Roles = "Student")] 
+       public ActionResult Index(string id)
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             ApplicationUser user = userManager.FindByIdAsync(User.Identity.GetUserId()).Result;
@@ -66,6 +67,7 @@ namespace MyTeam.Controllers
         }
 
         // Members : Returns an IList of all members that are part of a particular team.
+        [Authorize(Roles = "Tutor, Admin")]
         public ActionResult Members(int id)
         {
             // declare local list of team members.
@@ -92,14 +94,14 @@ namespace MyTeam.Controllers
 
         // UPDATE ===================================================================
         // Edit : Allows for updateding one Team.
-        [HttpGet]
+        [HttpGet] [Authorize(Roles = "Tutor, Admin")]
         public ActionResult Edit(int id)
         {
             Team record = _teamService.getTeam(id);
             return View(record);
         }
 
-        [HttpPost]
+        [HttpPost] [Authorize(Roles = "Tutor, Admin")]
         public ActionResult Edit(Team team)
         {
             try
@@ -115,14 +117,14 @@ namespace MyTeam.Controllers
 
         // DELETE ===================================================================
         // Delete : Removes a single Team.
-        [HttpGet]
+        [HttpGet] [Authorize(Roles = "Tutor, Admin")]
         public ActionResult Delete(int id)
         {
             Team record = _teamService.getTeam(id);
             return View(record);
         }
 
-        [HttpPost]
+        [HttpPost] [Authorize(Roles = "Tutor, Admin")]
         public ActionResult Delete(Team team, int id)
         {
             try
