@@ -29,7 +29,7 @@
             <div class="form-group">
                 
                 <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.FK_Member, (List<SelectListItem>)ViewBag.userList)
+                    @Html.DropDownListFor(model => model.FK_Member, (List<SelectListItem>)ViewBag.userList, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.FK_Member, "", new { @class = "text-danger" })
                 </div>
             </div>
