@@ -160,6 +160,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
@@ -198,7 +199,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ClassDiagram1.cd" />
-    <None Include="Properties\PublishProfiles\MyTeamTest.pubxml" />
+    <None Include="Properties\PublishProfiles\JDMyTeam %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\JDMyTeam.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -274,6 +276,7 @@
     <Content Include="Views\Tutor\Tasks.cshtml" />
     <Content Include="Views\Tutor\Evaluations.cshtml" />
     <Content Include="Views\Tutor\StudentStats.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
