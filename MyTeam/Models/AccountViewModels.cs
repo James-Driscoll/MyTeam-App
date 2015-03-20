@@ -79,15 +79,33 @@ namespace MyTeam.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        // Custom user profile attributes.
+        [Required]
+        [MaxLength(49)]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
+        [Required]
+        [MaxLength(49)]
         public string LastName { get; set; }
+        [Display(Name = "Contact Number")]
         public string ContactNumber { get; set; }
+        [MaxLength(49)]
+        [Display(Name = "Address Line 1")]
         public string AddressLine1 { get; set; }
+        [MaxLength(49)]
+        [Display(Name = "Address Line 2")]
         public string AddressLine2 { get; set; }
+        [MaxLength(49)]
         public string Town { get; set; }
+        [MaxLength(49)]
         public string County { get; set; }
+        [MaxLength(49)]
         public string Postcode { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "Date of Birth")]
         public System.DateTime BirthDate { get; set; }
+
     }
 
     public class ResetPasswordViewModel
