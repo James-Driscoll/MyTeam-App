@@ -16,6 +16,7 @@ namespace MyTeam.Data
     public partial class Project
     {
         public int Id { get; set; }
+        [Required]
         [Display(Name = "Team")]
         public int FK_Team { get; set; }
         [Required]

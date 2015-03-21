@@ -11,19 +11,36 @@ namespace MyTeam.Data
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Task
     {
         public int Id { get; set; }
+        [Required]
+        [Display(Name = "Assigned to")]
         public string FK_AssignedTo { get; set; }
+        [Required]
+        [Display(Name = "Project")]
         public int FK_Project { get; set; }
+        [Required]
+        [MaxLength(49)]
         public string Title { get; set; }
+        [Required]
+        [MaxLength(49)]
         public string Description { get; set; }
         public string Status { get; set; }
+        [Required]
+        [Display(Name = "% Complete")]
+        [Range(0, 100)]
         public int PercentageCompleted { get; set; }
+        [Display(Name = "Estimated Hours")]
         public int EstimatedDuration { get; set; }
+        [Required]
+        [Display(Name = "Date Started")]
         public System.DateTime StartDate { get; set; }
-        public Nullable<System.DateTime> EndDate { get; set; }
+        [Required]
+        [Display(Name = "Date Due")]
+        public Nullable<DateTime> EndDate { get; set; }
         public Nullable<int> Duration { get; set; }
     }
 }

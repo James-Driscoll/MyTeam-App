@@ -21,6 +21,15 @@ namespace MyTeam.Data.DAO
         // addTask
         public void addTask(Task task)
         {
+            task.Status = "Not Started";
+            task.PercentageCompleted = 0;
+
+            task.StartDate = DateTime.Today;
+            DateTime now = DateTime.Now;
+            DateTime due = task.EndDate ?? DateTime.Now;
+            TimeSpan ts = due - now;
+            task.Duration = Math.Abs(ts.Days);
+
             _context.Tasks.Add(task);
             _context.SaveChanges();
         }
@@ -63,9 +72,13 @@ namespace MyTeam.Data.DAO
             record.Status = task.Status;
             record.PercentageCompleted = task.PercentageCompleted;
             record.EstimatedDuration = task.EstimatedDuration;
-            record.StartDate = task.StartDate;
             record.EndDate = task.EndDate;
-            record.Duration = task.Duration;
+
+            DateTime start = record.StartDate;
+            DateTime due = task.EndDate ?? DateTime.Now;
+            TimeSpan ts = due - start;
+            record.Duration = Math.Abs(ts.Days);
+
             _context.SaveChanges();
         }
 
