@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Add User To Role";
+}
+
+<div class="container body-content">
+    <div class="row">
+        <h1>Add User To Role</h1>
+    </div>
+
+    <div class="row">
+        <h4>Hi @User.Identity.Name</h4>
+    </div>
+
+    @using (Html.BeginForm("AddUserToRole", "Admin"))
+    {
+        @Html.AntiForgeryToken();
+        @Html.ValidationSummary(true)
+        <p>
+            Username: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select...", new { @class = "form-control" })
+            Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select...", new { @class = "form-control" })
+        </p>
+        <input class="btn btn-primary" type="submit" value="Save" />
+    }
+
+    <div>
+        @Html.ActionLink("Back to Admin Control Panel", "Index")
+    </div>
+
+</div>

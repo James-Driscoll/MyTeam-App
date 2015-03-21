@@ -10,12 +10,7 @@
     <div class="row">
         <h4>Hi @User.Identity.Name</h4>
     </div>
-
-    <div class="row">
-        <h4>@Html.ActionLink("Admin", "Index", "Admin") / Users</h4>
-        <a class="pull-right new-item" href="@Url.Action("Register", "Account")">New User<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-    </div>
-
+    
     <table class="table">
         <tr>
             <th>First Name</th>
@@ -43,8 +38,8 @@
             </tr>
         }
     </table>
-
     <div>
         @Html.ActionLink("Back to Admin Control Panel", "Index")
     </div>
+
 </div>

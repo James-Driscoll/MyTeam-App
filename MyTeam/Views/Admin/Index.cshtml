@@ -1,6 +1,7 @@
 ﻿﻿@{
     ViewBag.Title = "Admin Control Panel";
 }
+
 <div class="container body-content">
     <div class="row">
         <h1>Admin Control Panel</h1>
@@ -9,11 +10,7 @@
     <div class="row">
         <h4>Hi @User.Identity.Name</h4>
     </div>
-
-    <div class="row">
-        <h4>Admin Control Panel</h4>
-    </div>
-
+    
     <div class="row">
         <div class="col-md-12">
 
@@ -24,7 +21,7 @@
                 <div class="panel-body">
                     <p>@Html.ActionLink("Users", "Users", "Admin")</p>
                     <p>@Html.ActionLink("View Roles for User", "RolesForUser", "Admin")</p>
-                    <p>@Html.ActionLink("Manage User Roles", "ManageUserRoles", "Admin")</p>
+                    <p>@Html.ActionLink("Add User To Role", "AddUserToRole", "Admin")</p>
                 </div>
             </div>
 
@@ -38,7 +35,7 @@
                     <p></p>
                 </div>
             </div>
-
         </div>
     </div>
+
 </div>

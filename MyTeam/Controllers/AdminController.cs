@@ -22,16 +22,49 @@ namespace MyTeam.Controllers
             _context = new MyTeam.Models.ApplicationDbContext();
         }
 
-        // CREATE ===================================================================
+        // CREATE =============================================================
+        // AddUserToRole : Allows Admin to manage the roles associate with a particular user.
+        [HttpGet]
+        public ActionResult AddUserToRole()
+        {
+            // populates roles for the view dropdown
+            var roleList = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr =>
+                new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+            ViewBag.Roles = roleList;
 
-
-        // READ =====================================================================
-        // Index : Returns view that contains a list of Admin specific operations.
-        public ActionResult Index() {
+            // populates users for the view dropdown
+            var userList = _context.Users.OrderBy(u => u.UserName).ToList().Select(uu =>
+                new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
+            ViewBag.Users = userList;
             return View();
         }
 
-        // Users : Returns list of all system registered users of any role.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddUserToRole(string UserName, string RoleName)
+        {
+            try
+            {
+                ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_context));
+                userManager.AddToRole(user.Id, RoleName);
+                return RedirectToAction("Index", "Admin");
+            }
+            catch
+            {
+                return RedirectToAction("AddUserToRole");
+            }
+
+        }
+
+        // READ ===============================================================
+        // ControlPanel : Returns view containing list of Admin related functions.
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        // Users : Returns list of users.
         public ActionResult Users()
         {
             return View(_context.Users.ToList());
@@ -68,47 +101,28 @@ namespace MyTeam.Controllers
             }
             return View("RolesForUserConfirmed");
         }
-        
-        // UPDATE ===================================================================   
-        // ManageUserRoles : Allows Admin to manage the roles associate with a particular user.
-        [HttpGet]
-        public ActionResult ManageUserRoles()
-        {
-            // populates roles for the view dropdown
-            var roleList = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr =>
-                new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
-            ViewBag.Roles = roleList;
 
-            // populates users for the view dropdown
-            var userList = _context.Users.OrderBy(u => u.UserName).ToList().Select(uu =>
-                new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
-            ViewBag.Users = userList;
-            return View();
+        // RoleUsers : Returns list of users for a specific role.
+        public ActionResult RoleUsers(string id)
+        {
+            ViewBag.roleId = id;
+            var usersInRole = _context.Users.Where(m => m.Roles.Any(r => r.RoleId == id));
+            return View(usersInRole);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ManageUserRoles(string UserName, string RoleName)
+        // UPDATE =============================================================       
+
+
+        // DELETE =============================================================
+        // RemoveUserFromRole : Removes a user from a specific role
+        public ActionResult RemoveUserFromRole(string userId, string roleID)
         {
-            ApplicationUser user = _context.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_context));
+            var role = roleManager.FindById(roleID);
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_context));
-            userManager.AddToRole(user.Id, RoleName);
-
-            // prepopulat roles for the view dropdown
-            //var roleList = _context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
-            //ViewBag.Roles = roleList;
-
-            // populate users for the view dropdown
-            //var userList = _context.Users.OrderBy(u => u.UserName).ToList().Select(uu => new SelectListItem { Value = uu.UserName.ToString(), Text = uu.UserName }).ToList();
-            //ViewBag.Users = userList;
-
-            //return View();
-
-            return RedirectToAction("Index");
+            userManager.RemoveFromRole(userId, role.Name);
+            return RedirectToAction("Index", "RoleAdmin");
         }
-
-        // DELETE ===================================================================
-
         
     }
 
