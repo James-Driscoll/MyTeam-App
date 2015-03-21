@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Edit Role";
 }
+
 <div class="container body-content">
     <div class="row">
         <h1>Edit Role</h1>
@@ -10,10 +11,6 @@
 
     <div class="row">
         <h4>Hi @User.Identity.Name</h4>
-    </div>
-
-    <div class="row">
-        <h4>@Html.ActionLink("Admin", "Index", "Admin") / @Html.ActionLink("Manage Roles", "Index", "RoleAdmin") / Edit Role</h4>
     </div>
 
     @using (Html.BeginForm())
@@ -39,12 +36,11 @@
             </div>
         </div>
     }
-
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
     }
-
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>
+
 </div>

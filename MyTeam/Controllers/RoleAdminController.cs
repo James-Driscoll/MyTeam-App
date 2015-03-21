@@ -27,7 +27,7 @@ namespace MyTeam.Controllers
         }
 
         // CREATE =============================================================
-        // CreateRole : Adds a new system role to the database.
+        // Create : Adds a new system role to the database.
         [HttpGet]
         public ActionResult Create()
         {
@@ -50,14 +50,17 @@ namespace MyTeam.Controllers
         }
 
         // READ ===============================================================
-        // Roles : Returns list of system roles.
+        // Index : Returns list of system roles.
         public ActionResult Index()
         {
-            return View(_context.Roles.ToList());
+
+            ViewBag.RolesList = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_context)).Roles.ToList();
+
+            return View();
         }
 
         // UPDATE =============================================================
-        // EditRole : Edits the name of an existing system role.
+        // Edit : Edits the name of an existing system role.
         [HttpGet]
         public ActionResult Edit(string id)
         {
@@ -82,7 +85,7 @@ namespace MyTeam.Controllers
         }
 
         // DELETE =============================================================
-        // DeleteRole : Deletes a system role from the database.
+        // Delete : Deletes a system role from the database.
         [HttpGet]
         public ActionResult Delete(string id)
         {

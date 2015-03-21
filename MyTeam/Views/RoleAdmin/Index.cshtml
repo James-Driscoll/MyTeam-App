@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Roles";
 }
+
 <div class="container body-content">
     <div class="row">
         <h1>Roles</h1>
@@ -10,28 +11,32 @@
         <h4>Hi @User.Identity.Name</h4>
     </div>
 
-    <div class="row">
-        <h4>@Html.ActionLink("Admin", "Index", "Admin") / Manage Roles</h4>
-        <a class="pull-right new-item" href="@Url.Action("Create", "RoleAdmin")">New Role<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-    </div>
-
+    <p>
+        @Html.ActionLink("Create New Role", "Create")
+    </p>
+    <p>
+        Select a role below to view the users it contains.
+    </p>
     <table class="table">
         <tr>
             <th>Role Name</th>
             <th>Role ID</th>
             <th></th>
         </tr>
-        @foreach (var role in Model)
+        @foreach (var role in ViewBag.RolesList)
         {
             <tr>
-                <td>@role.Name</td>
+                <td>@Html.ActionLink((string)role.Name, "RoleUsers", new { controller = "Admin", id = role.Id })</td>
                 <td>@role.Id</td>
                 <td>
-                    <a href="@Url.Action("Edit", new { id = @role.Id })"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-                    <a href="@Url.Action("Delete", new { id = @role.Id })"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                    <a href="@Url.Action("Edit", new { id = role.Id })"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                    <a href="@Url.Action("Delete", new { id = role.Id })"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
                 </td>
             </tr>
         }
     </table>
+    <div>
+        @Html.ActionLink("Back to Admin Control Panel", "Index", "Admin")
+    </div>
 
 </div>
