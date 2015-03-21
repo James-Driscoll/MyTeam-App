@@ -11,13 +11,17 @@ namespace MyTeam.Data
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Evaluation
     {
         public int Id { get; set; }
         public string FK_Assessor { get; set; }
         public int FK_Task { get; set; }
+        [Required]
+        [Range(0,10)]
         public int Mark { get; set; }
+        [MaxLength(49)]
         public string Comments { get; set; }
     }
 }
