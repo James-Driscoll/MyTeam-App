@@ -23,6 +23,15 @@ namespace MyTeam.Data.DAO
         // addProject
         public void addProject(Project project)
         {
+            project.Status = "Not Started";
+            project.PercentageCompleted = 0;
+
+            project.StartDate = DateTime.Today;
+            DateTime now = DateTime.Now;
+            DateTime due = project.EndDate ?? DateTime.Now;
+            TimeSpan ts = due - now;
+            project.Duration = Math.Abs(ts.Days);
+
             _context.Projects.Add(project);
             _context.SaveChanges();
         }
@@ -63,9 +72,13 @@ namespace MyTeam.Data.DAO
             record.Description = project.Description;
             record.Status = project.Status;
             record.PercentageCompleted = project.PercentageCompleted;
-            record.StartDate = project.StartDate;
             record.EndDate = project.EndDate;
-            record.Duration = project.Duration;
+
+            DateTime start = record.StartDate;
+            DateTime due = project.EndDate ?? DateTime.Now;
+            TimeSpan ts = due - start;
+            record.Duration = Math.Abs(ts.Days);
+
             _context.SaveChanges();
         }
 
