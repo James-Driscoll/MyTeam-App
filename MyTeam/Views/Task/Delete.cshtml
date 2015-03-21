@@ -93,7 +93,7 @@
             @Html.AntiForgeryToken()
 
             <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                <input type="submit" value="Delete" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Careful! You will lose the record of Evaluations too" /> |
                 @Html.ActionLink("Back to Teams List", "Index", "Team")
             </div>
         }

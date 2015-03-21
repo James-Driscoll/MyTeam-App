@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Delete Project";
 }
+
 <div class="container body-content">
     <div class="row">
         <h1>Delete Project</h1>
@@ -85,7 +86,7 @@
             @Html.AntiForgeryToken()
 
             <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                <input type="submit" value="Delete" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Careful! This will remove all assigned Tasks too" /> |
                 @Html.ActionLink("Back to Teams List", "Index", "Team")
             </div>
         }
