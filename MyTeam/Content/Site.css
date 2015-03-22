@@ -123,11 +123,12 @@ footer {
 .project .pr-title {
     margin-top: 25px;
 }
+.project .pr-actions {
+    margin-top: 54px;
+}
 .project .pr-actions a {
     font-size: 20px;
-    display: block;
     color: #3d3d3e;
-    margin-top: 70px;
     margin-left: 20px;
     text-decoration: none;
 }
