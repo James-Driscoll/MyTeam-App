@@ -32,9 +32,15 @@ namespace MyTeam.Data
         [Display(Name = "Date Started")]
         [DataType(DataType.Date)]
         public System.DateTime StartDate { get; set; }
+
+
         [Required]
-        [Display(Name = "Date Due")]
+        //[Display(Name = "Date Due")]
         public Nullable<System.DateTime> EndDate { get; set; }
+        
+        
+        
+        
         [Display(Name = "Days Until Due")]
         public Nullable<int> Duration { get; set; }
     }
