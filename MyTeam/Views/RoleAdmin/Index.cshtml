@@ -25,11 +25,15 @@
         @foreach (var role in ViewBag.RolesList)
         {
             <tr>
-                <td>@Html.ActionLink((string)role.Name, "RoleUsers", new { controller = "Admin", id = role.Id })</td>
-                <td>@role.Id</td>
                 <td>
-                    <a href="@Url.Action("Edit", new { id = role.Id })"><span class="glyphicon glyphicon-edit" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Edit"></span></a>
-                    <a href="@Url.Action("Delete", new { id = role.Id })"><span class="glyphicon glyphicon-remove" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Delete"></span></a>
+                    <a href="@Url.Action("RoleUsers", new { controller = "Admin", id = role.Id })" data-toggle="tooltip" data-placement="right" title="View role users">@role.Name</a>
+                </td>
+                <td>
+                    @role.Id
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = role.Id })"><span class="glyphicon glyphicon-edit" aria-hidden="true" data-toggle="tooltip" data-placement="left" title="Edit"></span></a>
+                    <a href="@Url.Action("Delete", new { id = role.Id })"><span class="glyphicon glyphicon-remove" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Delete"></span></a>
                 </td>
             </tr>
         }
