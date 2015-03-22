@@ -5,17 +5,16 @@
 }
 
 <div class="container body-content">
+
     <div class="row">
-        <h1>Role Users</h1>
+        <h1 class="text-center">@ViewBag.Title</h1>
     </div>
 
     <div class="row">
-        <h4>Hi @User.Identity.Name</h4>
+        <h4 class="pull-left">Admin Control Panel / Manage Roles / Roles Users</h4>
+        <a class="pull-right new-item" href="@Url.Action("AddUserToRole", "Admin")">New User<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
     </div>
 
-    <p>
-        @Html.ActionLink("Add User To Role", "AddUserToRole", "Admin")
-    </p>
     <table class="table">
         <tr>
             <th>
@@ -79,11 +78,15 @@
                     @Html.DisplayFor(modelItem => item.BirthDate)
                 </td>
                 <td>
-                    @Html.ActionLink("Remove from Role", "RemoveUserFromRole", new { userId = item.Id, roleId = ViewBag.roleId, controller = "Admin" })
+                    <a href="@Url.Action("RemoveUserFromRole", new { userId = item.Id, roleId = ViewBag.roleId, controller = "Admin" })"><span class="glyphicon glyphicon-remove" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Remove User from Role"></span></a>
                 </td>
             </tr>
         }
 
     </table>
+
+    <div>
+        @Html.ActionLink("Back to Admin Control Panel", "Index")
+    </div>
 
 </div>

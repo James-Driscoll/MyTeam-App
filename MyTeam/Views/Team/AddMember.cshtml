@@ -5,16 +5,13 @@
 }
 
 <div class="container body-content">
+
     <div class="row">
-        <h1>Add Member</h1>
+        <h1>@ViewBag.Title</h1>
     </div>
 
     <div class="row">
-        <h4>Hi @User.Identity.Name</h4>
-    </div>
-
-    <div class="row">
-        <h4>@Html.ActionLink("Tutor", "Index", "Tutor") / Add Member</h4>
+        <h4 class="pull-left">Tutor Dashboard / Add Member</h4>
     </div>
 
     @using (Html.BeginForm())
@@ -27,7 +24,7 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
             <div class="form-group">
-                
+
                 <div class="col-md-10">
                     @Html.DropDownListFor(model => model.FK_Member, (List<SelectListItem>)ViewBag.userList, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.FK_Member, "", new { @class = "text-danger" })
@@ -43,7 +40,7 @@
     }
 
     <div>
-        @Html.ActionLink("Back to List", "Index", "Tutor")
+        @Html.ActionLink("Back to Tutor Dashboard", "Index", "Tutor")
     </div>
 
 </div>

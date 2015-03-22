@@ -5,16 +5,13 @@
 }
 
 <div class="container body-content">
+
     <div class="row">
-        <h1>Delete Task</h1>
+        <h1>@ViewBag.Title</h1>
     </div>
 
     <div class="row">
-        <h4>Hi @User.Identity.Name</h4>
-    </div>
-
-    <div class="row">
-        <h4>@Html.ActionLink("Teams", "Index", "Team") / Projects / Delete Task</h4>
+        <h4 class="pull-left">Teams / Projects / Tasks / Delete Task</h4>
     </div>
 
     <h3>Are you sure you want to delete this task?</h3>
@@ -97,5 +94,7 @@
                 @Html.ActionLink("Back to Teams List", "Index", "Team")
             </div>
         }
+
     </div>
+
 </div>

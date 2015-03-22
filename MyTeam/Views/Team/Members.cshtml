@@ -5,16 +5,13 @@
 }
 
 <div class="container body-content">
+
     <div class="row">
-        <h1>Team Members</h1>
+        <h1 class="text-center">@ViewBag.Title</h1>
     </div>
 
     <div class="row">
-        <h4>Hi @User.Identity.Name</h4>
-    </div>
-
-    <div class="row">
-        <h4>@Html.ActionLink("Tutor", "Index", "Tutor") / Team Members</h4>
+        <h4 class="pull-left">Tutor Dashboard / Team Members</h4>
     </div>
 
     <table class="table">
@@ -42,7 +39,7 @@
     </table>
 
     <div>
-        @Html.ActionLink("Back to List", "Index", "Tutor")
+        @Html.ActionLink("Back to Tutor Dashboard", "Index", "Tutor")
     </div>
 
 </div>

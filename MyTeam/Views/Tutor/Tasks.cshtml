@@ -5,20 +5,13 @@
 }
 
 <div class="container body-content">
+
     <div class="row">
-        <h1>Tutor - Team Tasks</h1>
+        <h1>@ViewBag.Title</h1>
     </div>
 
     <div class="row">
-        <h4>Hi @User.Identity.Name</h4>
-    </div>
-
-    <div class="row">
-        <h4>Tasks</h4>
-    </div>
-
-    <div class="row">
-        <p>Select a task below to view it's evaluations.</p>
+        <h4 class="pull-left">Tutor Dashboard / Team Projects / Project Tasks</h4>
     </div>
 
     <table class="table">
@@ -59,7 +52,7 @@
                     @Html.DisplayFor(modelItem => item.FK_AssignedTo)
                 </td>
                 <td>
-                    @Html.ActionLink(item.Title, "Evaluations", new { id = item.Id, controller = "Tutor" })
+                    <a href="@Url.Action("Evaluations", new { id = item.Id, controller = "Tutor" })" data-toggle="tooltip" data-placement="right" title="View task's evaluations">@item.Title</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
@@ -87,7 +80,7 @@
     </table>
 
     <div>
-        @Html.ActionLink("Back to Teams List", "Index", "Tutor")
+        @Html.ActionLink("Back to Tutor Dashboard", "Index", "Tutor")
     </div>
 
 </div>

@@ -3,17 +3,16 @@
 }
 
 <div class="container body-content">
+
     <div class="row">
-        <h1>Roles</h1>
+        <h1 class="text-center">@ViewBag.Title</h1>
     </div>
 
     <div class="row">
-        <h4>Hi @User.Identity.Name</h4>
+        <h4 class="pull-left">Admin Control Panel / Manage Roles</h4>
+        <a class="pull-right new-item" href="@Url.Action("Create", "RoleAdmin")">New Role<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
     </div>
 
-    <p>
-        @Html.ActionLink("Create New Role", "Create")
-    </p>
     <p>
         Select a role below to view the users it contains.
     </p>
@@ -29,8 +28,8 @@
                 <td>@Html.ActionLink((string)role.Name, "RoleUsers", new { controller = "Admin", id = role.Id })</td>
                 <td>@role.Id</td>
                 <td>
-                    <a href="@Url.Action("Edit", new { id = role.Id })"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-                    <a href="@Url.Action("Delete", new { id = role.Id })"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                    <a href="@Url.Action("Edit", new { id = role.Id })"><span class="glyphicon glyphicon-edit" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Edit"></span></a>
+                    <a href="@Url.Action("Delete", new { id = role.Id })"><span class="glyphicon glyphicon-remove" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Delete"></span></a>
                 </td>
             </tr>
         }

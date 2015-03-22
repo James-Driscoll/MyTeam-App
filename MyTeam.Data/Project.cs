@@ -35,7 +35,7 @@ namespace MyTeam.Data
         [Required]
         [Display(Name = "Date Due")]
         public Nullable<System.DateTime> EndDate { get; set; }
-        [Display(Name = "Days until due")]
+        [Display(Name = "Days Until Due")]
         public Nullable<int> Duration { get; set; }
     }
 }

@@ -3,14 +3,16 @@
 }
 
 <div class="container body-content">
+
     <div class="row">
-        <h1>Users</h1>
+        <h1 class="text-center">@ViewBag.Title</h1>
     </div>
 
     <div class="row">
-        <h4>Hi @User.Identity.Name</h4>
+        <h4 class="pull-left">Admin Control Panel / Users</h4>
+        <a class="pull-right new-item" href="@Url.Action("Register", "Account")">New User<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
     </div>
-    
+
     <table class="table">
         <tr>
             <th>First Name</th>
@@ -38,6 +40,7 @@
             </tr>
         }
     </table>
+
     <div>
         @Html.ActionLink("Back to Admin Control Panel", "Index")
     </div>

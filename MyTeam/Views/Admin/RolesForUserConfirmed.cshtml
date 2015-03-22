@@ -3,14 +3,15 @@
 }
 
 <div class="container body-content">
+
     <div class="row">
-        <h1>Roles For User Confirmed</h1>
+        <h1>@ViewBag.Title</h1>
     </div>
 
     <div class="row">
-        <h4>Hi @User.Identity.Name</h4>
+        <h4 class="pull-left">Admin Control Panel / Users / Roles For User / Confirmation</h4>
     </div>
-    
+
     @if (ViewBag.RolesForThisUser != null)
     {
         <div>

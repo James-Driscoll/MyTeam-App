@@ -5,16 +5,13 @@
 }
 
 <div class="container body-content">
+
     <div class="row">
-        <h1>Tutor - Task Evaluations</h1>
+        <h1>@ViewBag.Title</h1>
     </div>
 
     <div class="row">
-        <h4>Hi @User.Identity.Name</h4>
-    </div>
-
-    <div class="row">
-        <h4>Evaluations</h4>
+        <h4 class="pull-left">Tutor Dashboard / Team Projects / Project Tasks / Task Evaluations</h4>
     </div>
 
     <table class="table">
@@ -47,7 +44,7 @@
     <p>Lowest Mark:  <strong>@ViewBag.lowestMark</strong></p>
 
     <div>
-        @Html.ActionLink("Back to Teams List", "Index", "Tutor")
+        @Html.ActionLink("Back to Tutor Dashbaord", "Index", "Tutor")
     </div>
 
 </div>

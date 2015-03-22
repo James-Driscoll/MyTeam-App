@@ -5,16 +5,13 @@
 }
 
 <div class="container body-content">
+
     <div class="row">
-        <h1>Create Team</h1>
+        <h1 class="text-center">@ViewBag.Title</h1>
     </div>
 
     <div class="row">
-        <h4>Hi @User.Identity.Name</h4>
-    </div>
-
-    <div class="row">
-        <h4>@Html.ActionLink("Tutor", "Index", "Tutor") / Create Team</h4>
+        <h4 class="pull-left">Tutor Dashboard / Create Team</h4>
     </div>
 
     @using (Html.BeginForm())
@@ -42,6 +39,7 @@
     }
 
     <div>
-        @Html.ActionLink("Back to List", "Index", "Tutor")
+        @Html.ActionLink("Back to Tutor Dashboard", "Index", "Tutor")
     </div>
+
 </div>

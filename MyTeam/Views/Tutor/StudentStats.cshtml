@@ -3,17 +3,15 @@
 ﻿@{
     ViewBag.Title = "Student Statistics";
 }
+
 <div class="container body-content">
+
     <div class="row">
-        <h1>Student Statistics</h1>
+        <h1>@ViewBag.Title</h1>
     </div>
 
     <div class="row">
-        <h4>Hi @User.Identity.Name</h4>
-    </div>
-
-    <div class="row">
-        <h4>Tutor / Teams / Student Stats</h4>
+        <h4 class="pull-left">Tutor Dashboard / Team Members / Student Stats</h4>
     </div>
 
     <div>
@@ -64,6 +62,7 @@
     </div>
 
     <p>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back to Tutor Dashboard", "Index", "Tutor")
     </p>
+
 </div>

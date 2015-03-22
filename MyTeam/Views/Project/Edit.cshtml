@@ -3,17 +3,15 @@
 @{
     ViewBag.Title = "Edit Project";
 }
+
 <div class="container body-content">
+
     <div class="row">
-        <h1>Edit Project</h1>
+        <h1>@ViewBag.Title</h1>
     </div>
 
     <div class="row">
-        <h4>Hi @User.Identity.Name</h4>
-    </div>
-
-    <div class="row">
-        <h4>@Html.ActionLink("Teams", "Index", "Team") / Projects / Edit Project</h4>
+        <h4 class="pull-left">Teams / Projects / Edit Project</h4>
         <a class="pull-right new-item" href="@Url.Action("Create", "Project")">New Project<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
     </div>
 
@@ -89,4 +87,5 @@
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
     }
+
 </div>

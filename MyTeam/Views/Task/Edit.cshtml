@@ -3,17 +3,15 @@
 @{
     ViewBag.Title = "Edit Task";
 }
+
 <div class="container body-content">
+
     <div class="row">
-        <h1>Edit Task</h1>
+        <h1>@ViewBag.Title</h1>
     </div>
 
     <div class="row">
-        <h4>Hi @User.Identity.Name</h4>
-    </div>
-
-    <div class="row">
-        <h4>@Html.ActionLink("Teams", "Index", "Team") / Projects / Edit Task</h4>
+        <h4 class="pull-left">Teams / Projects / Tasks / Edit Task</h4>
     </div>
 
     @using (Html.BeginForm())
@@ -89,4 +87,6 @@
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
     }
+
 </div>
+
