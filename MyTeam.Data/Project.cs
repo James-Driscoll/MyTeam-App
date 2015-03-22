@@ -30,17 +30,12 @@ namespace MyTeam.Data
         [Range(0, 100, ErrorMessage="Must be between 0 and 100")]
         public int PercentageCompleted { get; set; }
         [Display(Name = "Date Started")]
-        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime StartDate { get; set; }
-
-
         [Required]
-        //[Display(Name = "Date Due")]
+        [Display(Name = "Date Due")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> EndDate { get; set; }
-        
-        
-        
-        
         [Display(Name = "Days Until Due")]
         public Nullable<int> Duration { get; set; }
     }

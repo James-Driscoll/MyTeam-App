@@ -37,9 +37,11 @@ namespace MyTeam.Data
         public int EstimatedDuration { get; set; }
         [Required]
         [Display(Name = "Date Started")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime StartDate { get; set; }
         [Required]
         [Display(Name = "Date Due")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<DateTime> EndDate { get; set; }
         public Nullable<int> Duration { get; set; }
     }

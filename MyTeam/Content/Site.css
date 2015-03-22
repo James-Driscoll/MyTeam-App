@@ -149,6 +149,7 @@ footer {
     border-radius: 5px;
     min-height: 410px;
     color: #3d3d3e;
+    margin-top: 30px;
 }
 .task .ta-title {
     padding-top: 15px;
