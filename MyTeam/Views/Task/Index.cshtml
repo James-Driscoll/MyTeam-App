@@ -5,16 +5,13 @@
 }
 
 <div class="container body-content">
-    <div class="row">
-        <h1 class="text-center">Tasks</h1>
 
-    </div>
     <div class="row">
-        <h4>Hi @User.Identity.Name</h4>
+        <h1 class="text-center">@ViewBag.Title</h1>
     </div>
 
     <div class="row">
-        <h4>@Html.ActionLink("Teams", "Index", "Team") / Projects / Tasks</h4>
+        <h4 class="pull-left">Teams / Projects / Tasks</h4>
     </div>
 
     <div class="row">
@@ -29,13 +26,13 @@
 
                     <div class="col-md-12">
                         <div class="ta-details">
-                            <p>Assigned To: <strong>@Html.DisplayFor(modelItem => item.FK_AssignedTo)</strong></p>
-                            <p>Date Started: <strong>@Html.DisplayFor(modelItem => item.StartDate)</strong></p>
-                            <p>Date Finished: <strong>@Html.DisplayFor(modelItem => item.EndDate)</strong></p>
-                            <p>Status: <strong>@Html.DisplayFor(modelItem => item.Status)</strong></p>
-                            <p>Percentage Completed: <strong>@Html.DisplayFor(modelItem => item.PercentageCompleted)%</strong></p>
-                            <p>Estimated Duration: <strong>@Html.DisplayFor(modelItem => item.EstimatedDuration) hours</strong></p>
-                            <p>Duration: <strong>@Html.DisplayFor(modelItem => item.Duration)</strong></p>
+                            <p>Assigned To: <strong class="pull-right">@Html.DisplayFor(modelItem => item.FK_AssignedTo)</strong></p>
+                            <p>Date Started: <strong class="pull-right">@Html.DisplayFor(modelItem => item.StartDate)</strong></p>
+                            <p>Date Due: <strong class="pull-right">@Html.DisplayFor(modelItem => item.EndDate)</strong></p>
+                            <p>Current Status: <strong class="pull-right">@Html.DisplayFor(modelItem => item.Status)</strong></p>
+                            <p>Percentage Completed: <strong class="pull-right">@Html.DisplayFor(modelItem => item.PercentageCompleted)%</strong></p>
+                            <p>Estimated Hours Required: <strong class="pull-right">@Html.DisplayFor(modelItem => item.EstimatedDuration)</strong></p>
+                            <p>Duration: <strong class="pull-right">@Html.DisplayFor(modelItem => item.Duration)</strong></p>
                         </div>
                     </div>
 
