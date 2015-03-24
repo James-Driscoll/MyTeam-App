@@ -68,7 +68,7 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.BirthDate, "Date of Birth *", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.BirthDate, new { @class = "MyDate form-control" })
         </div>

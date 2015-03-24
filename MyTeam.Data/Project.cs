@@ -36,7 +36,7 @@ namespace MyTeam.Data
         [Display(Name = "Date Due")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> EndDate { get; set; }
-        [Display(Name = "Days Until Due")]
+        [Display(Name = "Project Duration")]
         public Nullable<int> Duration { get; set; }
     }
 }

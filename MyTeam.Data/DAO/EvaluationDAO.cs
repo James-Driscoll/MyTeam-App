@@ -55,8 +55,7 @@ namespace MyTeam.Data.DAO
             IQueryable<Evaluation> _evaluations;
             _evaluations = from evaluation in _context.Evaluations
                            join task in _context.Tasks on evaluation.FK_Task equals task.Id
-                           where task.Status == "Finished"
-                           where task.FK_AssignedTo == id
+                           where task.Status == "Finished" && task.FK_AssignedTo == id
                            select evaluation;
             return _evaluations.ToList<Evaluation>();
         }
