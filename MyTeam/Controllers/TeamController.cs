@@ -67,30 +67,51 @@ namespace MyTeam.Controllers
         }
 
         // Members : Returns an IList of all members that are part of a particular team.
-        [Authorize(Roles = "Tutor, Admin")]
-        public ActionResult Members(int id)
-        {
-            // declare local list of team members.
-            IList<TeamMember> _teamMembers = _teamService.getTeamMembers(id);
+       [Authorize(Roles = "Tutor, Admin")]
+       public ActionResult Members(int id)
+       {
+           // declare local list of team members.
+           IList<TeamMember> _teamMembers = _teamService.getTeamMembers(id);
            // MyTeam.Data.BEANS.TeamMemberBEAN _teamMemberBEAN = new MyTeam.Data.BEANS.TeamMemberBEAN();
-            IList<MyTeam.Data.BEANS.TeamMemberBEAN> _teamMemberBEANs = new List<MyTeam.Data.BEANS.TeamMemberBEAN>();
-            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            
-            // loop through team member list and replace the UserID with the UserName.
-            for (int i = 0; i < _teamMembers.Count; i++)
-            {
-                ApplicationUser user = userManager.FindById(_teamMembers[i].FK_Member);
-                MyTeam.Data.BEANS.TeamMemberBEAN _teamMemberBEAN = new MyTeam.Data.BEANS.TeamMemberBEAN();
-                _teamMembers[i].FK_Member = user.UserName;
-                _teamMemberBEAN.Id = _teamMembers[i].Id;
-                _teamMemberBEAN.userID = user.Id;
-                _teamMemberBEAN.userName = user.UserName;
-                _teamMemberBEANs.Add(_teamMemberBEAN);
-            }
-            
-            // return the modified list to the view.
-            return View(_teamMemberBEANs);
-        }
+           IList<MyTeam.Data.BEANS.TeamMemberBEAN> _teamMemberBEANs = new List<MyTeam.Data.BEANS.TeamMemberBEAN>();
+           var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+
+           // loop through team member list and replace the UserID with the UserName.
+           for (int i = 0; i < _teamMembers.Count; i++)
+           {
+               ApplicationUser user = userManager.FindById(_teamMembers[i].FK_Member);
+               MyTeam.Data.BEANS.TeamMemberBEAN _teamMemberBEAN = new MyTeam.Data.BEANS.TeamMemberBEAN();
+               _teamMembers[i].FK_Member = user.UserName;
+               _teamMemberBEAN.Id = _teamMembers[i].Id;
+               _teamMemberBEAN.userID = user.Id;
+               _teamMemberBEAN.userName = user.UserName;
+               _teamMemberBEANs.Add(_teamMemberBEAN);
+           }
+
+           for (int i = 0; i < _projectService.getProjects(id).Count; i++)
+           {
+               _teamMemberBEANs[i].projectList = _projectService.getProjects(id);
+
+               var tet = _projectService.getProjects(id);
+
+               //_teamMemberBEANs[i].projectList.Union(IEnumerable<Project>, _projectService.getProjects(id));
+               //_teamMemberBEANs[i].projectList = _projectService.getProjects(id).ToList();
+               //var projectList = _projectService.getProjects(id).Select(pl =>
+               //    new SelectListItem { Value = pl.Id.ToString(), Text = pl.Title }).ToList();
+               //_teamMemberBEANs[i].projectList = projectList;
+           }
+
+
+           var list = _projectService.getProjects(id).Select(x =>new SelectListItem{
+                Text = x.Title,
+                Value = x.Id.ToString()
+           });
+
+           ViewBag.ProjectList = list;
+
+           // return the modified list to the view.
+           return View(_teamMemberBEANs);
+       }
 
         // UPDATE ===================================================================
         // Edit : Allows for updateding one Team.

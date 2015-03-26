@@ -40,9 +40,9 @@ namespace MyTeam.Services.Service
         }
 
         // getCompletedEvaluations
-        public IList<Evaluation> getCompletedEvaluations(string id)
+        public IList<Evaluation> getCompletedEvaluations(string student, int project)
         {
-            return _evaluationDAO.getCompletedEvaluations(id);
+            return _evaluationDAO.getCompletedEvaluations(student, project);
         }
 
         // UPDATE ===================================================================

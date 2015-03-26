@@ -19,6 +19,9 @@ namespace MyTeam.Services.IService
         // getTaskes
         IList<MyTeam.Data.Task> getTasks(int id);
 
+        // getCompletedTasks
+        IList<MyTeam.Data.Task> getCompletedTasks(string student, int project);
+
         // getTask
         MyTeam.Data.Task getTask(int id);
 

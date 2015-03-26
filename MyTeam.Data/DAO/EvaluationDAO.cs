@@ -50,12 +50,12 @@ namespace MyTeam.Data.DAO
         }
 
         // getCompletedEvaluations
-        public IList<Evaluation> getCompletedEvaluations(string id)
+        public IList<Evaluation> getCompletedEvaluations(string student, int project)
         {
             IQueryable<Evaluation> _evaluations;
             _evaluations = from evaluation in _context.Evaluations
                            join task in _context.Tasks on evaluation.FK_Task equals task.Id
-                           where task.Status == "Finished" && task.FK_AssignedTo == id
+                           where task.Status == "Finished" && task.FK_AssignedTo == student && task.FK_Project == project
                            select evaluation;
             return _evaluations.ToList<Evaluation>();
         }

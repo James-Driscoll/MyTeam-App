@@ -35,6 +35,12 @@ namespace MyTeam.Services.Service
             return _taskDAO.getTasks(id);
         }
 
+        // getCompletedTasks
+        public IList<MyTeam.Data.Task> getCompletedTasks(string student, int project)
+        {
+            return _taskDAO.getCompletedTasks(student, project);
+        }
+
         // getTask
         public MyTeam.Data.Task getTask(int id)
         {

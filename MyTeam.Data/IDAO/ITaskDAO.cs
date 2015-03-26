@@ -18,6 +18,9 @@ namespace MyTeam.Data.IDAO
         // getTasks
         IList<Task> getTasks(int id);
 
+        // getCompletedTasks
+        IList<Task> getCompletedTasks(string student, int project);
+
         // getTask
         Task getTask(int id);
 

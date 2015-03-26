@@ -46,6 +46,17 @@ namespace MyTeam.Data.DAO
             return _tasks.ToList<Task>();
         }
 
+        // getCompletedTasks
+        public IList<Task> getCompletedTasks(string student, int project)
+        {
+            IQueryable<Task> _tasks;
+            _tasks = from task
+                     in _context.Tasks
+                     where task.FK_AssignedTo == student && task.FK_Project == project && task.Status == "Finished"
+                     select task;
+            return _tasks.ToList<Task>();
+        }
+
         // getTask
         public Task getTask(int id)
         {

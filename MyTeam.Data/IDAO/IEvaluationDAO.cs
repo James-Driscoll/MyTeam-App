@@ -22,7 +22,7 @@ namespace MyTeam.Data.IDAO
         Evaluation getEvaluation(int id);
 
         // getCompletedEvaluations
-        IList<Evaluation> getCompletedEvaluations(string id);
+        IList<Evaluation> getCompletedEvaluations(string student, int project);
 
         // UPDATE ====================================================================
         // editEvaluation

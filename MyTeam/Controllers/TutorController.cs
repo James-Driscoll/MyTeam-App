@@ -92,13 +92,24 @@ namespace MyTeam.Controllers
         }
 
         // StudentStats
-        public ActionResult StudentStats(string id)
+        public ActionResult StudentStats(string student, string project)
         {
+            int projectID = -1;
+            try
+            {
+                projectID = Int32.Parse(project);
+            }
+            catch
+            {
+                
+            }
+            
+
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             MyTeam.Data.BEANS.EvaluationBEAN evaluationBEAN = new MyTeam.Data.BEANS.EvaluationBEAN();
-            ApplicationUser user = userManager.FindById(id);
+            ApplicationUser user = userManager.FindById(student);
 
-            IList<Evaluation> _evaluations = _evaluationService.getCompletedEvaluations(user.Id);
+            IList<Evaluation> _evaluations = _evaluationService.getCompletedEvaluations(user.Id, projectID);
             int markTotal = 0;
             int lowestMark = 101;
             int highestMark = 0;
@@ -123,14 +134,23 @@ namespace MyTeam.Controllers
 
                 float averageMark = markTotal / _evaluations.Count;
                 
+                //IList<Task> _tasks = _taskService.getTasks()
+
+
                 evaluationBEAN.Student = user.UserName;
                 evaluationBEAN.AverageMark = averageMark;
                 evaluationBEAN.HighestMark = highestMark;
                 evaluationBEAN.LowestMark = lowestMark;
-                evaluationBEAN.TasksCompleted = _evaluations.Count();
+                evaluationBEAN.TasksCompleted = _taskService.getCompletedTasks(user.Id, projectID).Count;
             };
 
             return View(evaluationBEAN);
+        }
+
+        public ActionResult ProjectStats(string student, int team)
+        {
+            ViewBag.TeamID = team;
+            return View(_projectService.getProjects(team));
         }
 
         // UPDATE ===================================================================
