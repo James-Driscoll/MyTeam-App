@@ -293,6 +293,7 @@
     <Content Include="Views\RoleAdmin\Delete.cshtml" />
     <Content Include="Views\RoleAdmin\Edit.cshtml" />
     <Content Include="Views\RoleAdmin\Index.cshtml" />
+    <Content Include="Views\Tutor\NoEvaluations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

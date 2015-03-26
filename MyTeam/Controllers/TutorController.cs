@@ -94,59 +94,71 @@ namespace MyTeam.Controllers
         // StudentStats
         public ActionResult StudentStats(string student, string project)
         {
-            int projectID = -1;
             try
             {
-                projectID = Int32.Parse(project);
+                int projectID = -1;
+                try
+                {
+                    projectID = Int32.Parse(project);
+                }
+                catch
+                {
+                    return View();
+                }
+
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                MyTeam.Data.BEANS.EvaluationBEAN evaluationBEAN = new MyTeam.Data.BEANS.EvaluationBEAN();
+                ApplicationUser user = userManager.FindById(student);
+
+                IList<Evaluation> _evaluations = _evaluationService.getCompletedEvaluations(user.Id, projectID);
+
+                if (_evaluations.Count > 0)
+                {
+                    int markTotal = 0;
+                    int lowestMark = 101;
+                    int highestMark = 0;
+
+                    for (int i = 0; i < _evaluations.Count; i++)
+                    {
+                        markTotal = markTotal + _evaluations[i].Mark;
+
+                        if (_evaluations[i].Mark > highestMark)
+                        {
+                            highestMark = _evaluations[i].Mark;
+                        }
+
+                        if (_evaluations[i].Mark < lowestMark)
+                        {
+                            lowestMark = _evaluations[i].Mark;
+                        }
+
+                    }
+
+                    float averageMark = markTotal / _evaluations.Count;
+
+                    evaluationBEAN.Student = user.UserName;
+                    evaluationBEAN.AverageMark = averageMark;
+                    evaluationBEAN.HighestMark = highestMark;
+                    evaluationBEAN.LowestMark = lowestMark;
+                    evaluationBEAN.TasksCompleted = _taskService.getCompletedTasks(user.Id, projectID).Count;
+
+                    return View(evaluationBEAN);
+                }
+                else
+                {
+                    return RedirectToAction("NoEvaluations");
+                }
+                
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index", "Tutor");
             }
-
-            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            MyTeam.Data.BEANS.EvaluationBEAN evaluationBEAN = new MyTeam.Data.BEANS.EvaluationBEAN();
-            ApplicationUser user = userManager.FindById(student);
-
-            IList<Evaluation> _evaluations = _evaluationService.getCompletedEvaluations(user.Id, projectID);
-            int markTotal = 0;
-            int lowestMark = 101;
-            int highestMark = 0;
-
-            if (_evaluations.Count > 0)
-            {
-                for (int i = 0; i < _evaluations.Count; i++)
-                {
-                    markTotal = markTotal + _evaluations[i].Mark;
-
-                    if (_evaluations[i].Mark > highestMark)
-                    {
-                        highestMark = _evaluations[i].Mark;
-                    }
-
-                    if (_evaluations[i].Mark < lowestMark)
-                    {
-                        lowestMark = _evaluations[i].Mark;
-                    }
-
-                }
-
-                float averageMark = markTotal / _evaluations.Count;
-
-                evaluationBEAN.Student = user.UserName;
-                evaluationBEAN.AverageMark = averageMark;
-                evaluationBEAN.HighestMark = highestMark;
-                evaluationBEAN.LowestMark = lowestMark;
-                evaluationBEAN.TasksCompleted = _taskService.getCompletedTasks(user.Id, projectID).Count;
-            };
-
-            return View(evaluationBEAN);
         }
 
-        public ActionResult ProjectStats(string student, int team)
+        public ActionResult NoEvaluations()
         {
-            ViewBag.TeamID = team;
-            return View(_projectService.getProjects(team));
+            return View();
         }
 
         // UPDATE ===================================================================

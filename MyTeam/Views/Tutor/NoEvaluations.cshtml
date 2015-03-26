@@ -1,0 +1,26 @@
+﻿@model MyTeam.Data.BEANS.EvaluationBEAN
+
+﻿@{
+    ViewBag.Title = "Student Statistics";
+}
+
+<div class="container body-content">
+
+    <div class="row">
+        <h1>@ViewBag.Title</h1>
+    </div>
+
+    <div class="row">
+        <h4 class="pull-left">Tutor Dashboard / Team Members / Student Stats</h4>
+    </div>
+    <br /><br />
+    <p>
+        No evaluations have been submitted for this student's project yet.
+    </p>
+    <br /><br />
+
+    <p>
+        @Html.ActionLink("Back to Tutor Dashboard", "Index", "Tutor")
+    </p>
+
+</div>
