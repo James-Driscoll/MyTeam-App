@@ -57,8 +57,8 @@ namespace MyTeam.Controllers
 
         // READ =====================================================================
         // Index : Returns list of teams that a particular student it a member of.
-       [Authorize(Roles = "Student")] 
-       public ActionResult Index(string id)
+        [Authorize(Roles = "Student")] 
+        public ActionResult Index(string id)
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             ApplicationUser user = userManager.FindByIdAsync(User.Identity.GetUserId()).Result;
@@ -67,9 +67,9 @@ namespace MyTeam.Controllers
         }
 
         // Members : Returns an IList of all members that are part of a particular team.
-       [Authorize(Roles = "Tutor, Admin")]
-       public ActionResult Members(int id)
-       {
+        [Authorize(Roles = "Tutor, Admin")]
+        public ActionResult Members(int id)
+        {
            // declare local list of team members.
            IList<TeamMember> _teamMembers = _teamService.getTeamMembers(id);
            // MyTeam.Data.BEANS.TeamMemberBEAN _teamMemberBEAN = new MyTeam.Data.BEANS.TeamMemberBEAN();
@@ -88,33 +88,19 @@ namespace MyTeam.Controllers
                _teamMemberBEANs.Add(_teamMemberBEAN);
            }
 
-           for (int i = 0; i < _projectService.getProjects(id).Count; i++)
-           {
-               _teamMemberBEANs[i].projectList = _projectService.getProjects(id);
-
-               var tet = _projectService.getProjects(id);
-
-               //_teamMemberBEANs[i].projectList.Union(IEnumerable<Project>, _projectService.getProjects(id));
-               //_teamMemberBEANs[i].projectList = _projectService.getProjects(id).ToList();
-               //var projectList = _projectService.getProjects(id).Select(pl =>
-               //    new SelectListItem { Value = pl.Id.ToString(), Text = pl.Title }).ToList();
-               //_teamMemberBEANs[i].projectList = projectList;
-           }
-
-
-           var list = _projectService.getProjects(id).Select(x =>new SelectListItem{
+           // construct the list of projects.
+           var projectList = _projectService.getProjects(id).Select(x =>new SelectListItem{
                 Text = x.Title,
                 Value = x.Id.ToString()
            });
-
-           ViewBag.ProjectList = list;
+           ViewBag.ProjectList = projectList;
 
            // return the modified list to the view.
            return View(_teamMemberBEANs);
-       }
+        }
 
         // UPDATE ===================================================================
-        // Edit : Allows for updateding one Team.
+        // Edit : Allows for updating one Team.
         [HttpGet] [Authorize(Roles = "Tutor, Admin")]
         public ActionResult Edit(int id)
         {

@@ -13,7 +13,6 @@ namespace MyTeam.Data.BEANS
         public int Id { get; set; }
         public string userID { get; set; }
         public string userName { get; set; }
-        public IList<Project> projectList { get; set; }
 
         // CONSTRUCTOR ===============================================================
         public TeamMemberBEAN() { }

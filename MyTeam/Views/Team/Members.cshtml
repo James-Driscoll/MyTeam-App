@@ -14,6 +14,10 @@
         <h4 class="pull-left">Tutor Dashboard / Team Members</h4>
     </div>
 
+    <p>
+        Select a project below to view the individual statistics of a student for a project.
+    </p>
+
     <table class="table">
         <tr>
             <th>
@@ -21,9 +25,6 @@
             </th>
             <th>
                 Project
-            </th>
-            <th>
-                Actions
             </th>
         </tr>
 
@@ -34,27 +35,16 @@
                     @Html.DisplayFor(modelItem => item.userName)
                 </td>
                 <td>
-                    @*@Html.DropDownListFor(modelItem => item.projectList, (List<SelectListItem>)item.projectList, new { @class = "form-control" })*@
-                    @*@Html.DropDownList("Projects", (IEnumerable<SelectListItem>)item.teamProjects, "Select...", new { @class = "form-control" })*@
-
                     @using (Html.BeginForm("StudentStats", "Tutor"))
                     {
-                        @*@Html.DropDownList("projectID", (List<SelectListItem>)ViewBag.ProjectList)*@
                         @Html.DropDownList("project", (IEnumerable<SelectListItem>)ViewBag.ProjectList, "Select...", new { @class = "form-control", @onchange = "this.form.submit()" })
                         @Html.Hidden("student", item.userID)
                     }
-
-                </td>
-                <td>
-                    @Html.ActionLink("Student Stats", "StudentStats", new { student = item.userID, controller = "Tutor" })
                 </td>
             </tr>
         }
 
     </table>
-
-
-   
 
     <div>
         @Html.ActionLink("Back to Tutor Dashboard", "Index", "Tutor")

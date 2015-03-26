@@ -101,9 +101,8 @@ namespace MyTeam.Controllers
             }
             catch
             {
-                
+                return View();
             }
-            
 
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             MyTeam.Data.BEANS.EvaluationBEAN evaluationBEAN = new MyTeam.Data.BEANS.EvaluationBEAN();
@@ -133,9 +132,6 @@ namespace MyTeam.Controllers
                 }
 
                 float averageMark = markTotal / _evaluations.Count;
-                
-                //IList<Task> _tasks = _taskService.getTasks()
-
 
                 evaluationBEAN.Student = user.UserName;
                 evaluationBEAN.AverageMark = averageMark;
