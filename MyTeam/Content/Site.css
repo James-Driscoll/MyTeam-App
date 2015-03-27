@@ -84,6 +84,7 @@ a {
 /* Details =====================================*/
 .home-details {
     margin-top: 150px;
+    margin-bottom: 150px;
 }
 .points {
     margin-top: 150px;
@@ -106,6 +107,14 @@ footer {
 }
 .footer p {
     display: inline;
+}
+
+/* About Page =========================================================================*/
+.a-title {
+    margin-top: 200px;
+}
+.a-last {
+    margin-bottom: 200px;
 }
 
 /* Projects Page=======================================================================*/
